@@ -160,6 +160,15 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+            fonts: {
+                expand: true,
+                cwd: 'node_modules/bootstrap/fonts',
+                src: '**',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
+            }
+        },
+
         csscomb: {
             options: {
                 config: 'wp-content/themes/<%= pkg.name %>/less/csscomb.json'
@@ -188,7 +197,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
     // Full distribution task.
-    grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
+    grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js', 'copy']);
 
     grunt.registerTask( 'translation', [ 'makepot', 'exec', 'po2mo'] );
 
