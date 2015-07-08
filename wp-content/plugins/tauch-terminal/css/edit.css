@@ -1,0 +1,14 @@
+.edit-tauchterminal .preview {
+    text-align: center;
+    float: none;
+}
+.edit-tauchterminal img.preview {
+    max-width: 100%;
+}
+.edit-tauchterminal .column-logo {
+    width: 6%;
+}
+.edit-tauchterminal .column-slug {
+    width: 15%;
+}
+.edit-tauchterminal td input { max-width: 100%; }

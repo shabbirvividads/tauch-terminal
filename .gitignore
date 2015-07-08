@@ -1,0 +1,6 @@
+.DS_Store
+.tx
+node_modules
+wp-content/plugins/akismet
+wp-content/plugins/slick-carousel
+wp-content/plugins/sitepress-multilingual-cms

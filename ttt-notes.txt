@@ -1,0 +1,8 @@
+~/Sites/wordpress
+❯ cd wp-content/languages
+
+~/Sites/wordpress/wp-content/languages
+❯ php /Users/nessie/Sites/trunk/tools/i18n/makepot.php wp-theme /Users/nessie/Sites/wordpress/wp-content/themes/tt-bootstrap
+
+~/Sites/wordpress/wp-content/languages
+❯ php /Users/nessie/Sites/trunk/tools/i18n/makepot.php wp-plugin /Users/nessie/Sites/wordpress/wp-content/plugins/tauch-terminal
