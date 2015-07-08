@@ -205,58 +205,13 @@ function xsbf_scripts() {
 
 	global $xsbf_theme_options;
 
-	/* LOAD STYLESHEETS */
-
-	// Load our custom version of Bootsrap CSS. Can easily override in a child theme.
-	wp_register_style('bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.0', 'all' );
-	wp_enqueue_style( 'bootstrap');
-
-	// If desired, load up the bootstrap-theme CSS for a full gradient look. Note you'll
-	// need to style other theme elements to match.
-	if ( $xsbf_theme_options['bootstrap_gradients'] ) {
-		wp_register_style('bootstrap-theme', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css', array(), '3.1.0', 'all' );
-		wp_enqueue_style( 'bootstrap-theme');
-	}
-
-	// Our base WordPress CSS that handles default margins, paddings, etc.
-	wp_register_style('theme-base', get_template_directory_uri() . '/css/theme-base.css', '', '20140913', 'all' );
-	wp_enqueue_style( 'theme-base');
-
-	// Our base theme CSS that adds colored sections and padding.
-	wp_register_style('theme-flat', get_template_directory_uri() . '/css/theme-flat.css', array( 'bootstrap', 'theme-base' ), '20140913', 'all' );
-	wp_enqueue_style( 'theme-flat');
-
     // Our base theme CSS that adds colored sections and padding.
-    wp_register_style('tauchterminal', get_template_directory_uri() . '/css/tauchterminal.css', array( 'bootstrap', 'theme-flat' ), '20150708', 'all' );
+    wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.min.css', array(), '20150708', 'all' );
     wp_enqueue_style( 'tauchterminal');
 
-	// Load Google Fonts: Lato and Raleway
-	wp_enqueue_style( 'google_fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700',array(), null, 'screen' );
-
-	// Add font-awesome support
-	if ( isset ( $xsbf_theme_options['fontawesome'] ) AND $xsbf_theme_options['fontawesome'] ) {
-		wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css', array(), '4.0.3', 'all' );
-		wp_enqueue_style( 'font-awesome');
-	}
-
-	// This theme's stylesheet, which contains the theme-specific CSS for coloring
-	// content header, footer, etc.
-	wp_enqueue_style( 'xtremelysocial-style', get_stylesheet_uri() );
-
 	/* LOAD JAVASCRIPT */
-
-	// Bootsrap core javascript
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.0', true );
-
-	// jquery mobile script is a custom download with ONLY "touch" functions. Load
-	// this just on single posts and pages where a carousel might be placed
-	if ( $xsbf_theme_options['touch_support'] AND wp_is_mobile() AND is_singular() ) {
-		wp_enqueue_script( 'jquerymobile', get_template_directory_uri() . '/jquerymobile/jquery.mobile.custom.min.js', array('jquery'), '1.4.0', true );
-	}
-
 	// Our theme's javascript for smooth scrolling and optional for touch carousels
-	wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20140913', true );
-    wp_enqueue_script('tt-init', get_template_directory_uri() . '/js/tt-init.js', array('jquery'), '20140913', true );
+	wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.min.js', array('jquery'), '20140913', true );
 
 	// Optional script from _S theme to allow keyboard nvigation through image pages
 	if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {

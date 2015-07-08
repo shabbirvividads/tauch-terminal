@@ -25,15 +25,17 @@
  * @return Array of WP_Theme objects.
  */
 function wp_get_themes( $args = array() ) {
-	global $wp_theme_directories;
 
-	$defaults = array( 'errors' => false, 'allowed' => null, 'blog_id' => 0 );
-	$args = wp_parse_args( $args, $defaults );
 
-	$theme_directories = search_theme_directories();
+    global $wp_theme_directories;
 
-	if ( count( $wp_theme_directories ) > 1 ) {
-		// Make sure the current theme wins out, in case search_theme_directories() picks the wrong
+    $defaults = array( 'errors' => false, 'allowed' => null, 'blog_id' => 0 );
+    $args = wp_parse_args( $args, $defaults );
+
+    $theme_directories = search_theme_directories();
+
+    if ( count( $wp_theme_directories ) > 1 ) {
+        // Make sure the current theme wins out, in case search_theme_directories() picks the wrong
 		// one in the case of a conflict. (Normally, last registered theme root wins.)
 		$current_theme = get_stylesheet();
 		if ( isset( $theme_directories[ $current_theme ] ) ) {
@@ -282,7 +284,7 @@ function get_template() {
 	 *
 	 * @param string $template Current theme's directory name.
 	 */
-	return apply_filters( 'template', get_option( 'template' ) );
+    return apply_filters( 'template', get_option( 'template' ) );
 }
 
 /**

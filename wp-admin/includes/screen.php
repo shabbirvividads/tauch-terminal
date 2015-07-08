@@ -653,7 +653,7 @@ final class WP_Screen {
 	 * @return string The option value if set, null otherwise.
 	 */
 	public function get_option( $option, $key = false ) {
-		if ( ! isset( $this->_options[ $option ] ) )
+        if ( ! isset( $this->_options[ $option ] ) )
 			return null;
 		if ( $key ) {
 			if ( isset( $this->_options[ $option ][ $key ] ) )

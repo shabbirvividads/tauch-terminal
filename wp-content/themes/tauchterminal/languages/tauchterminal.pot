@@ -1,10 +1,10 @@
-# Copyright (C) 2015
+# Copyright (C) 2015 
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://nessie.me\n"
-"POT-Creation-Date: 2015-07-08 07:14:03+00:00\n"
+"POT-Creation-Date: 2015-07-08 08:33:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,8 +36,8 @@ msgstr ""
 #: wp-admin/includes/class-wp-plugins-list-table.php:439
 #: wp-admin/includes/class-wp-themes-list-table.php:161
 #: wp-admin/includes/class-wp-upgrader-skins.php:537
-#: wp-admin/includes/class-wp-upgrader-skins.php:616 wp-admin/themes.php:237
-#: wp-admin/themes.php:335 wp-admin/themes.php:396
+#: wp-admin/includes/class-wp-upgrader-skins.php:616 wp-admin/themes.php:243
+#: wp-admin/themes.php:341 wp-admin/themes.php:402
 #: wp-content/plugins/sitepress-multilingual-cms/inc/installer/templates/downloads-list-compact.php:12
 #: wp-content/plugins/sitepress-multilingual-cms/menu/network.php:136
 #: wp-content/plugins/sitepress-multilingual-cms/menu/network.php:165
@@ -445,7 +445,7 @@ msgstr ""
 #: wp-admin/options-writing.php:20 wp-admin/plugin-editor.php:128
 #: wp-admin/plugin-install.php:69 wp-admin/plugins.php:363
 #: wp-admin/revision.php:114 wp-admin/theme-editor.php:25
-#: wp-admin/theme-install.php:78 wp-admin/themes.php:54
+#: wp-admin/theme-install.php:78 wp-admin/themes.php:60
 #: wp-admin/update-core.php:480 wp-admin/upload.php:33 wp-admin/upload.php:198
 #: wp-admin/user-edit.php:48 wp-admin/user-new.php:164 wp-admin/users.php:25
 #: wp-admin/widgets.php:50
@@ -488,7 +488,7 @@ msgstr ""
 #: wp-admin/plugin-editor.php:139 wp-admin/plugin-install.php:84
 #: wp-admin/plugins.php:377 wp-admin/revision.php:118
 #: wp-admin/theme-editor.php:38 wp-admin/theme-install.php:93
-#: wp-admin/themes.php:89 wp-admin/tools.php:27 wp-admin/update-core.php:498
+#: wp-admin/themes.php:95 wp-admin/tools.php:27 wp-admin/update-core.php:498
 #: wp-admin/upload.php:50 wp-admin/upload.php:218 wp-admin/user-edit.php:53
 #: wp-admin/user-new.php:182 wp-admin/users.php:60 wp-admin/widgets.php:72
 #: wp-content/plugins/akismet/class.akismet-admin.php:215
@@ -517,7 +517,7 @@ msgstr ""
 #: wp-admin/plugin-editor.php:142 wp-admin/plugin-install.php:86
 #: wp-admin/plugins.php:379 wp-admin/revision.php:120
 #: wp-admin/theme-editor.php:43 wp-admin/theme-install.php:95
-#: wp-admin/themes.php:91 wp-admin/tools.php:29 wp-admin/update-core.php:500
+#: wp-admin/themes.php:97 wp-admin/tools.php:29 wp-admin/update-core.php:500
 #: wp-admin/upload.php:52 wp-admin/upload.php:220 wp-admin/user-edit.php:55
 #: wp-admin/user-new.php:184 wp-admin/users.php:63 wp-admin/widgets.php:74
 msgid ""
@@ -832,8 +832,8 @@ msgstr ""
 #: wp-admin/includes/class-wp-upgrader-skins.php:533
 #: wp-admin/includes/class-wp-upgrader-skins.php:612
 #: wp-admin/includes/meta-boxes.php:56 wp-admin/includes/post.php:1469
-#: wp-admin/theme-install.php:208 wp-admin/themes.php:240
-#: wp-admin/themes.php:337 wp-admin/themes.php:399
+#: wp-admin/theme-install.php:208 wp-admin/themes.php:246
+#: wp-admin/themes.php:343 wp-admin/themes.php:405
 #: wp-includes/class-wp-editor.php:883
 msgid "Preview"
 msgstr ""
@@ -1223,7 +1223,7 @@ msgstr ""
 #: wp-admin/media-upload.php:38 wp-admin/nav-menus.php:23
 #: wp-admin/network/site-users.php:136 wp-admin/options.php:48
 #: wp-admin/options.php:72 wp-admin/post-new.php:51 wp-admin/press-this.php:17
-#: wp-admin/themes.php:13 wp-admin/themes.php:20 wp-admin/themes.php:28
+#: wp-admin/themes.php:19 wp-admin/themes.php:26 wp-admin/themes.php:34
 #: wp-admin/user-new.php:14 wp-admin/user-new.php:16 wp-admin/user-new.php:58
 #: wp-admin/user-new.php:95 wp-admin/users.php:13 wp-admin/users.php:131
 #: wp-admin/widgets.php:16
@@ -2214,7 +2214,7 @@ msgstr ""
 #: wp-admin/includes/media.php:1178 wp-admin/includes/media.php:2721
 #: wp-admin/includes/nav-menu.php:180 wp-admin/includes/nav-menu.php:1221
 #: wp-admin/press-this.php:144 wp-admin/press-this.php:677
-#: wp-admin/themes.php:273
+#: wp-admin/themes.php:279
 #: wp-content/plugins/sitepress-multilingual-cms/menu/compatibility-packages.php:30
 #: wp-content/plugins/sitepress-multilingual-cms/menu/compatibility-packages.php:74
 #: wp-content/plugins/sitepress-multilingual-cms/menu/taxonomy-translation-display.class.php:24
@@ -3410,7 +3410,7 @@ msgstr ""
 #: wp-admin/includes/class-wp-users-list-table.php:371
 #: wp-admin/includes/media.php:1451 wp-admin/includes/meta-boxes.php:815
 #: wp-admin/includes/template.php:613 wp-admin/includes/widgets.php:226
-#: wp-admin/themes.php:292 wp-admin/themes.php:403 wp-admin/widgets.php:284
+#: wp-admin/themes.php:298 wp-admin/themes.php:409 wp-admin/widgets.php:284
 #: wp-content/plugins/sitepress-multilingual-cms/menu/edit-languages.php:193
 #: wp-content/plugins/sitepress-multilingual-cms/menu/edit-languages.php:195
 #: wp-content/plugins/sitepress-multilingual-cms/menu/network.php:151
@@ -3874,7 +3874,7 @@ msgstr ""
 #: wp-admin/includes/class-wp-theme-install-list-table.php:374
 #: wp-admin/includes/class-wp-themes-list-table.php:198
 #: wp-admin/theme-install.php:203 wp-admin/theme-install.php:231
-#: wp-admin/themes.php:222 wp-admin/themes.php:320 wp-admin/themes.php:369
+#: wp-admin/themes.php:228 wp-admin/themes.php:326 wp-admin/themes.php:375
 msgid "By %s"
 msgstr ""
 
@@ -4370,8 +4370,8 @@ msgstr ""
 
 #: wp-admin/includes/class-wp-themes-list-table.php:168
 #: wp-admin/includes/class-wp-upgrader-skins.php:535
-#: wp-admin/includes/class-wp-upgrader-skins.php:614 wp-admin/themes.php:239
-#: wp-admin/themes.php:336 wp-admin/themes.php:398
+#: wp-admin/includes/class-wp-upgrader-skins.php:614 wp-admin/themes.php:245
+#: wp-admin/themes.php:342 wp-admin/themes.php:404
 msgid "Live Preview"
 msgstr ""
 
@@ -4511,7 +4511,7 @@ msgid "Customize &#8220;%s&#8221;"
 msgstr ""
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:609 wp-admin/menu.php:154
-#: wp-admin/themes.php:234 wp-admin/themes.php:332 wp-admin/themes.php:391
+#: wp-admin/themes.php:240 wp-admin/themes.php:338 wp-admin/themes.php:397
 #: wp-includes/admin-bar.php:677
 msgid "Customize"
 msgstr ""
@@ -7413,12 +7413,13 @@ msgid "Popup Comments"
 msgstr ""
 
 #: wp-admin/includes/file.php:20
-#: wp-content/themes/tauchterminal/functions.php:167
+#: wp-content/themes/tauchterminal/functions.php:165
 msgid "Footer"
 msgstr ""
 
 #: wp-admin/includes/file.php:22 wp-admin/widgets.php:248
-#: wp-content/themes/tauchterminal/functions.php:156 wp-includes/widgets.php:741
+#: wp-content/themes/tauchterminal/functions.php:154
+#: wp-includes/widgets.php:741
 msgid "Sidebar"
 msgstr ""
 
@@ -10832,8 +10833,8 @@ msgstr ""
 msgid "Collapse menu"
 msgstr ""
 
-#: wp-admin/menu.php:27 wp-content/themes/tauchterminal/footer.php:111
-#: wp-content/themes/tauchterminal/footer.php:113
+#: wp-admin/menu.php:27 wp-content/themes/tauchterminal/footer.php:110
+#: wp-content/themes/tauchterminal/footer.php:112
 #: wp-includes/post-template.php:1148
 msgid "Home"
 msgstr ""
@@ -10877,7 +10878,7 @@ msgstr ""
 #: wp-admin/menu.php:151 wp-admin/network/menu.php:29
 #: wp-admin/network/site-info.php:106 wp-admin/network/site-settings.php:96
 #: wp-admin/network/site-themes.php:148 wp-admin/network/site-users.php:193
-#: wp-admin/network/themes.php:237 wp-admin/themes.php:124
+#: wp-admin/network/themes.php:237 wp-admin/themes.php:130
 #: wp-admin/update-core.php:294 wp-admin/update-core.php:302
 #: wp-includes/admin-bar.php:381 wp-includes/admin-bar.php:666
 msgid "Themes"
@@ -11168,7 +11169,7 @@ msgid ""
 "adding this support by following the Documentation link to the side."
 msgstr ""
 
-#: wp-admin/nav-menus.php:496 wp-admin/themes.php:46
+#: wp-admin/nav-menus.php:496 wp-admin/themes.php:52
 msgid "From this screen you can:"
 msgstr ""
 
@@ -11973,7 +11974,7 @@ msgid "Network enabled themes are not shown on this screen."
 msgstr ""
 
 #: wp-admin/network/site-themes.php:171 wp-admin/network/themes.php:271
-#: wp-admin/themes.php:111
+#: wp-admin/themes.php:117
 msgid "Search Installed Themes"
 msgstr ""
 
@@ -12232,7 +12233,7 @@ msgstr ""
 msgid "You cannot delete a theme while it is active on the main site."
 msgstr ""
 
-#: wp-admin/network/themes.php:278 wp-admin/themes.php:265
+#: wp-admin/network/themes.php:278 wp-admin/themes.php:271
 msgid ""
 "The following themes are installed but incomplete. Themes must have a "
 "stylesheet and a template."
@@ -14496,7 +14497,7 @@ msgid ""
 "target=\"_blank\">Documentation on Theme Development</a>"
 msgstr ""
 
-#: wp-admin/theme-editor.php:40 wp-admin/themes.php:90
+#: wp-admin/theme-editor.php:40 wp-admin/themes.php:96
 msgid ""
 "<a href=\"http://codex.wordpress.org/Using_Themes\" "
 "target=\"_blank\">Documentation on Using Themes</a>"
@@ -14551,7 +14552,7 @@ msgstr ""
 msgid "Add Themes"
 msgstr ""
 
-#: wp-admin/theme-install.php:46 wp-admin/themes.php:110
+#: wp-admin/theme-install.php:46 wp-admin/themes.php:116
 msgid "Add New Theme"
 msgstr ""
 
@@ -14636,7 +14637,7 @@ msgstr ""
 msgid "Filtering by:"
 msgstr ""
 
-#: wp-admin/theme-install.php:172 wp-admin/themes.php:256
+#: wp-admin/theme-install.php:172 wp-admin/themes.php:262
 msgid "No themes found. Try a different search."
 msgstr ""
 
@@ -14644,48 +14645,48 @@ msgstr ""
 msgid "No ratings."
 msgstr ""
 
-#: wp-admin/theme-install.php:248 wp-admin/themes.php:368
+#: wp-admin/theme-install.php:248 wp-admin/themes.php:374
 msgid "Version: %s"
 msgstr ""
 
-#: wp-admin/themes.php:40
+#: wp-admin/themes.php:46
 msgid "Manage Themes"
 msgstr ""
 
-#: wp-admin/themes.php:45
+#: wp-admin/themes.php:51
 msgid ""
 "This screen is used for managing your installed themes. Aside from the "
 "default theme(s) included with your WordPress installation, themes are "
 "designed and developed by third parties."
 msgstr ""
 
-#: wp-admin/themes.php:47
+#: wp-admin/themes.php:53
 msgid "Hover or tap to see Activate and Live Preview buttons"
 msgstr ""
 
-#: wp-admin/themes.php:48
+#: wp-admin/themes.php:54
 msgid ""
 "Click on the theme to see the theme name, version, author, description, "
 "tags, and the Delete link"
 msgstr ""
 
-#: wp-admin/themes.php:49
+#: wp-admin/themes.php:55
 msgid ""
 "Click Customize for the current theme or Live Preview for any other theme "
 "to see a live preview"
 msgstr ""
 
-#: wp-admin/themes.php:50
+#: wp-admin/themes.php:56
 msgid "The current theme is displayed highlighted as the first theme."
 msgstr ""
 
-#: wp-admin/themes.php:62
+#: wp-admin/themes.php:68
 msgid ""
 "Installing themes on Multisite can only be done from the Network Admin "
 "section."
 msgstr ""
 
-#: wp-admin/themes.php:64
+#: wp-admin/themes.php:70
 msgid ""
 "If you would like to see more themes to choose from, click on the "
 "&#8220;Add New&#8221; button and you will be able to browse or search for "
@@ -14695,11 +14696,11 @@ msgid ""
 "license WordPress uses. Oh, and they&#8217;re free!"
 msgstr ""
 
-#: wp-admin/themes.php:69
+#: wp-admin/themes.php:75
 msgid "Adding Themes"
 msgstr ""
 
-#: wp-admin/themes.php:77
+#: wp-admin/themes.php:83
 msgid ""
 "Tap or hover on any theme then click the Live Preview button to see a live "
 "preview of that theme and change theme options in a separate, full-screen "
@@ -14708,7 +14709,7 @@ msgid ""
 "way."
 msgstr ""
 
-#: wp-admin/themes.php:78
+#: wp-admin/themes.php:84
 msgid ""
 "The theme being previewed is fully interactive &mdash; navigate to "
 "different pages to see how the theme handles posts, archives, and other "
@@ -14718,7 +14719,7 @@ msgid ""
 "menu."
 msgstr ""
 
-#: wp-admin/themes.php:79
+#: wp-admin/themes.php:85
 msgid ""
 "When previewing on smaller monitors, you can use the collapse icon at the "
 "bottom of the left-hand pane. This will hide the pane, giving you more room "
@@ -14726,78 +14727,78 @@ msgid ""
 "collapse icon again."
 msgstr ""
 
-#: wp-admin/themes.php:83
+#: wp-admin/themes.php:89
 msgid "Previewing and Customizing"
 msgstr ""
 
-#: wp-admin/themes.php:106
+#: wp-admin/themes.php:112
 msgid ""
 "Are you sure you want to delete this theme?\n"
 "\n"
 "Click 'Cancel' to go back, 'OK' to confirm the delete."
 msgstr ""
 
-#: wp-admin/themes.php:112
+#: wp-admin/themes.php:118
 msgid "Search installed themes..."
 msgstr ""
 
-#: wp-admin/themes.php:132
+#: wp-admin/themes.php:138
 msgid "The active theme is broken. Reverting to the default theme."
 msgstr ""
 
-#: wp-admin/themes.php:135
+#: wp-admin/themes.php:141
 msgid "Settings saved and theme activated. <a href=\"%s\">Visit site</a>"
 msgstr ""
 
-#: wp-admin/themes.php:137
+#: wp-admin/themes.php:143
 msgid "New theme activated. <a href=\"%s\">Visit site</a>"
 msgstr ""
 
-#: wp-admin/themes.php:140
+#: wp-admin/themes.php:146
 msgid "Theme deleted."
 msgstr ""
 
-#: wp-admin/themes.php:142
+#: wp-admin/themes.php:148
 msgid "You cannot delete a theme while it has an active child theme."
 msgstr ""
 
-#: wp-admin/themes.php:149
+#: wp-admin/themes.php:155
 msgid "ERROR: %s"
 msgstr ""
 
-#: wp-admin/themes.php:221 wp-admin/themes.php:319
+#: wp-admin/themes.php:227 wp-admin/themes.php:325
 msgid "Theme Details"
 msgstr ""
 
-#: wp-admin/themes.php:247 wp-admin/themes.php:343 wp-admin/themes.php:373
+#: wp-admin/themes.php:253 wp-admin/themes.php:349 wp-admin/themes.php:379
 msgid "Update Available"
 msgstr ""
 
-#: wp-admin/themes.php:264
+#: wp-admin/themes.php:270
 msgid "Broken Themes"
 msgstr ""
 
-#: wp-admin/themes.php:351
+#: wp-admin/themes.php:357
 msgid "Show previous theme"
 msgstr ""
 
-#: wp-admin/themes.php:352
+#: wp-admin/themes.php:358
 msgid "Show next theme"
 msgstr ""
 
-#: wp-admin/themes.php:353
+#: wp-admin/themes.php:359
 msgid "Close overlay"
 msgstr ""
 
-#: wp-admin/themes.php:366
+#: wp-admin/themes.php:372
 msgid "Current Theme"
 msgstr ""
 
-#: wp-admin/themes.php:380
+#: wp-admin/themes.php:386
 msgid "This is a child theme of %s."
 msgstr ""
 
-#: wp-admin/themes.php:384
+#: wp-admin/themes.php:390
 msgid "Tags:"
 msgstr ""
 
@@ -20850,11 +20851,11 @@ msgid "Logo"
 msgstr ""
 
 #: wp-content/plugins/tauch-terminal/views/edit.php:76
-#: wp-content/plugins/tauch-terminal/views/edit.php:92
+#: wp-content/plugins/tauch-terminal/views/edit.php:91
 msgid "Select %s site"
 msgstr ""
 
-#: wp-content/plugins/tauch-terminal/views/edit.php:106
+#: wp-content/plugins/tauch-terminal/views/edit.php:104
 #: wp-content/plugins/tauch-terminal/views/start.php:20
 msgid "There are no sites defined yet."
 msgstr ""
@@ -21062,56 +21063,56 @@ msgstr ""
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/footer.php:39
+#: wp-content/themes/tauchterminal/footer.php:38
 #: wp-includes/class-wp-editor.php:997
 msgid "Read more..."
 msgstr ""
 
-#: wp-content/themes/tauchterminal/footer.php:106
+#: wp-content/themes/tauchterminal/footer.php:105
 msgid "Back to top of page"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/footer.php:108
+#: wp-content/themes/tauchterminal/footer.php:107
 #: wp-includes/class-wp-editor.php:957
 msgid "Top"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/footer.php:122
+#: wp-content/themes/tauchterminal/footer.php:121
 msgid "&copy; %1$s %2$s. Theme by %3$s."
 msgstr ""
 
-#: wp-content/themes/tauchterminal/footer.php:139
-#: wp-content/themes/tauchterminal/functions.php:111
+#: wp-content/themes/tauchterminal/footer.php:138
+#: wp-content/themes/tauchterminal/functions.php:109
 msgid "Footer Menu"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:110
+#: wp-content/themes/tauchterminal/functions.php:108
 msgid "Header Menu"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:158
+#: wp-content/themes/tauchterminal/functions.php:156
 msgid "Main sidebar (right or left)"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:169
+#: wp-content/themes/tauchterminal/functions.php:167
 msgid "Optional site footer widgets. Add 1-4 widgets here to display in columns."
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:178
+#: wp-content/themes/tauchterminal/functions.php:176
 msgid "Page Top"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:180
+#: wp-content/themes/tauchterminal/functions.php:178
 msgid ""
 "Optional section after the header. This is a single column area that spans "
 "the full width of the page."
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:189
+#: wp-content/themes/tauchterminal/functions.php:187
 msgid "Page Bottom"
 msgstr ""
 
-#: wp-content/themes/tauchterminal/functions.php:191
+#: wp-content/themes/tauchterminal/functions.php:189
 msgid ""
 "Optional section before the footer. This is a single column area that spans "
 "the full width of the page."
@@ -22883,7 +22884,7 @@ msgstr ""
 
 #: wp-includes/class-wp-editor.php:981 wp-includes/script-loader.php:390
 #: wp-includes/script-loader.php:463 wp-includes/script-loader.php:543
-#: wp-includes/theme.php:1956
+#: wp-includes/theme.php:1958
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
@@ -26722,11 +26723,11 @@ msgstr ""
 msgid "XFN"
 msgstr ""
 
-#: wp-includes/theme.php:1488
+#: wp-includes/theme.php:1490
 msgid "You need to pass an array of types."
 msgstr ""
 
-#: wp-includes/theme.php:1619
+#: wp-includes/theme.php:1621
 #. translators: 1: Theme support 2: hook name
 msgid "Theme support for %1$s should be registered before the %2$s hook."
 msgstr ""
@@ -27770,7 +27771,7 @@ msgctxt "theme"
 msgid "Already Installed"
 msgstr ""
 
-#: wp-admin/themes.php:225 wp-admin/themes.php:323
+#: wp-admin/themes.php:231 wp-admin/themes.php:329
 msgctxt "theme"
 msgid "Active:"
 msgstr ""
@@ -28131,12 +28132,12 @@ msgctxt "Button label for a theme"
 msgid "Next"
 msgstr ""
 
-#: wp-admin/themes.php:127
+#: wp-admin/themes.php:133
 msgctxt "Add new theme"
 msgid "Add New"
 msgstr ""
 
-#: wp-admin/themes.php:272
+#: wp-admin/themes.php:278
 msgctxt "theme name"
 msgid "Name"
 msgstr ""

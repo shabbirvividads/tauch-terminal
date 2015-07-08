@@ -9,6 +9,12 @@
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
+// $test = wp_get_themes();
+// $test = wp_get_theme('tauchterminal');
+// var_dump($test);
+// throw new Exception("foobar", 1);
+
+
 if ( !current_user_can('switch_themes') && !current_user_can('edit_theme_options') )
 	wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 

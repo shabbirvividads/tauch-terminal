@@ -752,7 +752,7 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	public function step_2() {
 		check_admin_referer('custom-header-upload', '_wpnonce-custom-header-upload');
 		if ( ! current_theme_supports( 'custom-header', 'uploads' ) )
-			wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
+            wp_die( __( 'Cheatin&#8217; uh?' ), 403 );
 
 		if ( empty( $_POST ) && isset( $_GET['file'] ) ) {
 			$attachment_id = absint( $_GET['file'] );

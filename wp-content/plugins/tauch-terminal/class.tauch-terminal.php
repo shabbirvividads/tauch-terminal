@@ -39,7 +39,7 @@ class TauchTerminal {
     public static function getSites() {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
-        $sites = $wpdb->get_results($wpdb->prepare("SELECT * FROM $table", 'post'));
+        $sites = $wpdb->get_results("SELECT * FROM $table");
         return $sites;
     }
 

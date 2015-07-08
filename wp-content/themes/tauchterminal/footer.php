@@ -35,7 +35,6 @@
             <?php foreach (TauchTerminal::getSites() as $site): ?>
                 <div class="col-sm-4 more-<?php echo $site->tt_slug ?>">
                     <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="more text-uppercase">
-                        <?php var_dump(get_option('WPLANG')); ?>
                         <?php echo __('Read more...') ?>
                         <span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
                     </a>
