@@ -70,19 +70,8 @@ module.exports = function(grunt) {
                     sourceMapURL: '<%= pkg.name %>.css.map',
                     sourceMapFilename: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css.map'
                 },
-                src: 'node_modules/bootstrap/less/bootstrap.less',
+                src: 'wp-content/themes/<%= pkg.name %>/less/<%= pkg.name %>.less',
                 dest: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css'
-            },
-            compileTheme: {
-                options: {
-                    strictMath: true,
-                    sourceMap: true,
-                    outputSourceFiles: true,
-                    sourceMapURL: '<%= pkg.name %>-theme.css.map',
-                    sourceMapFilename: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>-theme.css.map'
-                },
-                src: 'wp-content/themes/<%= pkg.name %>/less/<%= pkg.name %>-theme.less',
-                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>-theme.css'
             }
         },
 
@@ -181,24 +170,47 @@ module.exports = function(grunt) {
             }
         },
 
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            core: {
+                src: 'wp-content/themes/<%= pkg.name %>/js/*.js'
+            }
+        },
+
+        jscs: {
+            options: {
+                config: '.jscsrc'
+            },
+            core: {
+                src: '<%= jshint.core.src %>'
+            }
+        },
+
         watch: {
             less: {
                 files: 'wp-content/themes/<%= pkg.name %>/less/**/*.less',
-                tasks: 'less'
-            }
+                tasks: ['less','dist-css']
+            },
+            src: {
+                files: '<%= jshint.core.src %>',
+                tasks: ['jshint:core', 'concat']
+            },
         }
 
     });
 
     // Default task(s).
+    grunt.registerTask('test-js', ['jshint', 'jscs']);
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
-    grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
+    grunt.registerTask('less-compile', ['less:compileCore']);
     grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js', 'copy']);
 
-    grunt.registerTask( 'translation', [ 'makepot', 'exec', 'po2mo'] );
+    grunt.registerTask('translation', [ 'makepot', 'exec', 'po2mo']);
 
 };
