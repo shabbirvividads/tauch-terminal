@@ -71,14 +71,14 @@ class TauchTerminal {
     }
 
     public static function getCertifications() {
-        return [["http://www.tauch-terminal.com/images/ssi_diamond_resort.jpg", "ssi diamond instructor resort bali"],
-                ["http://www.tauch-terminal.com/images/diamond_diving_school.jpg", "ssi diamant tauchschule bali"],
-                ["http://www.tauch-terminal.com/sponsor/unud.jpg", "udayana university partner"],
-                ["http://www.tauch-terminal.com/sponsor/screwit.jpg", "lets dive bali campaign"],
-                ["http://www.tauch-terminal.com/sponsor/comments_taucher.jpg", "tauch terminal bali kommentare auf taucher.net"],
-                ["http://www.tauch-terminal.com/sponsor/unud_text_dt.jpg", "udayana university partner"],
-                ["http://www.tauch-terminal.com/sponsor/tauchterminal.jpg", "tauch terminal dive resort tulamben"],
-                ["http://www.tauch-terminal.com/sponsor/resort.jpg", "SSI dive education &amp; licenses"],
-                ["http://www.tauch-terminal.com/sponsor/liveaboard.jpg", "indonedsia liveaboard tauch kreuzfahrten"]];
+        return [["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/ssi_diamond_resort.png", "ssi diamond instructor resort bali"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/diamond_diving_school.png", "ssi diamant tauchschule bali"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/unud.png", "udayana university partner"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/screwit.png", "lets dive bali campaign"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/comments_taucher.jpg", "tauch terminal bali kommentare auf taucher.net"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/unud_text_dt.png", "udayana university partner"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/tauchterminal.png", "tauch terminal dive resort tulamben"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/resort.png", "SSI dive education &amp; licenses"],
+                ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/liveaboard.png", "indonedsia liveaboard tauch kreuzfahrten"]];
     }
 }
