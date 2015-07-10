@@ -7,3 +7,4 @@ wp-content/plugins/sitepress-multilingual-cms
 *.css.map
 *.min.*
 dist
+wp-content/uploads/*
