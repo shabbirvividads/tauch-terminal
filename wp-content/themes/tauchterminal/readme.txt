@@ -326,11 +326,11 @@ Note that links in the footer, copyright section, or any colored sections you've
 After WordPress.com releases their official plugin for custom logos, we plan to support that. In the meantime, you can do it with something like this in CSS:
 
 `.site-title a {
-	background: url('http://yourdomain.com/images/logo.png') left top no-repeat;
-	display: block;
-	text-indent: -9999px;
-	width: 100px;
-	height: 100px;
+    background: url('http://yourdomain.com/images/logo.png') left top no-repeat;
+    display: block;
+    text-indent: -9999px;
+    width: 100px;
+    height: 100px;
 }`
 
 

@@ -1,0 +1,40 @@
+#lang_sel_click {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    a,
+    a.lang_sel_sel,
+    ul ul a {
+        line-height: 24px;
+        color: @white;
+
+        position: relative;
+
+        padding: 2px 0 2px 33px;
+
+        border: 0;
+        background: none;
+        &:hover,
+        &:visited {
+            font-weight: bold;
+            color: @white;
+        }
+        img,
+        img.iclflag {
+            position: absolute;
+            top: 8px;
+            left: 11px;
+        }
+    }
+    a.lang_sel_sel {
+        padding-left: 36px;
+    }
+    :hover > a,
+    ul ul :hover > a {
+        font-weight: bold;
+        color: @white;
+
+        border: 0;
+        background: none;
+    }
+}

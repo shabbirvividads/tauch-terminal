@@ -1,0 +1,35 @@
+.sites-plugin {
+    height: 600px;
+    margin-top: 20px;
+    .slider-photo {
+        width: 100%;
+        height: 490px;
+    }
+    .background-image {
+        position: absolute;
+
+        width: 100%;
+        height: 300px;
+
+        background-attachment: fixed;
+        @media screen and (min-width: 768px) {
+            height: 500px;
+        }
+    }
+    .sites-slider {
+        display: block;
+
+        padding-top: 10px;
+        &.active {
+            border-top: 1px solid @ttgreen;
+        }
+        h2 {
+            margin-top: 5px;
+        }
+    }
+    .slider-photo a {
+        display: block;
+
+        padding: 15px 20px;
+    }
+}

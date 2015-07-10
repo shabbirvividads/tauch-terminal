@@ -10,31 +10,31 @@
 
 /* THIS IS ALL THE STYLES FROM THEME-BASE.CSS THAT USE LEFT / RIGHT TAGS */
 .screen-reader-text:focus {
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
 }
 .screen-reader-text:focus {
-	right: 5px;
+    right: 5px;
 }
 
 .alignleft, .align-left {
-	float: right;
-	margin-left: 10px;
+    float: right;
+    margin-left: 10px;
 }
 .alignright, .align-right {
-	float: left;
-	margin-right: 10px;
+    float: left;
+    margin-right: 10px;
 }
 .nocenter {
-	text-align: right;
+    text-align: right;
 }
 
 .sticky .entry-title:after {
-	margin-right: 15px;
+    margin-right: 15px;
 }
 
 .avatar {
-	float: right;
-	margin-left: 10px;
+    float: right;
+    margin-left: 10px;
 }
 
 #footer-navigation ul.dividers > li:nth-child(n+2):before {
@@ -43,31 +43,31 @@
 }
 
 .comment-list .children {
-	margin-right: 25px;
+    margin-right: 25px;
 }
 
 .cat-links, .tags-links {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 .posted-on {
-	margin-left: 5px;
+    margin-left: 5px;
 }
 
 #secondary ul, footer#colophon.site-footer ul {
-	padding-right: 0;
+    padding-right: 0;
 }
 #secondary ul ul, footer#colophon.site-footer ul ul {
-	padding-right: 25px;
+    padding-right: 25px;
 }
 
 .comment-list .children {
-	margin-right: 5%;
+    margin-right: 5%;
 }
 
 .widgets-list-layout-links {
-	float: right !important;
-	margin-right: 15px !important;
+    float: right !important;
+    margin-right: 15px !important;
 }
 
 /* These are NOT used by the theme. They are provided for users to add
@@ -76,9 +76,9 @@
  */
 /*
 .padding-right {
-	padding-left: 35px;
+    padding-left: 35px;
 }
 .padding-left {
-	padding-right: 35px;
+    padding-right: 35px;
 }
 */

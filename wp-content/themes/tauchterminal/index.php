@@ -20,36 +20,36 @@ get_header(); ?>
 <div class="container">
 <div id="main-grid" class="row">
 
-	<section id="primary" class="content-area col-md-8">
-		<main id="main" class="site-main" role="main">
+    <section id="primary" class="content-area col-md-8">
+        <main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+        <?php if ( have_posts() ) : ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+            <?php /* Start the Loop */ ?>
+            <?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
-				?>
+                <?php
+                    /* Include the Post-Format-specific template for the content.
+                     * If you want to override this in a child theme, then include a file
+                     * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                     */
+                    get_template_part( 'content', get_post_format() );
+                ?>
 
-			<?php endwhile; ?>
+            <?php endwhile; ?>
 
-			<?php get_template_part( 'content', 'index-nav' ); ?>
+            <?php get_template_part( 'content', 'index-nav' ); ?>
 
-		<?php else : ?>
+        <?php else : ?>
 
-			<?php get_template_part( 'no-results', 'index' ); ?>
+            <?php get_template_part( 'no-results', 'index' ); ?>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+        </main><!-- #main -->
+    </section><!-- #primary -->
 
-	<?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
 
 </div><!-- .row -->
 </div><!-- .container -->

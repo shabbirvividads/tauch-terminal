@@ -1,21 +1,21 @@
 <?php
 /**
  * Theme: Flat Bootstrap
- * 
+ *
  * This file handles the recommended plugins to go along with XtremelySocial Bootstrap.
- * None of them are truly required, but will significantly enhance the functionality and 
+ * None of them are truly required, but will significantly enhance the functionality and
  * useability of this theme.
  *
- * This theme is included by default in functions.php, but can easily be overridden in 
+ * This theme is included by default in functions.php, but can easily be overridden in
  * a child theme.
  *
- * @package	   TGM-Plugin-Activation
+ * @package       TGM-Plugin-Activation
  * @subpackage Example
  * @version    2.4.0
- * @author	   Thomas Griffin <thomasgriffinmedia.com>
- * @author	   Gary Jones <gamajo@gamajo.com>
+ * @author       Thomas Griffin <thomasgriffinmedia.com>
+ * @author       Gary Jones <gamajo@gamajo.com>
  * @copyright  Copyright (c) 2014, Thomas Griffin
- * @license	   http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
+ * @license       http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
  * @link       https://github.com/thomasgriffin/TGM-Plugin-Activation
  */
 
@@ -36,77 +36,77 @@ add_action( 'tgmpa_register', 'xsbf_bootstrap_register_required_plugins' );
  */
 function xsbf_bootstrap_register_required_plugins() {
 
-	/**
-	 * Array of plugin arrays. Required keys are name and slug.
-	 * If the source is NOT from the .org repo, then source is also required.
-	 */
-	$plugins = array(
+    /**
+     * Array of plugin arrays. Required keys are name and slug.
+     * If the source is NOT from the .org repo, then source is also required.
+     */
+    $plugins = array(
 
-		// Jetpack Plugin (for widget visibility)
-		array(
-			'name' 		=> 'Jetpack',
-			'slug' 		=> 'jetpack',
-			'required' 	=> false,
-		),
+        // Jetpack Plugin (for widget visibility)
+        array(
+            'name'         => 'Jetpack',
+            'slug'         => 'jetpack',
+            'required'     => false,
+        ),
 
-		// Simple CSS for Widgets (to make full-width colored widgets easy)
-		array(
-			'name' 		=> 'Simple CSS for Widgets',
-			'slug' 		=> 'simple-css-for-widgets',
-			'required' 	=> false,
-		),
+        // Simple CSS for Widgets (to make full-width colored widgets easy)
+        array(
+            'name'         => 'Simple CSS for Widgets',
+            'slug'         => 'simple-css-for-widgets',
+            'required'     => false,
+        ),
 
-		// Widget Classes (to make full-width colored widgets easy)
-		/*array(
-			'name' 		=> 'Widget Classes',
-			'slug' 		=> 'widget-classes',
-			'required' 	=> false,
-		),*/
-		
-		// Regenerate Thumbnails (needed to set images to our custom size)
-		array(
-			'name' 		=> 'Regenerate Thumbnails',
-			'slug' 		=> 'regenerate-thumbnails',
-			'required' 	=> false,
-		),
+        // Widget Classes (to make full-width colored widgets easy)
+        /*array(
+            'name'         => 'Widget Classes',
+            'slug'         => 'widget-classes',
+            'required'     => false,
+        ),*/
 
-		// Easy Bootstrap Shortcodes Plugin
-		/*array(
-			'name' 		=> 'Easy Bootstrap Shortcodes',
-			'slug' 		=> 'easy-bootstrap-shortcodes',
-			'required' 	=> false,
-		),*/
+        // Regenerate Thumbnails (needed to set images to our custom size)
+        array(
+            'name'         => 'Regenerate Thumbnails',
+            'slug'         => 'regenerate-thumbnails',
+            'required'     => false,
+        ),
 
-		// Bootstrap Shortcodes Plugin
-		/*array(
-			'name' 		=> 'Bootstrap Shortcodes',
-			'slug' 		=> 'bootstrap-shortcodes',
-			'required' 	=> false,
-		),*/
-		
-		// Bootstrap 3 Shortcodes Plugin
-		array(
-			'name' 		=> 'Bootstrap 3 Shortcodes',
-			'slug' 		=> 'bootstrap-3-shortcodes',
-			'required' 	=> false,
-		),
+        // Easy Bootstrap Shortcodes Plugin
+        /*array(
+            'name'         => 'Easy Bootstrap Shortcodes',
+            'slug'         => 'easy-bootstrap-shortcodes',
+            'required'     => false,
+        ),*/
 
-		// Agnosia Bootstrap Carousel Plugin
-		/*array(
-			'name' 		=> 'Agnosia Bootstrap Carousel by AuSoft',
-			'slug' 		=> 'agnosia-bootstrap-carousel',
-			'required' 	=> false,
-		),*/
+        // Bootstrap Shortcodes Plugin
+        /*array(
+            'name'         => 'Bootstrap Shortcodes',
+            'slug'         => 'bootstrap-shortcodes',
+            'required'     => false,
+        ),*/
 
-	);
+        // Bootstrap 3 Shortcodes Plugin
+        array(
+            'name'         => 'Bootstrap 3 Shortcodes',
+            'slug'         => 'bootstrap-3-shortcodes',
+            'required'     => false,
+        ),
 
-	/**
-	 * Array of configuration settings. Amend each line as needed.
-	 * If you want the default strings to be available under your own theme domain,
-	 * leave the strings uncommented.
-	 * Some of the strings are added into a sprintf, so see the comments at the
-	 * end of each line for what each argument will be.
-	 */
+        // Agnosia Bootstrap Carousel Plugin
+        /*array(
+            'name'         => 'Agnosia Bootstrap Carousel by AuSoft',
+            'slug'         => 'agnosia-bootstrap-carousel',
+            'required'     => false,
+        ),*/
+
+    );
+
+    /**
+     * Array of configuration settings. Amend each line as needed.
+     * If you want the default strings to be available under your own theme domain,
+     * leave the strings uncommented.
+     * Some of the strings are added into a sprintf, so see the comments at the
+     * end of each line for what each argument will be.
+     */
     $config = array(
         'default_path' => '',                      // Default absolute path to pre-packaged plugins.
         'menu'         => 'tgmpa-install-plugins', // Menu slug.
