@@ -14,6 +14,8 @@
     <?php // Page bottom (before footer) widget area
     get_sidebar( 'pagebottom' );
     ?>
+    <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
+    <?php if ( is_plugin_active('tauch-terminal/tauch-terminal.php') ): ?>
 
     <div class="sites-plugin spacer">
 
@@ -46,6 +48,16 @@
     </div>
 
     <div class="container">
+        <ul class="list-unstyled list-inline certifications">
+            <?php foreach (TauchTerminal::getCertifications() as $certification): ?>
+                <li class="item col-sm-4 col-md-2">
+                    <img src="<?php echo $certification[0] ?>" alt="<?php echo $certification[1] ?>">
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+
+    <div class="container">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div>
@@ -59,15 +71,8 @@
                 </div>
             </div>
         </nav>
-
-        <ul class="list-unstyled list-inline certifications">
-            <?php foreach (TauchTerminal::getCertifications() as $certification): ?>
-                <li class="item col-sm-4 col-md-2">
-                    <img src="<?php echo $certification[0] ?>" alt="<?php echo $certification[1] ?>">
-                </li>
-            <?php endforeach ?>
-        </ul>
     </div>
+    <?php endif; ?>
 
     <?php // Start the footer area ?>
     <footer id="colophon" class="site-footer" role="contentinfo">

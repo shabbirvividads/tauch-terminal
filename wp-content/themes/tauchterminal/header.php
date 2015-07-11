@@ -43,31 +43,21 @@
             <?php do_action('icl_language_selector'); ?>
             <div id="site-branding" class="site-branding">
 
-            <div class="carousel-header">
-                <?php echo do_shortcode('[slick-carousel category="header-'.ICL_LANGUAGE_CODE.'"]'); ?>
-            </div>
-            <?php
-            // Get custom header image and determine its size
-            if ( get_header_image() ) {
-            ?>
-                <div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;">
-                    <div class="container">
-                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
-                        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-                    </div>
+            <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
+            <?php if ( is_plugin_active('slick-carousel/slick-carousel.php') ): ?>
+                <div class="carousel-header">
+                    <?php $langcode = (defined('ICL_LANGUAGE_CODE')) ? ICL_LANGUAGE_CODE : 'de'; ?>
+                    <?php echo do_shortcode('[slick-carousel category="header-'. $langcode .'"]'); ?>
                 </div>
-            <?php
-
-            // If no custom header, then just display the site title and tagline
-            } else {
-            ?>
+            <?php elseif ( get_header_image() ): ?>
+                <div class="custom-header-image" style="background-image: url('<?php echo header_image() ?>'); width: <?php echo get_custom_header()->width; ?>px; height: <?php echo get_custom_header()->height ?>px;"></div>
+            <?php // If no custom header, then just display the site title and tagline ?>
+            <?php else: ?>
                 <div class="container">
                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' )?></a></h1>
                     <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
                 </div>
-            <?php
-            } //endif get_header_image()
-            ?>
+            <?php endif ?>
             </div><!-- .site-branding -->
 
         <?php
