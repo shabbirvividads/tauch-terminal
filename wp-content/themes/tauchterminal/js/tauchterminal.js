@@ -1,4 +1,4 @@
-( function( $ ) {
+(function ($) {
     var activateSlider = function (current) {
         var rel = current.data('rel');
         var scope = $('.slider-photo');
