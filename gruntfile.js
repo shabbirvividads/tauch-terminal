@@ -111,13 +111,7 @@ module.exports = function(grunt) {
                 options: {
                     map: true
                 },
-                src: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css'
-            },
-            theme: {
-                options: {
-                    map: true
-                },
-                src: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>-theme.css'
+                src: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css'
             }
         },
 
@@ -205,8 +199,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-js', ['jshint', 'jscs']);
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
-    grunt.registerTask('less-compile', ['less:compileCore']);
-    grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+    grunt.registerTask('dist-css', ['less', 'csscomb', 'autoprefixer', 'cssmin']);
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js', 'copy']);
