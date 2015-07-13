@@ -82,28 +82,27 @@
                             <td><input type="text" name="tt[<?php echo $site->id ?>][desc]" value="<?php echo $site->tt_desc ?>" /></td>
                             <td><input type="text" name="tt[<?php echo $site->id ?>][slug]" value="<?php echo $site->tt_slug ?>" /></td>
                             <td><input type="text" name="tt[<?php echo $site->id ?>][url]" value="<?php echo $site->tt_url ?>" /></td>
-                            <td class="preview"><img src="<?php echo $site->tt_logo ?>" class="preview logo" /></td>
-                            <td class="preview"><img src="<?php echo $site->tt_bg ?>" class="preview" /></td>
+                            <td class="preview">
+                                <p><img src="<?php echo $site->tt_logo ?>" class="preview logo" width="50"/></p>
+                                <p><input type="text" name="tt[<?php echo $site->id ?>][logo]" value="<?php echo $site->tt_logo ?>" /></p>
+                            </td>
+                            <td class="preview">
+                                <p><img src="<?php echo $site->tt_bg ?>" class="preview bg" width="200" /></p>
+                                <p><input type="text" name="tt[<?php echo $site->id ?>][bg]" value="<?php echo $site->tt_bg ?>" /></p>
+                            </td>
                         </tr>
                     <?php endforeach ?>
-                        <tr>
-                            <th scope="row" class="check-column">
-                                <label class="screen-reader-text" for="cb-select-<?php echo $site->id ?>"><?php echo __('Select %s site', $site->tt_name) ?></label>
-                                <input id="cb-select-<?php echo ++$site->id ?>" type="checkbox" name="post[]" value="<?php echo $site->id ?>">
-                                <div class="locked-indicator"></div>
-                                <input type="hidden" name="tt[<?php echo ++$site->id ?>][id]" value="" />
-                            </th>
-                            <td><input type="text" name="tt[<?php echo ++$site->id ?>][name]" value="" /></td>
-                            <td><input type="text" name="tt[<?php echo ++$site->id ?>][desc]" value="" /></td>
-                            <td><input type="text" name="tt[<?php echo ++$site->id ?>][slug]" value="" /></td>
-                            <td><input type="text" name="tt[<?php echo ++$site->id ?>][url]" value="" /></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                <?php else: ?>
-                    <tr><td><?php echo __('There are no sites defined yet.') ?></td></tr>
                 <?php endif; ?>
-
+                <tr>
+                    <th scope="row" class="check-column">
+                        <input type="hidden" name="tt[<?php echo ++$site->id ?>][id]" value="" />
+                    </th>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][name]" value="" /></td>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][desc]" value="" /></td>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][slug]" value="" /></td>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][url]" value="" /></td>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][logo]" value="" /></td>
+                    <td><input type="text" name="tt[<?php echo $site->id ?>][bg]" value="" /></td>
             </tbody>
             <tfoot>
 

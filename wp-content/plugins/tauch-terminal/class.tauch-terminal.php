@@ -47,23 +47,35 @@ class TauchTerminal {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
         foreach ($data['tt'] as $key => $array) {
-            if ($array['if'] !== '') {
+            $tmparray = array(
+                'name' => isset($array['name']) ? $array['name'] : '',
+                'desc' => isset($array['desc']) ? $array['desc'] : '',
+                'slug' => isset($array['slug']) ? $array['slug'] : '',
+                'url' => isset($array['url']) ? $array['url'] : '',
+                'logo' => isset($array['logo']) ? $array['logo'] : '',
+                'bg' => isset($array['bg']) ? $array['bg'] : ''
+            );
+            if (isset($array['id'])) {
                 $wpdb->update($table,
                     array(
-                        'tt_name' => $array['name'],
-                        'tt_desc' => $array['desc'],
-                        'tt_slug' => $array['slug'],
-                        'tt_url' => $array['url']
+                        'tt_name' => $tmparray['name'],
+                        'tt_desc' => $tmparray['desc'],
+                        'tt_slug' => $tmparray['slug'],
+                        'tt_url' => $tmparray['url'],
+                        'tt_logo' => $tmparray['logo'],
+                        'tt_bg' => $tmparray['bg']
                     ),
                     array('id' => $array['id'])
                 );
-            } else if ($array['name'] !== '') {
+            } else if ($tmparray['name'] !== '') {
                 $wpdb->insert($table,
                     array(
-                        'tt_name' => $array['name'],
-                        'tt_desc' => $array['desc'],
-                        'tt_slug' => $array['slug'],
-                        'tt_url' => $array['url']
+                        'tt_name' => $tmparray['name'],
+                        'tt_desc' => $tmparray['desc'],
+                        'tt_slug' => $tmparray['slug'],
+                        'tt_url' => $tmparray['url'],
+                        'tt_logo' => $tmparray['logo'],
+                        'tt_bg' => $tmparray['bg']
                     )
                 );
             }
