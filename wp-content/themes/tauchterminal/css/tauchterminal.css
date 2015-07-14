@@ -6882,8 +6882,8 @@ a {
 }
 a:hover,
 a:focus {
-  text-decoration: none;
   color: #0e53a7;
+  text-decoration: none;
 }
 .btn {
   background-color: #ffffff;
@@ -6895,7 +6895,7 @@ a:focus {
   background-color: #ff9640;
 }
 .bg-orange h2 {
-  color: #333333;
+  color: #ffffff;
 }
 .site-content {
   margin-bottom: 20px;
@@ -6946,16 +6946,25 @@ a:focus {
 }
 .main-navigation .navbar {
   background-color: #00b74a;
+  -webkit-box-shadow: inset 0 0 17px #007730;
+          box-shadow: inset 0 0 17px #007730;
 }
 .main-navigation .navbar .navbar-nav > li > a {
   font-size: 21px;
   color: #d9d9d9;
   text-shadow: rgba(255, 255, 255, 0.1) -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
-  padding-left: 0;
+}
+@media screen and (min-width: 768px) {
+  .main-navigation .navbar .navbar-nav > li > a {
+    padding-left: 0;
+  }
 }
 .main-navigation .navbar .navbar-nav > li > a:hover,
 .main-navigation .navbar .navbar-nav > li > a:focus {
   color: #333333;
+}
+.navbar-default .navbar-toggle {
+  background-color: #ffffff;
 }
 .carousel-header {
   overflow: hidden;
@@ -7005,6 +7014,7 @@ a:focus {
 }
 .sites-plugin .sites-slider {
   display: block;
+  overflow: hidden;
   padding-top: 10px;
 }
 .sites-plugin .sites-slider.active {
@@ -7015,7 +7025,10 @@ a:focus {
 }
 .sites-plugin .slider-photo a {
   display: block;
-  padding: 15px 20px;
+  padding: 15px 0;
+}
+.sites-plugin .slider-photo a .glyphicon {
+  margin-top: 2px;
 }
 .certifications li {
   padding: 0 10px 10px 0;

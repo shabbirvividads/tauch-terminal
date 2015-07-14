@@ -18,10 +18,16 @@
     <?php if ( is_plugin_active('tauch-terminal/tauch-terminal.php') ): ?>
 
     <div class="sites-plugin spacer">
+        <?php $sites = TauchTerminal::getSites(); ?>
+        <?php if (count($sites) > 12) {
+            $sites = array_slice($sites, 0, 12);
+        }
+        ?>
+        <?php $count = count($sites); ?>
 
         <div class="container">
-            <?php foreach (TauchTerminal::getSites() as $site): ?>
-                <div class="col-sm-4 text-center">
+            <?php foreach ($sites as $site): ?>
+                <div class="col-sm-<?php echo floor(12/$count) ?> text-center">
                     <a href="#" data-rel="<?php echo $site->tt_slug ?>" class="sites-slider text-uppercase">
                         <p><?php esc_html_e('Tauch Terminal' , 'tauch-terminal'); ?></p>
                         <h2><?php echo $site->tt_desc ?></h2>
@@ -31,13 +37,13 @@
         </div>
 
         <div class="slider-photo">
-            <?php foreach (TauchTerminal::getSites() as $site): ?>
+            <?php foreach ($sites as $site): ?>
                 <div class="background-image image-<?php echo $site->tt_slug ?>" style="background-image: url('<?php echo $site->tt_bg ?>')"></div>
             <?php endforeach ?>
             <div class="container">
-                <?php foreach (TauchTerminal::getSites() as $site): ?>
-                    <div class="col-sm-4 more-<?php echo $site->tt_slug ?>">
-                        <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="more bg-orange text-uppercase">
+                <?php foreach ($sites as $site): ?>
+                    <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>" style="display: none;">
+                        <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="text-uppercase">
                             <?php echo __('Read more') ?>
                             <span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
                         </a>

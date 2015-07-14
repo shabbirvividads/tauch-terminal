@@ -1,14 +1,19 @@
 .main-navigation .navbar {
     background-color: @ttgreen;
+    box-shadow: inset 0 0 17px @ttgreendark;
     .navbar-nav > li > a {
         font-size: 21px;
         color: #d9d9d9;
         text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
-
-        padding-left: 0;
+        @media screen and (min-width: 768px) {
+            padding-left: 0;
+        }
         &:hover,
         &:focus {
             color: @gray-dark;
         }
     }
+}
+.navbar-default .navbar-toggle {
+    background-color: @white;
 }

@@ -7,7 +7,7 @@
         $('.background-image', scope).hide();
         $('.background-image.image-' + rel, scope).show();
         $('.container .more', scope).hide();
-        $('.container .more-' + rel + ' .more', scope).show();
+        $('.container .more-' + rel, scope).show();
     };
 
     $(document).ready(function () {
