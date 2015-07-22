@@ -42,7 +42,7 @@
             <?php endforeach ?>
             <div class="container">
                 <?php foreach ($sites as $site): ?>
-                    <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>" style="display: none;">
+                    <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>" style="visibility: hidden;">
                         <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="text-uppercase">
                             <?php echo __('Read more') ?>
                             <span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>

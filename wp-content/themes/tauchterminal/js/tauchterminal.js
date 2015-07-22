@@ -6,8 +6,8 @@
         current.addClass('active');
         $('.background-image', scope).hide();
         $('.background-image.image-' + rel, scope).show();
-        $('.container .more', scope).hide();
-        $('.container .more-' + rel, scope).show();
+        $('.container .more', scope).css({'visibility':'hidden'});
+        $('.container .more-' + rel, scope).css({'visibility':'visible'});
     };
 
     $(document).ready(function () {
