@@ -95,15 +95,17 @@
             .'</a>';
 
         $navbar .= '</div><!-- navbar-header -->';
-
         // Display the desktop navbar
         $navbar .= wp_nav_menu(
-            array(  'theme_location' => 'primary',
-            'container_class' => 'navbar-collapse collapse', //<nav> or <div> class
-            'menu_class' => 'nav navbar-nav', //<ul> class
-            'walker' => new wp_bootstrap_navwalker(),
-            'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-            'echo'    => false
+            array(
+                'theme_location'    => 'primary',
+                'container_class'   => 'navbar-collapse collapse', //<nav> or <div> class
+                'container_id'      => 'main-navbar-collapse',
+                'menu_class'        => 'nav navbar-nav', //<ul> class
+                'walker'            => new wp_bootstrap_navwalker(),
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'echo'              => false,
+                'depth'             => 2
             )
         );
         echo apply_filters( 'xsbf_navbar', $navbar );
