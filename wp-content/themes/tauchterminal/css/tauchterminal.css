@@ -7049,6 +7049,9 @@ a:focus {
   width: 100%;
   max-width: 100%;
 }
+.widget.bg-orange {
+  padding-bottom: 10px;
+}
 .home.logged-in.admin-bar #lang_sel_click {
   top: 40px;
 }
