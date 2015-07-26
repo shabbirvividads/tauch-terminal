@@ -36,56 +36,6 @@ class TauchTerminal {
         include($file);
     }
 
-    public static function getSites($id = array()) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
-        $select = "SELECT * FROM $table";
-        if ($id !== array()) {
-            $select .= " WHERE `id` IN (" . implode(',', array_map('intval', $id)) . ")";
-        }
-        $sites = $wpdb->get_results($select);
-        return $sites;
-    }
-
-    public static function addSites($data) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
-        $wpdb->insert($table,
-            array(
-                'tt_name' => $data['tt_name'],
-                'tt_desc' => $data['tt_desc'],
-                'tt_slug' => $data['tt_slug'],
-                'tt_url' => $data['tt_url'],
-                'tt_logo' => $data['tt_logo'],
-                'tt_bg' => $data['tt_bg']
-            )
-        );
-    }
-
-    public static function updateSites($data) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
-        $wpdb->update($table,
-            array(
-                'tt_name' => $data['tt_name'],
-                'tt_desc' => $data['tt_desc'],
-                'tt_slug' => $data['tt_slug'],
-                'tt_url' => $data['tt_url'],
-                'tt_logo' => $data['tt_logo'],
-                'tt_bg' => $data['tt_bg']
-            ),
-            array('id' => $data['id'])
-        );
-    }
-
-    public static function deleteSites($data) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
-        foreach ($data as $key => $value) {
-            $wpdb->delete($table, array('id' => $value));
-        }
-    }
-
     public static function getCertifications() {
         return [["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/ssi_diamond_resort.png", "ssi diamond instructor resort bali"],
                 ["http://localhost/~nessie/wordpress/wp-content/uploads/2015/07/diamond_diving_school.png", "ssi diamant tauchschule bali"],
