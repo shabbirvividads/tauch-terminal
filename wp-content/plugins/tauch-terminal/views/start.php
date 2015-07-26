@@ -2,10 +2,10 @@
     <h1><?php esc_html_e('Tauch Terminal' , 'tauch-terminal');?> <?php echo __('Settings') ?></h1>
     <p><?php echo __('You can set the default behaviour of your plugin here.') ?></p>
 
-    <div class="metabox-holder<?php echo $columns_css; ?>">
+    <div class="metabox-holder <?php echo $columns_css; ?>">
         <div class="postbox-container">
             <div class="postbox">
-                <a href="admin.php?page=tauch-terminal-edit" class="handlediv"><br></a>
+                <a href="admin.php?page=tauch-terminal-edit-sites" class="handlediv"><br></a>
                 <h3 class='hndle'>
                     <span><?php echo __('Sites') ?></span>
                 </h3>

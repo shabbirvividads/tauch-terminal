@@ -36,49 +36,53 @@ class TauchTerminal {
         include($file);
     }
 
-    public static function getSites() {
+    public static function getSites($id = array()) {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
-        $sites = $wpdb->get_results("SELECT * FROM $table");
+        $select = "SELECT * FROM $table";
+        if ($id !== array()) {
+            $select .= " WHERE `id` IN (" . implode(',', array_map('intval', $id)) . ")";
+        }
+        $sites = $wpdb->get_results($select);
         return $sites;
+    }
+
+    public static function addSites($data) {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_sites";
+        $wpdb->insert($table,
+            array(
+                'tt_name' => $data['tt_name'],
+                'tt_desc' => $data['tt_desc'],
+                'tt_slug' => $data['tt_slug'],
+                'tt_url' => $data['tt_url'],
+                'tt_logo' => $data['tt_logo'],
+                'tt_bg' => $data['tt_bg']
+            )
+        );
     }
 
     public static function updateSites($data) {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
-        foreach ($data['tt'] as $key => $array) {
-            $tmparray = array(
-                'name' => isset($array['name']) ? $array['name'] : '',
-                'desc' => isset($array['desc']) ? $array['desc'] : '',
-                'slug' => isset($array['slug']) ? $array['slug'] : '',
-                'url' => isset($array['url']) ? $array['url'] : '',
-                'logo' => isset($array['logo']) ? $array['logo'] : '',
-                'bg' => isset($array['bg']) ? $array['bg'] : ''
-            );
-            if (isset($array['id'])) {
-                $wpdb->update($table,
-                    array(
-                        'tt_name' => $tmparray['name'],
-                        'tt_desc' => $tmparray['desc'],
-                        'tt_slug' => $tmparray['slug'],
-                        'tt_url' => $tmparray['url'],
-                        'tt_logo' => $tmparray['logo'],
-                        'tt_bg' => $tmparray['bg']
-                    ),
-                    array('id' => $array['id'])
-                );
-            } else if ($tmparray['name'] !== '') {
-                $wpdb->insert($table,
-                    array(
-                        'tt_name' => $tmparray['name'],
-                        'tt_desc' => $tmparray['desc'],
-                        'tt_slug' => $tmparray['slug'],
-                        'tt_url' => $tmparray['url'],
-                        'tt_logo' => $tmparray['logo'],
-                        'tt_bg' => $tmparray['bg']
-                    )
-                );
-            }
+        $wpdb->update($table,
+            array(
+                'tt_name' => $data['tt_name'],
+                'tt_desc' => $data['tt_desc'],
+                'tt_slug' => $data['tt_slug'],
+                'tt_url' => $data['tt_url'],
+                'tt_logo' => $data['tt_logo'],
+                'tt_bg' => $data['tt_bg']
+            ),
+            array('id' => $data['id'])
+        );
+    }
+
+    public static function deleteSites($data) {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_sites";
+        foreach ($data as $key => $value) {
+            $wpdb->delete($table, array('id' => $value));
         }
     }
 
