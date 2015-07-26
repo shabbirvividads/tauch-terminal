@@ -23,6 +23,7 @@ register_deactivation_hook(__FILE__, array('TauchTerminal', 'plugin_deactivation
 require_once(TAUCHTERMINAL__PLUGIN_DIR . 'class.tauch-terminal.php');
 
 if (is_admin()) {
+    require_once(TAUCHTERMINAL__PLUGIN_DIR . 'sites.php');
     require_once(TAUCHTERMINAL__PLUGIN_DIR . 'admin.php');
     add_action('init', array('TauchTerminal_Admin', 'init' ));
 }
