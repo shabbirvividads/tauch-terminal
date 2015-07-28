@@ -6961,6 +6961,7 @@ a:focus {
   font-size: 21px;
   color: #f1f1f1;
   text-shadow: #00b74a -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
+  border: 1px solid transparent;
 }
 .main-navigation .navbar .navbar-nav .current-page-ancestor > a,
 .main-navigation .navbar .navbar-nav .current_page_item > a,
@@ -6970,6 +6971,7 @@ a:focus {
 .main-navigation .navbar .navbar-nav .dropdown-menu > li > a:focus {
   color: #ffffff;
   text-shadow: #00b74a -1px -1px 1px, rgba(0, 0, 0, 0.7) 1px 1px 1px;
+  border-top-color: #ffffff;
   background-color: transparent;
 }
 .main-navigation .navbar .navbar-nav .open .dropdown-menu > li > a {
