@@ -23,7 +23,7 @@
                     </th>
                     <th scope="col" class="manage-column column-title sortable desc">
                         <a href="">
-                            <span><?php echo __('Title *') ?></span>
+                            <span><?php echo __('Title') ?></span>
                             <span class="sorting-indicator"></span>
                         </a>
                     </th>

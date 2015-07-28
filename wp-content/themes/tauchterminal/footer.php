@@ -18,7 +18,7 @@
     <?php if ( is_plugin_active('tauch-terminal/tauch-terminal.php') ): ?>
 
     <div class="sites-plugin spacer">
-        <?php $sites = TauchTerminal::getSites(); ?>
+        <?php $sites = TauchTerminal_Sites::getSites(); ?>
         <?php if (count($sites) > 12) {
             $sites = array_slice($sites, 0, 12);
         }
@@ -68,7 +68,7 @@
             <div class="container-fluid">
                 <div>
                     <ul class="nav navbar-nav">
-                        <?php foreach (TauchTerminal::getSites() as $site): ?>
+                        <?php foreach ($sites as $site): ?>
                             <li>
                                 <a href="<?php echo $site->tt_url ?>"><?php echo $site->tt_name ?></a>
                             </li>
