@@ -60,6 +60,9 @@ class TauchTerminal_Sites {
     public static function addSites($data) {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
+        if (!self::validation($data)) {
+            return false;
+        }
         $wpdb->insert($table,
             array(
                 'tt_name' => $data['tt_name'],
@@ -70,15 +73,15 @@ class TauchTerminal_Sites {
                 'tt_bg' => $data['tt_bg']
             )
         );
-        if (!self::validation($data)) {
-            return false;
-        }
         return true;
     }
 
     public static function updateSites($data) {
         global $wpdb;
         $table = $wpdb->prefix."tt_sites";
+        if (!self::validation($data)) {
+            return false;
+        }
         $wpdb->update($table,
             array(
                 'tt_name' => $data['tt_name'],
@@ -90,9 +93,6 @@ class TauchTerminal_Sites {
             ),
             array('id' => $data['id'])
         );
-        if (!self::validation($data)) {
-            return false;
-        }
         return true;
     }
 
