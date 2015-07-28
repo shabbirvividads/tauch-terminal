@@ -21,23 +21,26 @@ $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $tabs ) ) : ?>
 
-	<div class="woocommerce-tabs">
-		<ul class="tabs">
-			<?php foreach ( $tabs as $key => $tab ) : ?>
-
-				<li class="<?php echo esc_attr( $key ); ?>_tab">
-					<a href="#tab-<?php echo esc_attr( $key ); ?>"><?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', esc_html( $tab['title'] ), $key ); ?></a>
-				</li>
-
-			<?php endforeach; ?>
-		</ul>
-		<?php foreach ( $tabs as $key => $tab ) : ?>
-
-			<div class="panel entry-content" id="tab-<?php echo esc_attr( $key ); ?>">
-				<?php call_user_func( $tab['callback'], $key, $tab ); ?>
-			</div>
-
-		<?php endforeach; ?>
-	</div>
-
+    <div class="container">
+        <!-- Nav tabs -->
+        <ul class="tabs nav nav-tabs" role="tablist">
+            <?php $isFirst = true; ?>
+            <?php foreach ( $tabs as $key => $tab ) : ?>
+                <li role="presentation" class="<?php echo esc_attr( $key ); ?>_tab<?php if ($isFirst): ?> active<?php endif; ?>">
+                    <a href="#tab-<?php echo esc_attr( $key ); ?>" aria-controls="<?php echo esc_attr( $key ); ?>" role="tab" data-toggle="tab"><?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', esc_html( $tab['title'] ), $key ); ?></a>
+                </li>
+                <?php $isFirst = false; ?>
+            <?php endforeach; ?>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <?php $isFirst = true; ?>
+            <?php foreach ( $tabs as $key => $tab ) : ?>
+                <div role="tabpanel" class="tab-pane<?php if ($isFirst): ?> active<?php endif; ?>" id="tab-<?php echo esc_attr( $key ); ?>">
+                    <?php call_user_func( $tab['callback'], $key, $tab ); ?>
+                </div>
+                <?php $isFirst = false; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
 <?php endif; ?>

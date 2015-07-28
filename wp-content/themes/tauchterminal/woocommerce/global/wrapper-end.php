@@ -32,7 +32,9 @@ switch( $template ) {
 		break;
     case 'tauchterminal' :
         echo '</main><!-- #main --></div><!-- #primary -->';
+        echo '<div style="display:none;">';
         get_sidebar();
+        echo '</div>';
         echo '</div></div>';
         break;
 	default :

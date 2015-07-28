@@ -25,10 +25,10 @@ class TauchTerminal_Admin_Meta_Boxes {
      * Constructor
      */
     public function __construct() {
-        add_action('add_meta_boxes', array($this, 'remove_meta_boxes'), 10);
-        add_action('add_meta_boxes', array($this, 'rename_meta_boxes'), 20);
-        add_action('add_meta_boxes', array($this, 'add_meta_boxes'), 30);
-        add_action('save_post', array($this, 'save_meta_boxes'), 1, 2);
+        // add_action('add_meta_boxes', array($this, 'remove_meta_boxes'), 10);
+        // add_action('add_meta_boxes', array($this, 'rename_meta_boxes'), 20);
+        // add_action('add_meta_boxes', array($this, 'add_meta_boxes'), 30);
+        // add_action('save_post', array($this, 'save_meta_boxes'), 1, 2);
 
         // Error handling (for showing errors from meta boxes on next page load)
         add_action('admin_notices', array($this, 'output_notices'));
