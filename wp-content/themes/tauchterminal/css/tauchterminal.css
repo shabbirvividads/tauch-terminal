@@ -7065,6 +7065,9 @@ a:focus {
   width: 100%;
   float: none;
 }
+.products .attachment-shop_catalog.wp-post-image {
+  width: 100%;
+}
 .home.logged-in.admin-bar #lang_sel_click {
   top: 40px;
 }

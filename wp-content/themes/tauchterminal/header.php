@@ -16,10 +16,10 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-<link rel="apple-touch-icon" href="img/logo_tauchterminal.gif">
-<link rel="apple-touch-icon" sizes="120x120" href="img/logo_tauchterminal.gif">
-<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="img/iphone_startup.png">
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo get_site_url(); ?>/img/favicon.ico">
+<link rel="apple-touch-icon" href="<?php echo get_site_url(); ?>/img/logo.gif">
+<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_site_url(); ?>/img/logo.gif">
+<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="<?php echo get_site_url(); ?>/img/logo.png">
 
 <?php wp_head(); ?>
 </head>
