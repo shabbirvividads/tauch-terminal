@@ -75,8 +75,8 @@ add_action( 'woocommerce_archive_description', 'woocommerce_product_archive_desc
  * @see woocommerce_catalog_ordering()
  * @see woocommerce_reset_loop()
  */
-add_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-add_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+// add_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+// add_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 /**
  * Product Loop Items

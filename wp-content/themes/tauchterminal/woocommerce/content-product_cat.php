@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $woocommerce_loop;
 
+// if ($category->count > 0)
+//     return;
+
 // Store loop count we're currently on
 if ( empty( $woocommerce_loop['loop'] ) )
 	$woocommerce_loop['loop'] = 0;
@@ -26,7 +29,7 @@ if ( empty( $woocommerce_loop['columns'] ) )
 // Increase loop count
 $woocommerce_loop['loop']++;
 ?>
-<div class="col-md-12 product-category product<?php
+<div class="col-lg-3 col-md-4 col-sm-6 product-category product<?php
     if ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 || $woocommerce_loop['columns'] == 1 )
         echo ' first';
 	if ( $woocommerce_loop['loop'] % $woocommerce_loop['columns'] == 0 )

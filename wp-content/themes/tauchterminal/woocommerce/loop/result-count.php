@@ -19,7 +19,7 @@ if ( ! woocommerce_products_will_display() )
 	return;
 ?>
 <div class="row"><!-- div.row open for orderby.php -->
-    <div class="col-md-6">
+    <div class="col-sm-6">
         <p class="woocommerce-result-count">
         	<?php
         	$paged    = max( 1, $wp_query->get( 'paged' ) );

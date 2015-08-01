@@ -6900,6 +6900,26 @@ a:focus {
 .site-content {
   margin-bottom: 20px;
 }
+.hover-container {
+  position: relative;
+}
+.hover-container .hover-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.hover-container .hover-content h1:first-child,
+.hover-container .hover-content h2:first-child,
+.hover-container .hover-content h3:first-child {
+  margin-top: 0;
+}
+.hover-container:hover .hover-content {
+  display: block;
+}
 #lang_sel_click {
   position: absolute;
   top: 20px;
@@ -6964,11 +6984,15 @@ a:focus {
   border: 1px solid transparent;
 }
 .main-navigation .navbar .navbar-nav .current-page-ancestor > a,
+.main-navigation .navbar .navbar-nav .current-product-parent > a,
 .main-navigation .navbar .navbar-nav .current_page_item > a,
 .main-navigation .navbar .navbar-nav > li > a:hover,
 .main-navigation .navbar .navbar-nav > li > a:focus,
 .main-navigation .navbar .navbar-nav .dropdown-menu > li > a:hover,
-.main-navigation .navbar .navbar-nav .dropdown-menu > li > a:focus {
+.main-navigation .navbar .navbar-nav .dropdown-menu > li > a:focus,
+.main-navigation .navbar .navbar-nav > .active > a,
+.main-navigation .navbar .navbar-nav > .active > a:hover,
+.main-navigation .navbar .navbar-nav > .active > a:focus {
   color: #ffffff;
   text-shadow: #00b74a -1px -1px 1px, rgba(0, 0, 0, 0.7) 1px 1px 1px;
   border-top-color: #ffffff;
@@ -7062,11 +7086,33 @@ a:focus {
 .woocommerce div.product div.summary,
 .woocommerce-page #content div.product div.summary,
 .woocommerce-page div.product div.summary {
-  width: 100%;
   float: none;
+  width: 100%;
 }
 .products .attachment-shop_catalog.wp-post-image {
   width: 100%;
+  height: auto;
+}
+.products .product-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+.products .product-item .description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.products .product-item .description h3 {
+  margin: 0;
+  line-height: 34px;
+}
+.products .product-item .description .amount {
+  font-size: 14px;
+  line-height: 34px;
+  float: right;
 }
 .home.logged-in.admin-bar #lang_sel_click {
   top: 40px;

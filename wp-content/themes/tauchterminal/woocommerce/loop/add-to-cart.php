@@ -21,6 +21,6 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 		esc_attr( isset( $quantity ) ? $quantity : 1 ),
 		$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
 		esc_attr( $product->product_type ),
-		esc_html( $product->add_to_cart_text() )
+		esc_html(__( 'Book now', 'woocommerce' ))
 	),
 $product );

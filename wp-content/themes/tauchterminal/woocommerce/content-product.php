@@ -42,7 +42,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	$classes[] = 'last';
 }
 ?>
-<div class="col-md-4 col-sm-6" <?php post_class( $classes ); ?>>
+<div class="col-lg-3 col-md-4 col-sm-6 product-item" <?php post_class( $classes ); ?>>
 
 	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
 
@@ -58,17 +58,20 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 			do_action( 'woocommerce_before_shop_loop_item_title' );
 		?>
 
-		<h3><?php the_title(); ?></h3>
+		<div class="description">
+            <h3><?php the_title(); ?>
 
-		<?php
-			/**
-			 * woocommerce_after_shop_loop_item_title hook
-			 *
-			 * @hooked woocommerce_template_loop_rating - 5
-			 * @hooked woocommerce_template_loop_price - 10
-			 */
-			do_action( 'woocommerce_after_shop_loop_item_title' );
-		?>
+    		<?php
+    			/**
+    			 * woocommerce_after_shop_loop_item_title hook
+    			 *
+    			 * @hooked woocommerce_template_loop_rating - 5
+    			 * @hooked woocommerce_template_loop_price - 10
+    			 */
+    			do_action( 'woocommerce_after_shop_loop_item_title' );
+    		?>
+            </h3>
+        </div>
 
 	</a>
 
@@ -79,7 +82,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 		 *
 		 * @hooked woocommerce_template_loop_add_to_cart - 10
 		 */
-		do_action( 'woocommerce_after_shop_loop_item' );
+		// do_action( 'woocommerce_after_shop_loop_item' );
 
 	?>
 
