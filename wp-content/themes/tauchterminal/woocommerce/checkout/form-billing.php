@@ -24,21 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
-	<?php // do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
+	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<?php foreach ( $checkout->checkout_fields['billing'] as $key => $field ) : ?>
 
-		<?php // woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+		<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 
 	<?php endforeach; ?>
 
-	<?php // do_action('woocommerce_after_checkout_billing_form', $checkout ); ?>
+	<?php /** do_action('woocommerce_after_checkout_billing_form', $checkout ); ?>
 
 	<?php if ( ! is_user_logged_in() && $checkout->enable_signup ) : ?>
 
 		<?php if ( $checkout->enable_guest_checkout ) : ?>
 
-			<p class="form-row form-row-wide create-account">
+			<p class="form-group form-row form-row-wide create-account">
 				<input class="input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true) ?> type="checkbox" name="createaccount" value="1" /> <label for="createaccount" class="checkbox"><?php _e( 'Create an account?', 'woocommerce' ); ?></label>
 			</p>
 
@@ -66,5 +66,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 
-	<?php endif; ?>
+	<?php endif; **/?>
 </div>

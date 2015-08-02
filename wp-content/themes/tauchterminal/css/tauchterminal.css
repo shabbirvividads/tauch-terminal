@@ -7078,6 +7078,9 @@ a:focus {
 .widget.bg-orange {
   padding-bottom: 10px;
 }
+.select2-choice {
+  border: 0 !important;
+}
 .woocommerce #content div.product div.images,
 .woocommerce div.product div.images,
 .woocommerce-page #content div.product div.images,
@@ -7089,6 +7092,7 @@ a:focus {
   float: none;
   width: 100%;
 }
+.woocommerce-main-image img,
 .products .attachment-shop_catalog.wp-post-image {
   width: 100%;
   height: auto;
