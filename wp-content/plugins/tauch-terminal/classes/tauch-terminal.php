@@ -14,7 +14,15 @@ class TauchTerminal {
             tt_logo VARCHAR(200) NOT NULL,
             tt_bg VARCHAR(200) NOT NULL,
         UNIQUE KEY id (id)
-       );";
+        );";
+        $wpdb->query($structure);
+
+        $table = $wpdb->prefix."tt_default_site";
+        $structure = "CREATE TABLE $table (
+            id INT(9) NOT NULL AUTO_INCREMENT,
+            url VARCHAR(80) NOT NULL
+        UNIQUE KEY id (id)
+        );";
         $wpdb->query($structure);
     }
 
