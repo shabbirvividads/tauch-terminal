@@ -46,9 +46,39 @@ class TauchTerminal_Sites {
         }
     }
 
+    public static function default_website() {
+        if (isset($_POST['action'])) {
+            $action = $_POST['action'];
+            self::setDefaultSite($_POST);
+        }
+        $site = self::getDefaultSite();
+        TauchTerminal::view('sites/default', array( 'site' => $site ));
+    }
+
+    public static function getDefaultSite() {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_default_site";
+        $select = "SELECT * FROM $table";
+        $sites = $wpdb->get_results($select);
+        return $sites[0];
+    }
+
+    public static function setDefaultSite($data) {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_default_site";
+        $select = "SELECT * FROM $table";
+        $wpdb->replace($table,
+            array(
+                'id'       => 1,
+                'url'      => $data['url']
+            )
+        );
+    }
+
     public static function getSites($id = array()) {
         global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
+        $prefix = self::getPrefix();
+        $table = $prefix."tt_sites"; // fixed for display on other sites
         $select = "SELECT * FROM $table";
         if ($id !== array()) {
             $select .= " WHERE `id` IN (" . implode(',', array_map('intval', $id)) . ")";
@@ -131,5 +161,16 @@ class TauchTerminal_Sites {
         }
         TauchTerminal_Admin_Meta_Boxes::add_notice(__('Site successfully saved', 'tauch-terminal'), 'success');
         return true;
+    }
+
+    private static function getPrefix() {
+        global $wpdb;
+        $prefix = $wpdb->prefix;
+
+        if (get_current_blog_id() != 1) {
+            $site = self::getDefaultSite();
+            $prefix = $site->url;
+        }
+        return $prefix;
     }
 }
