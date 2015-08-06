@@ -20,7 +20,8 @@ class TauchTerminal {
         $table = $wpdb->prefix."tt_default_site";
         $structure = "CREATE TABLE $table (
             id INT(9) NOT NULL AUTO_INCREMENT,
-            url VARCHAR(80) NOT NULL
+            url VARCHAR(80) NOT NULL,
+            current INT(9) NOT NULL
         UNIQUE KEY id (id)
         );";
         $wpdb->query($structure);

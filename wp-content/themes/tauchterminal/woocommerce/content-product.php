@@ -42,7 +42,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	$classes[] = 'last';
 }
 ?>
-<div class="col-lg-3 col-md-4 col-sm-6 product-item" <?php post_class( $classes ); ?>>
+<div class="col-lg-<?php echo floor(12 / $woocommerce_loop['columns']) ?> col-md-4 col-sm-6 product-item" <?php post_class( $classes ); ?>>
 
 	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
 

@@ -26,10 +26,8 @@ class TauchTerminal_Admin {
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Dashboard', 'manage_options', 'tauch-terminal' );
         if (get_current_blog_id() == 1) {
             add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Websites', 'manage_options', 'tauch-terminal-sites', array('TauchTerminal_Sites', 'display_sites') );
-        } else {
-            add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Mainsite', 'manage_options', 'tauch-terminal-sites', array('TauchTerminal_Sites', 'default_website') );
         }
-        // add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Rooms', 'manage_options', 'tauch-terminal-rooms', array('TauchTerminal_Rooms', 'display_rooms') );
+        add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Settings', 'manage_options', 'tauch-terminal-settings', array('TauchTerminal_Sites', 'default_website') );
     }
 
     public static function admin_head() {
@@ -39,11 +37,12 @@ class TauchTerminal_Admin {
 
     public static function display_page() {
         $sites = TauchTerminal_Sites::getSites();
+        $current = TauchTerminal_Sites::getCurrentSite();
 
         wp_enqueue_style(
             'tauch-terminal-styles',
             plugins_url('tauch-terminal/css/dashboard.css', TAUCHTERMINAL__PLUGIN_DIR)
         );
-        TauchTerminal::view('start', array( 'sites' => $sites));
+        TauchTerminal::view('start', array('sites' => $sites, 'currentsite' => $current));
     }
 }

@@ -23,12 +23,13 @@
             $sites = array_slice($sites, 0, 12);
         }
         ?>
+        <?php $current = TauchTerminal_Sites::getDefaultSite(); ?>
         <?php $count = count($sites); ?>
 
         <div class="container">
             <?php foreach ($sites as $site): ?>
                 <div class="col-sm-<?php echo floor(12/$count) ?> text-center">
-                    <a href="#" data-rel="<?php echo $site->tt_slug ?>" class="sites-slider text-uppercase">
+                    <a href="#" data-rel="<?php echo $site->tt_slug ?>" class="sites-slider text-uppercase<?php if ($current && $current->current == $site->id): ?> active<?php endif; ?>">
                         <p><?php esc_html_e('Tauch Terminal' , 'tauch-terminal'); ?></p>
                         <h2><?php echo $site->tt_desc ?></h2>
                     </a>
@@ -42,8 +43,8 @@
             <?php endforeach ?>
             <div class="container">
                 <?php foreach ($sites as $site): ?>
-                    <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>" style="visibility: hidden;">
-                        <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="text-uppercase">
+                    <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>"<?php if (!$current || $current->current !== $site->id): ?> style="visibility: hidden;"<?php endif; ?>>
+                        <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="text-uppercase<?php if ($current && $current->current == $site->id): ?> active<?php endif; ?>">
                             <?php echo __('Read more') ?>
                             <span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
                         </a>

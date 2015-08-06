@@ -17,9 +17,6 @@
             activateSlider($(this));
         });
 
-        // set first entry
-        activateSlider($('.sites-slider').eq(0));
-
         // Preload Images for Conferences
         var preload = function (images) {
             $(images).each(function (i, img) {

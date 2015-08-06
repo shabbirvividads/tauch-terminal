@@ -51,8 +51,9 @@ class TauchTerminal_Sites {
             $action = $_POST['action'];
             self::setDefaultSite($_POST);
         }
+        $sites = self::getSites();
         $site = self::getDefaultSite();
-        TauchTerminal::view('sites/default', array( 'site' => $site ));
+        TauchTerminal::view('sites/default', array( 'sites' => $sites, 'site' => $site ));
     }
 
     public static function getDefaultSite() {
@@ -60,7 +61,10 @@ class TauchTerminal_Sites {
         $table = $wpdb->prefix."tt_default_site";
         $select = "SELECT * FROM $table";
         $sites = $wpdb->get_results($select);
-        return $sites[0];
+        if ($sites) {
+            return $sites[0];
+        }
+        return false;
     }
 
     public static function setDefaultSite($data) {
@@ -70,7 +74,8 @@ class TauchTerminal_Sites {
         $wpdb->replace($table,
             array(
                 'id'       => 1,
-                'url'      => $data['url']
+                'url'      => $data['url'],
+                'current'  => $data['current']
             )
         );
     }
@@ -161,6 +166,11 @@ class TauchTerminal_Sites {
         }
         TauchTerminal_Admin_Meta_Boxes::add_notice(__('Site successfully saved', 'tauch-terminal'), 'success');
         return true;
+    }
+
+    public static function getCurrentSite() {
+        $current = TauchTerminal_Sites::getSites([1]);
+        return $current[0];
     }
 
     private static function getPrefix() {

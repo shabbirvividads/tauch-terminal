@@ -2,28 +2,38 @@
     <h2><?php esc_html_e('Tauch Terminal' , 'tauch-terminal');?></h2>
 
     <form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
-       <table class="wp-list-table widefat fixed pages">
-            <thead>
-                <tr>
-                   <th scope="col" class="manage-column column-title sortable desc">
-                        <a href="">
-                            <span><?php echo __('Default Url') ?></span>
-                            <span class="sorting-indicator"></span>
-                        </a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                   <td><input type="text" name="url" value="<?php echo isset($site) ? $site->url : '' ?>" style="width: 100%;" /></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="hidden" name="action" value="save" />
-                        <button type="submit"><?php echo __('Save') ?></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="wrap">
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><?php echo __('Current Website') ?></th>
+                        <td>
+                            <?php if ($sites): ?>
+                                <select name="current">
+                                    <?php foreach ($sites as $option): ?>
+                                        <option value="<?php echo $option->id ?>"<?php if ($site->current == $option->id): ?> selected="selected"<?php endif; ?>><?php echo $option->tt_name ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            <?php else: ?>
+                                <b><?php echo __('No Websites defined yet.') ?></b>
+                                <p><?php echo __('Login to your main site, and add all your websites.') ?></p>
+                                <input type="hidden" name="current" value="">
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php echo __('Default Url') ?></th>
+                        <td><input type="text" name="url" value="<?php echo ($site && isset($site)) ? $site->url : '' ?>" style="width: 100%;" /></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="hidden" name="action" value="save" />
+                            <button type="submit"><?php echo __('Save') ?></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </form>
 </div>

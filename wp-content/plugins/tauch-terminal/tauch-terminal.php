@@ -24,7 +24,6 @@ register_deactivation_hook(__FILE__, array('TauchTerminal', 'plugin_deactivation
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tauch-terminal.php');
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
-require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'rooms.php');
 
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');
