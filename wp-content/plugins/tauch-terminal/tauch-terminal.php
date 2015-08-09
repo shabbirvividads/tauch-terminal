@@ -11,7 +11,7 @@ if (!function_exists('add_action' )) {
     exit;
 }
 
-define('TAUCHTERMINAL_VERSION', '1.0.0');
+define('TAUCHTERMINAL_VERSION', '1.0.2');
 define('TAUCHTERMINAL__MINIMUM_WP_VERSION', '3.1');
 define('TAUCHTERMINAL__PLUGIN_URL', plugin_dir_url(__FILE__ ));
 define('TAUCHTERMINAL__PLUGIN_DIR', plugin_dir_path(__FILE__ ));
@@ -22,11 +22,24 @@ register_activation_hook(__FILE__, array('TauchTerminal', 'plugin_activation' ))
 register_deactivation_hook(__FILE__, array('TauchTerminal', 'plugin_deactivation' ));
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tauch-terminal.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'database.php');
+
+add_site_option('tt_version', TAUCHTERMINAL_VERSION);
+
+function tt_update_db_check() {
+    if (version_compare(get_site_option('tt_version'), TAUCHTERMINAL_VERSION, '<')) {
+        TauchTerminal_DB::migrations(TAUCHTERMINAL_VERSION);
+    }
+}
+add_action( 'plugins_loaded', 'tt_update_db_check' );
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'ratings.php');
 
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin.php');
     add_action('init', array('TauchTerminal_Admin', 'init' ));
 }
+
+

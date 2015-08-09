@@ -1,5 +1,5 @@
 <div class="edit-tauchterminal wrap">
-    <h2><?php esc_html_e('Tauch Terminal' , 'tauch-terminal');?></h2>
+    <h2><?php esc_html_e('Tauch Terminal Sites' , 'tauch-terminal');?></h2>
 
     <form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
        <table class="wp-list-table widefat fixed pages">

@@ -1,5 +1,5 @@
 <div class="dashboard-tauchterminal">
-    <h2><?php esc_html_e('Tauch Terminal' , 'tauch-terminal');?></h2>
+    <h2><?php esc_html_e('Tauch Terminal Settings' , 'tauch-terminal');?></h2>
 
     <form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
         <div class="wrap">

@@ -1,5 +1,5 @@
 <div class="edit-tauchterminal wrap">
-    <h2><?php esc_html_e('Tauch Terminal' , 'tauch-terminal');?> <a href="<?php echo esc_url( add_query_arg( array('action' => 'add'), $_SERVER['REQUEST_URI'] ) ) ?>" class="add-new-h2"><?php echo __('Add New') ?></a></h2>
+    <h2><?php esc_html_e('Tauch Terminal Sites' , 'tauch-terminal');?> <a href="<?php echo esc_url( add_query_arg( array('action' => 'add'), $_SERVER['REQUEST_URI'] ) ) ?>" class="add-new-h2"><?php echo __('Add New') ?></a></h2>
 
         <form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
         <div class="tablenav top">

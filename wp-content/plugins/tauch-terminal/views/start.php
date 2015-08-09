@@ -7,7 +7,7 @@
             <div class="postbox-container">
                 <div class="meta-box-sortables">
                     <div class="postbox">
-                        <a href="admin.php?page=tauch-terminal-sites" class="handlediv"></a>
+                        <a href="admin.php?page=tauch-terminal-settings" class="handlediv"></a>
                         <h3 class='hndle'>
                             <span><?php echo __('Current Site') ?></span>
                         </h3>
