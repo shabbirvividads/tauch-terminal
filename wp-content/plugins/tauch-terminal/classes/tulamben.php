@@ -45,23 +45,38 @@ class TauchTerminal_Tulamben {
     }
 
     public static function ca_handler() {
-        $api = self::getTauchTerminalOptions('ca_api');
+        $globalStatistics = '';
+        $ca_api_external = self::getTauchTerminalOptions('ca_api_external');
+        $ca_api_reviews = self::getTauchTerminalOptions('ca_api_reviews');
+        $errors = array();
+        libxml_use_internal_errors(true);
 
-        if (($response_xml_data = file_get_contents($api))===false){
+        if (($response_xml_data = file_get_contents($ca_api_external))===false ||
+            $response_xml_data_review = file_get_contents($ca_api_reviews)) {
             TauchTerminal::view('tulamben/rating_default', array('error' => "Error fetching XML"));
         } else {
-            libxml_use_internal_errors(true);
             $data = simplexml_load_string($response_xml_data);
             if (!$data) {
-                $errors = array();
-                $errors[] = "Error loading XML";
+                $errors[0] = "Error loading XML";
                 foreach(libxml_get_errors() as $error) {
                     $errors[] = $error->message;
                 }
-                TauchTerminal::view('tulamben/rating_default', array('error' => $errors));
             } else {
-                TauchTerminal::view('tulamben/rating', array('data' => $data));
+                $globalStatistics = $data->globalStatistics;
             }
         }
+
+        $data_review = simplexml_load_string($response_xml_data_review);
+        if (!$data_review) {
+            $errors[0] = "Error loading XML";
+            foreach(libxml_get_errors() as $error) {
+                $errors[] = $error->message;
+            }
+        }
+        if (!empty($errors)) {
+            TauchTerminal::view('tulamben/rating_default', array('error' => $errors));
+        }
+
+        TauchTerminal::view('tulamben/rating', array('data' => $data_review, 'globalStatistics' => $data->globalStatistics));
     }
 }

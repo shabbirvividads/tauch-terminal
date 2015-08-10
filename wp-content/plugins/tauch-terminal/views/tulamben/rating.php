@@ -7,8 +7,8 @@
         <div class="col-sm-4">
             <div class="jumbotron">
                 <h3><?php echo __('average Rating') ?></h3>
-                <h2><?php echo $data->globalStatistics->averageRating ?></h2>
-                <p><?php printf('out of %s reviews and %s different protals', $data->globalStatistics->reviewCount, $data->globalStatistics->portalCount) ?></p>
+                <h2><?php echo $globalStatistics->averageRating ?></h2>
+                <p><?php printf('out of %s reviews and %s different protals', $globalStatistics->reviewCount, $globalStatistics->portalCount) ?></p>
             </div>
         </div>
     </div>
