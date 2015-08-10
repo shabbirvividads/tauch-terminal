@@ -34,7 +34,7 @@ function tt_update_db_check() {
 add_action( 'plugins_loaded', 'tt_update_db_check' );
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
-require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'ratings.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
 
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');
@@ -42,4 +42,7 @@ if (is_admin()) {
     add_action('init', array('TauchTerminal_Admin', 'init' ));
 }
 
-
+function customeralliance_handler() {
+    TauchTerminal_Tulamben::ca_handler();
+}
+add_shortcode('tauchterminal-customeralliance', 'customeralliance_handler');
