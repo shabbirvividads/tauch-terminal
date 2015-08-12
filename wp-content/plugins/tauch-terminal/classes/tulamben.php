@@ -52,7 +52,7 @@ class TauchTerminal_Tulamben {
         libxml_use_internal_errors(true);
 
         if (($response_xml_data = file_get_contents($ca_api_external))===false ||
-            $response_xml_data_review = file_get_contents($ca_api_reviews)) {
+            ($response_xml_data_review = file_get_contents($ca_api_reviews))===false) {
             TauchTerminal::view('tulamben/rating_default', array('error' => "Error fetching XML"));
         } else {
             $data = simplexml_load_string($response_xml_data);
@@ -77,6 +77,6 @@ class TauchTerminal_Tulamben {
             TauchTerminal::view('tulamben/rating_default', array('error' => $errors));
         }
 
-        TauchTerminal::view('tulamben/rating', array('data' => $data_review, 'globalStatistics' => $data->globalStatistics));
+        TauchTerminal::view('tulamben/rating', array('data_review' => $data_review, 'globalStatistics' => $globalStatistics));
     }
 }

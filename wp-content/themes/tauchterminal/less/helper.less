@@ -1,3 +1,31 @@
+.slider {
+    background-color: @gray-lighter;
+    width: 100%;
+    display: inline-block;
+    span {
+        display: inline-block;
+        background-color: @brand-primary;
+        &.slider-100 {
+            width: 100%;
+            background-color: @ttgreendark2;
+        }
+        &.slider-75 {
+            width: 75%;
+            background-color: @ttgreen;
+        }
+        &.slider-50 {
+            width: 50%;
+            background-color: @ttorange;
+        }
+        &.slider-25 {
+            width: 25%;
+            background-color: @ttorange;
+        }
+        span {
+            opacity: 0;
+        }
+    }
+}
 .hover-container {
     position: relative;
     .hover-content {
@@ -20,5 +48,27 @@
     }
     &:hover .hover-content {
         display: block;
+    }
+}
+
+.badge {
+    &.badge-review {
+        width: 40px;
+        height: 40px;
+        padding-top: 14px;
+
+        border-radius: 40px;
+    }
+    &.badge-super {
+        background-color: @ttgreendark2;
+    }
+    &.badge-good {
+        background-color: @ttgreen;
+    }
+    &.badge-neutral {
+        background-color: @ttorange;
+    }
+    &.badge-bad {
+        // background-color: @ttorange;
     }
 }

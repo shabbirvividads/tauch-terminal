@@ -1,0 +1,32 @@
+.ratings {
+    h3 {
+        font-size: 14px;
+        .badge {
+            margin-right: @half-padding;
+        }
+        .pull-right {
+            padding-top: 16px;
+        }
+    }
+    .rating {
+        padding: @half-padding;
+        &:nth-child(even) {
+            background-color: @gray-lighter;
+        }
+    }
+    .panel-group {
+        margin: 0;
+    }
+    .list-group-item {
+        min-height: 38px;
+        .list-group-item-heading {
+            width: 40%;
+        }
+        .list-group-item-text {
+            width: 60%;
+        }
+    }
+    .panel-heading a {
+        font-size: 14px;
+    }
+}

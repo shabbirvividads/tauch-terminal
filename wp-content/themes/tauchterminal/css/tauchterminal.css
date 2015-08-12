@@ -6900,6 +6900,34 @@ a:focus {
 .site-content {
   margin-bottom: 20px;
 }
+.slider {
+  background-color: #eeeeee;
+  width: 100%;
+  display: inline-block;
+}
+.slider span {
+  display: inline-block;
+  background-color: #ff9640;
+}
+.slider span.slider-100 {
+  width: 100%;
+  background-color: #228a4c;
+}
+.slider span.slider-75 {
+  width: 75%;
+  background-color: #00b74a;
+}
+.slider span.slider-50 {
+  width: 50%;
+  background-color: #ff9640;
+}
+.slider span.slider-25 {
+  width: 25%;
+  background-color: #ff9640;
+}
+.slider span span {
+  opacity: 0;
+}
 .hover-container {
   position: relative;
 }
@@ -6919,6 +6947,21 @@ a:focus {
 }
 .hover-container:hover .hover-content {
   display: block;
+}
+.badge.badge-review {
+  width: 40px;
+  height: 40px;
+  padding-top: 14px;
+  border-radius: 40px;
+}
+.badge.badge-super {
+  background-color: #228a4c;
+}
+.badge.badge-good {
+  background-color: #00b74a;
+}
+.badge.badge-neutral {
+  background-color: #ff9640;
 }
 #lang_sel_click {
   position: absolute;
@@ -7068,12 +7111,60 @@ a:focus {
 .sites-plugin .slider-photo a .glyphicon {
   margin-top: 2px;
 }
+.panel-nostyle {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.panel-nostyle > .panel-heading {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+.panel-nostyle > .panel-heading a {
+  display: block;
+  padding: 7.5px 0;
+}
+.panel-nostyle .list-group-item {
+  padding-right: 0;
+  padding-left: 0;
+  border: 0;
+}
 .certifications li {
   padding: 0 10px 10px 0;
 }
 .certifications img {
   width: 100%;
   max-width: 100%;
+}
+.ratings h3 {
+  font-size: 14px;
+}
+.ratings h3 .badge {
+  margin-right: 7.5px;
+}
+.ratings h3 .pull-right {
+  padding-top: 16px;
+}
+.ratings .rating {
+  padding: 7.5px;
+}
+.ratings .rating:nth-child(even) {
+  background-color: #eeeeee;
+}
+.ratings .panel-group {
+  margin: 0;
+}
+.ratings .list-group-item {
+  min-height: 38px;
+}
+.ratings .list-group-item .list-group-item-heading {
+  width: 40%;
+}
+.ratings .list-group-item .list-group-item-text {
+  width: 60%;
+}
+.ratings .panel-heading a {
+  font-size: 14px;
 }
 .widget.bg-orange {
   padding-bottom: 10px;
