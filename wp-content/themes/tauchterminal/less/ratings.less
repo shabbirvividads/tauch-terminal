@@ -1,17 +1,20 @@
 .ratings {
     h3 {
         font-size: 14px;
+
+        margin-top: 0;
         .badge {
             margin-right: @half-padding;
         }
-        .pull-right {
-            padding-top: 16px;
-        }
     }
     .rating {
-        padding: @half-padding;
-        &:nth-child(even) {
-            background-color: @gray-lighter;
+        margin-bottom: @default-padding;
+        padding: @default-padding 0;
+
+        background-color: @ttgrey;
+        box-shadow: 10px 10px 30px -15px rgba(0,0,0,1);
+        .slider {
+            background: #fff;
         }
     }
     .panel-group {
@@ -19,6 +22,8 @@
     }
     .list-group-item {
         min-height: 38px;
+
+        background: none;
         .list-group-item-heading {
             width: 40%;
         }
@@ -28,5 +33,15 @@
     }
     .panel-heading a {
         font-size: 14px;
+    }
+}
+.rating-overview {
+    .jumbotron {
+        padding: @default-padding;
+        box-shadow: 10px 10px 30px -15px rgba(0,0,0,1);
+        background-color: @ttgrey;
+        h3 {
+            margin-top: 0;
+        }
     }
 }

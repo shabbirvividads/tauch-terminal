@@ -33,6 +33,7 @@ function tt_update_db_check() {
 }
 add_action( 'plugins_loaded', 'tt_update_db_check' );
 
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'pagination.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
 
@@ -46,3 +47,9 @@ function customeralliance_handler() {
     TauchTerminal_Tulamben::ca_handler();
 }
 add_shortcode('tauchterminal-customeralliance', 'customeralliance_handler');
+
+add_filter('query_vars', 'parameter_queryvars' );
+function parameter_queryvars($qvars) {
+    $qvars[] = ' myvar';
+    return $qvars;
+}
