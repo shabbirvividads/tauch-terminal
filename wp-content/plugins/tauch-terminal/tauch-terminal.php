@@ -24,14 +24,12 @@ register_deactivation_hook(__FILE__, array('TauchTerminal', 'plugin_deactivation
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tauch-terminal.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'database.php');
 
-add_site_option('tt_version', TAUCHTERMINAL_VERSION);
-
 function tt_update_db_check() {
     if (version_compare(get_site_option('tt_version'), TAUCHTERMINAL_VERSION, '<')) {
         TauchTerminal_DB::migrations(TAUCHTERMINAL_VERSION);
     }
 }
-add_action( 'plugins_loaded', 'tt_update_db_check' );
+add_action('plugins_loaded', 'tt_update_db_check');
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'pagination.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');

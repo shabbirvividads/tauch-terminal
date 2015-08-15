@@ -3,23 +3,30 @@
 class TauchTerminal {
 
     public static function plugin_activation() {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_sites";
-        $structure = "CREATE TABLE $table (
-            id INT(9) NOT NULL AUTO_INCREMENT,
-            tt_name VARCHAR(80) NOT NULL,
-            tt_desc VARCHAR(80) NOT NULL,
-            tt_slug VARCHAR(80) NOT NULL,
-            tt_url VARCHAR(80) NOT NULL,
-            tt_logo VARCHAR(200) NOT NULL,
-            tt_bg VARCHAR(200) NOT NULL,
-        UNIQUE KEY id (id)
-        );";
-        $wpdb->query($structure);
+        add_site_option('tt_version', '1.0.0');
+
+        $upg_file = TAUCHTERMINAL__PLUGIN_DIR . 'upgrade/install-1.0.0.php';
+        if (file_exists($upg_file) && is_readable($upg_file)) {
+            include_once $upg_file;
+        }
     }
 
     public static function plugin_deactivation() {
         //tidy up
+        global $wpdb;
+
+        // foreach (array('tt_sites', 'tt_tulamben_settings', 'tt_default_site') as $tablename) {
+        //     $table = $wpdb->prefix.$tablename;
+        //     $wpdb->query("DROP TABLE IF EXISTS $table");
+        // }
+        if (false == delete_site_option('tt_version')) {
+            $html = '<div class="error">';
+                $html .= '<p>';
+                    $html .= __( 'There was a problem deactivating the Tauch Terminal Plugin. Please try again.', 'tauch-terminal' );
+                $html .= '</p>';
+            $html .= '</div>';
+            echo $html;
+        }
     }
 
     public static function view($name, array $args = array()) {

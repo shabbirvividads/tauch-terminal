@@ -170,7 +170,9 @@ class TauchTerminal_Sites {
 
     public static function getCurrentSite() {
         $current = TauchTerminal_Sites::getSites([1]);
-        return $current[0];
+        if ($current)
+            return $current[0];
+        return false;
     }
 
     private static function getPrefix() {
