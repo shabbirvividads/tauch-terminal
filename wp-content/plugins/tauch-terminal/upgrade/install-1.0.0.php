@@ -13,6 +13,5 @@
     UNIQUE KEY id (id)
     );";
 
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     $wpdb->query($structure);
 ?>

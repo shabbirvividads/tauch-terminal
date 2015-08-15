@@ -18,5 +18,39 @@ class TauchTerminal_DB {
 
         self::upgrade_version('1.0.1');
         self::upgrade_version('1.0.2');
+        self::upgrade_version('1.0.3');
     }
+
+    public static function getSettings() {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_settings";
+        $select = "SELECT * FROM $table";
+        $settings = $wpdb->get_results($select);
+        return $settings;
+    }
+
+    public static function getTTOption($option) {
+        $settings = self::getSettings();
+        foreach ($settings as $setting) {
+            if ($setting->option_name == $option) {
+                return $setting->option_value;
+            }
+        }
+        return false;
+    }
+
+    public static function saveSettings($data) {
+        global $wpdb;
+        $table = $wpdb->prefix."tt_settings";
+
+        foreach ($data['settings'] as $key => $value) {
+            $sql = 'INSERT INTO '.$table.' (option_name, option_value) ';
+            $sql .= 'VALUES('.$key.', "'.$value.'") ';
+            $sql .= 'ON DUPLICATE KEY UPDATE ';
+            $sql .= 'option_value = "'.$value.'", ';
+            $sql .= 'option_name = '.$key.'';
+            $wpdb->query($sql);
+        }
+    }
+
 }

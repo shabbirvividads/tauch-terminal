@@ -13,9 +13,7 @@
                         </h3>
                         <div class="inside">
                             <?php if($currentsite): ?>
-                                <ul class="list-unstyled">
-                                    <li><?php echo $currentsite->tt_name ?></li>
-                                </ul>
+                                <?php echo $currentsite->tt_name ?>
                             <?php else: ?>
                                 <p><?php echo __('There are no site as current defined yet.') ?></p>
                             <?php endif; ?>

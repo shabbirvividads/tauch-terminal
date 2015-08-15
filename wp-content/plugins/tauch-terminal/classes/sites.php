@@ -49,35 +49,23 @@ class TauchTerminal_Sites {
     public static function default_website() {
         if (isset($_POST['action'])) {
             $action = $_POST['action'];
-            self::setDefaultSite($_POST);
+            TauchTerminal_DB::saveSettings($_POST);
         }
         $sites = self::getSites();
-        $site = self::getDefaultSite();
-        TauchTerminal::view('sites/default', array( 'sites' => $sites, 'site' => $site ));
+        $site = TauchTerminal_DB::getTTOption('default_site');
+        $url = TauchTerminal_DB::getTTOption('default_prefix');
+        TauchTerminal::view('sites/default', array('sites' => $sites, 'current' => $site, 'url' => $url));
     }
 
     public static function getDefaultSite() {
         global $wpdb;
-        $table = $wpdb->prefix."tt_default_site";
-        $select = "SELECT * FROM $table";
-        $sites = $wpdb->get_results($select);
-        if ($sites) {
-            return $sites[0];
+
+        $site = TauchTerminal_DB::getTTOption('default_site');
+
+        if ($site) {
+            return $site[0];
         }
         return false;
-    }
-
-    public static function setDefaultSite($data) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_default_site";
-        $select = "SELECT * FROM $table";
-        $wpdb->replace($table,
-            array(
-                'id'       => 1,
-                'url'      => $data['url'],
-                'current'  => $data['current']
-            )
-        );
     }
 
     public static function getSites($id = array()) {
@@ -169,7 +157,10 @@ class TauchTerminal_Sites {
     }
 
     public static function getCurrentSite() {
-        $current = TauchTerminal_Sites::getSites([1]);
+        global $wpdb;
+        $prefix = $wpdb->prefix;
+        $id = TauchTerminal_DB::getTTOption('default_site');
+        $current = TauchTerminal_Sites::getSites(array($id));
         if ($current)
             return $current[0];
         return false;
@@ -179,9 +170,9 @@ class TauchTerminal_Sites {
         global $wpdb;
         $prefix = $wpdb->prefix;
 
-        if (get_current_blog_id() != 1) {
-            $site = self::getDefaultSite();
-            $prefix = $site->url;
+        $url = TauchTerminal_DB::getTTOption('default_prefix');
+        if (get_current_blog_id() != 1 && $url) {
+            $prefix = $url;
         }
         return $prefix;
     }

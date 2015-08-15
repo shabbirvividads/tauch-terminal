@@ -12,13 +12,8 @@ class TauchTerminal {
     }
 
     public static function plugin_deactivation() {
-        //tidy up
         global $wpdb;
 
-        // foreach (array('tt_sites', 'tt_tulamben_settings', 'tt_default_site') as $tablename) {
-        //     $table = $wpdb->prefix.$tablename;
-        //     $wpdb->query("DROP TABLE IF EXISTS $table");
-        // }
         if (false == delete_site_option('tt_version')) {
             $html = '<div class="error">';
                 $html .= '<p>';

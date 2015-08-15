@@ -7,11 +7,11 @@
                 <tbody>
                     <tr>
                         <th scope="row"><?php echo __('Customer Alliance API (Stand auf externen Portalen)') ?></th>
-                        <td><input type="text" name="settings['ca_api_external']" value="<?php echo ($settings && isset($settings)) ? TauchTerminal_Tulamben::getTauchTerminalOptions('ca_api_external') : '' ?>" style="width: 100%;" /></td>
+                        <td><input type="text" name="settings['ca_api_external']" value="<?php echo (TauchTerminal_DB::getTTOption('ca_api_external')) ? TauchTerminal_DB::getTTOption('ca_api_external') : '' ?>" style="width: 100%;" /></td>
                     </tr>
                     <tr>
                         <th scope="row"><?php echo __('Customer Alliance API (Customer Alliance Bewertungen)') ?></th>
-                        <td><input type="text" name="settings['ca_api_reviews']" value="<?php echo ($settings && isset($settings)) ? TauchTerminal_Tulamben::getTauchTerminalOptions('ca_api_reviews') : '' ?>" style="width: 100%;" /></td>
+                        <td><input type="text" name="settings['ca_api_reviews']" value="<?php echo (TauchTerminal_DB::getTTOption('ca_api_reviews')) ? TauchTerminal_DB::getTTOption('ca_api_reviews') : '' ?>" style="width: 100%;" /></td>
                     </tr>
                     <tr>
                         <th></th>

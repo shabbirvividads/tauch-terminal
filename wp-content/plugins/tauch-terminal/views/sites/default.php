@@ -9,21 +9,21 @@
                         <th scope="row"><?php echo __('Current Website') ?></th>
                         <td>
                             <?php if ($sites): ?>
-                                <select name="current">
+                                <select name="settings['default_site']">
                                     <?php foreach ($sites as $option): ?>
-                                        <option value="<?php echo $option->id ?>"<?php if ($site->current == $option->id): ?> selected="selected"<?php endif; ?>><?php echo $option->tt_name ?></option>
+                                        <option value="<?php echo $option->id ?>"<?php if ($current == $option->id): ?> selected="selected"<?php endif; ?>><?php echo $option->tt_name ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             <?php else: ?>
                                 <b><?php echo __('No Websites defined yet.') ?></b>
                                 <p><?php echo __('Login to your main site, and add all your websites.') ?></p>
-                                <input type="hidden" name="current" value="">
+                                <input type="hidden" name="settings['default_site']" value="">
                             <?php endif; ?>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"><?php echo __('Default Url') ?></th>
-                        <td><input type="text" name="url" value="<?php echo ($site && isset($site)) ? $site->url : '' ?>" style="width: 100%;" /></td>
+                        <td><input type="text" name="settings['default_prefix']" value="<?php echo ($url) ? $url : '' ?>" style="width: 100%;" /></td>
                     </tr>
                     <tr>
                         <th></th>

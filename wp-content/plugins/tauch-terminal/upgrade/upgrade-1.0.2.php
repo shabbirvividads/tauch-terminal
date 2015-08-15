@@ -6,7 +6,8 @@
         id INT(9) NOT NULL AUTO_INCREMENT,
         option_name VARCHAR(80) NOT NULL,
         option_value VARCHAR(200) NOT NULL,
-    UNIQUE KEY id (id)
+        PRIMARY KEY (`option_name`),
+        UNIQUE KEY `id` (`id`)
     );";
 
     $wpdb->query($structure);

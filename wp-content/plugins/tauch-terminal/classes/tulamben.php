@@ -4,50 +4,18 @@ class TauchTerminal_Tulamben {
 
     public static function display_ratings() {
         if (isset($_POST['action'])) {
-            self::saveSettings($_POST);
+            TauchTerminal_DB::saveSettings($_POST);
         }
 
-        $settings = self::getSettings();
+        $settings = TauchTerminal_DB::getSettings();
 
         TauchTerminal::view('tulamben/settings', array('settings' => $settings));
     }
 
-    public static function getSettings() {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_tulamben_settings";
-        $select = "SELECT * FROM $table";
-        $settings = $wpdb->get_results($select);
-        return $settings;
-    }
-
-    public static function getTauchTerminalOptions($option) {
-        $settings = self::getSettings();
-        foreach ($settings as $setting) {
-            if ($setting->option_name == $option) {
-                return $setting->option_value;
-            }
-        }
-        return false;
-    }
-
-    public static function saveSettings($data) {
-        global $wpdb;
-        $table = $wpdb->prefix."tt_tulamben_settings";
-
-        foreach ($data['settings'] as $key => $value) {
-            $sql = 'INSERT INTO '.$table.' (option_name, option_value) ';
-            $sql .= 'VALUES('.$key.', "'.$value.'") ';
-            $sql .= 'ON DUPLICATE KEY UPDATE ';
-            $sql .= 'option_value = "'.$value.'", ';
-            $sql .= 'option_name = '.$key.'';
-            $wpdb->query($sql);
-        }
-    }
-
     public static function ca_handler() {
         $globalStatistics = '';
-        $ca_api_external = self::getTauchTerminalOptions('ca_api_external');
-        $ca_api_reviews = self::getTauchTerminalOptions('ca_api_reviews');
+        $ca_api_external = TauchTerminal_DB::getTTOption('ca_api_external');
+        $ca_api_reviews = TauchTerminal_DB::getTTOption('ca_api_reviews');
         $errors = array();
         libxml_use_internal_errors(true);
 
