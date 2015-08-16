@@ -39,7 +39,7 @@
 
         <div class="slider-photo">
             <?php foreach ($sites as $site): ?>
-                <div class="background-image image-<?php echo $site->tt_slug ?>" style="background-image: url('<?php echo $site->tt_bg ?>')"></div>
+                <div class="background-image image-<?php echo $site->tt_slug ?>" style="<?php if ($current && $current->id !== $site->id): ?>display: none; <?php endif; ?>background-image: url('<?php echo $site->tt_bg ?>')"></div>
             <?php endforeach ?>
             <div class="container">
                 <?php foreach ($sites as $site): ?>
