@@ -196,6 +196,8 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
+    grunt.registerTask('default', ['less', 'csscomb', 'autoprefixer', 'jshint', 'jscs']);
+
     grunt.registerTask('test-js', ['jshint', 'jscs']);
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
