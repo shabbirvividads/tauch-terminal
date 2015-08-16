@@ -57,17 +57,6 @@ class TauchTerminal_Sites {
         TauchTerminal::view('sites/default', array('sites' => $sites, 'current' => $site, 'url' => $url));
     }
 
-    public static function getDefaultSite() {
-        global $wpdb;
-
-        $site = TauchTerminal_DB::getTTOption('default_site');
-
-        if ($site) {
-            return $site[0];
-        }
-        return false;
-    }
-
     public static function getSites($id = array()) {
         global $wpdb;
         $prefix = self::getPrefix();
