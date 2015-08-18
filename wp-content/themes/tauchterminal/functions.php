@@ -137,7 +137,12 @@ function xsbf_setup() {
 
     // Make theme available for translation. Translations can be filed in the /languages/
     // directory. If you want to translate this theme, please contact me!
-    load_theme_textdomain( 'tauchterminal', get_template_directory() . '/languages' );
+    add_filter('locale', 'set_my_locale');
+    function set_my_locale( $lang ) {
+        return (isset($_GET['language'])) ? $_GET['language'] : $lang;
+    }
+    load_theme_textdomain('tauchterminal');
+
 
 } // end function
 add_action( 'after_setup_theme', 'xsbf_setup' );

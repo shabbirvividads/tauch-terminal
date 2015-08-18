@@ -45,7 +45,7 @@
                 <?php foreach ($sites as $site): ?>
                     <div class="col-sm-<?php echo floor(12/$count) ?> bg-orange more more-<?php echo $site->tt_slug ?>"<?php if (!$current || $current->id !== $site->id): ?> style="visibility: hidden;"<?php endif; ?>>
                         <a href="http://<?php echo $site->tt_url ?>" target="_blank" class="text-uppercase<?php if ($current && $current->id == $site->id): ?> active<?php endif; ?>">
-                            <?php echo __('Read more') ?>
+                            <?php echo __('Read more', 'tauchterminal') ?>
                             <span class="glyphicon glyphicon-menu-right pull-right" aria-hidden="true"></span>
                         </a>
                     </div>

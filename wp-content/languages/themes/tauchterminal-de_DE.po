@@ -13,5 +13,7 @@ msgstr ""
 "Language:de\n"
 "MIME-Version: 1.0\n"
 
+msgid "Read more"
+msgstr "Zur Website"
 
 
