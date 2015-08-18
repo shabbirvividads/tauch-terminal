@@ -15,5 +15,3 @@ msgstr ""
 
 msgid "Read more"
 msgstr "Zur Website"
-
-

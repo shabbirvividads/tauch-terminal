@@ -139,10 +139,10 @@ function xsbf_setup() {
     // directory. If you want to translate this theme, please contact me!
     add_filter('locale', 'set_my_locale');
     function set_my_locale( $lang ) {
-        return (isset($_GET['language'])) ? $_GET['language'] : $lang;
+        $lang = (isset($_GET['language'])) ? $_GET['language'] : $lang;
+        return $lang;
     }
     load_theme_textdomain('tauchterminal');
-
 
 } // end function
 add_action( 'after_setup_theme', 'xsbf_setup' );
