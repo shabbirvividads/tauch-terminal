@@ -18,16 +18,18 @@ module.exports = function(grunt) {
         makepot: {
             target: {
                 options: {
-                    domainPath: 'wp-content/themes/<%= pkg.name %>/languages/',      // Where to save the POT file.
-                    mainFile: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>-theme.css',                    // Main project file.
-                    potFilename: '<%= pkg.name %>.pot',         // Name of the POT file.
-                    type: 'wp-theme',                         // Type of project (wp-plugin or wp-theme).
-                    exclude: [],                              // List of files or directories to ignore.
+                    cwd: 'wp-content/themes/<%= pkg.name %>',
+                    domainPath: '/languages/',                 // Where to save the POT file.
+                    mainFile: '/css/<%= pkg.name %>.css',      // Main project file.
+                    potFilename: '<%= pkg.name %>.pot',        // Name of the POT file.
+                    type: 'wp-theme',                          // Type of project (wp-plugin or wp-theme).
+                    exclude: [],                               // List of files or directories to ignore.
                     processPot: function( pot, options ) {
                         pot.headers['report-msgid-bugs-to'] = 'http://nessie.me';
                         pot.headers['plural-forms'] = 'nplurals=2; plural=n != 1;';
                         pot.headers['last-translator'] = 'Vanessa Haenni <vanessa@tulamben.com>\n';
                         pot.headers['language-team'] = 'Vanessa Haenni <vanessa@tulamben.com>\n';
+                        pot.headers['language'] = 'en';
                         pot.headers['x-poedit-basepath'] = '.\n';
                         pot.headers['x-poedit-language'] = 'English\n';
                         pot.headers['x-poedit-country'] = 'UNITED STATES\n';
