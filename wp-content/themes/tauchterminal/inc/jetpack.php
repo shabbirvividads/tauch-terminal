@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Jetpack Compatibility File
  * See: http://jetpack.me/

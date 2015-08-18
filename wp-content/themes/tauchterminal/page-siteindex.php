@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Template Name: Page - Site Index
  *

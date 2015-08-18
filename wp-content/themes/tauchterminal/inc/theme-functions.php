@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Functions that handle theme features not directly related to tags used in templates
  *

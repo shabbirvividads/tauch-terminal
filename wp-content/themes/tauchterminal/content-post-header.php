@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * The template used for displaying single post header meta (posted on, by, etc.)
  *

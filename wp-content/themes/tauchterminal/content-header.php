@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * This template is called from other page and archive templates to display the content
  * header, which is essentially the header for the page. If there is a wide featured

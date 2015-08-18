@@ -1,5 +1,5 @@
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Theme Customizer enhancements for a better user experience.
  *

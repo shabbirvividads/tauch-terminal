@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * The "sidebar" for the bottom of the page (before the widgetized footer area). If no
  * widgets added AND preivewing the theme, then display some widgets as samples. Once the

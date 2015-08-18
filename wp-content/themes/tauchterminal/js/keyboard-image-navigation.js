@@ -1,5 +1,5 @@
 /*
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Javascript to handle navigation through image attachments with keyboard
  */

@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * The default template used for displaying page and article content. Note that certain
  * pages, index, articles may use a different template.

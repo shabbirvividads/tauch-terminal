@@ -1,4 +1,4 @@
-=== Flat Bootstrap by XtremelySocial ===
+=== Tauch Terminal Bootstrap by XtremelySocial ===
 
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
@@ -9,25 +9,25 @@ Stable tag: 1.5
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
-Flat Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme
+Tauch Terminal Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme
 
 == DESCRIPTION ==
 
-Flat Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones.
+Tauch Terminal Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones.
 
 It is based on the standard WordPress starter theme (_S) and the Twitter Bootstrap CSS framework. The theme was inspired by the HTML/CSS themes from Blacktie.co and color schemes from Designmodo.com’s flat UI.
 
 Features include a mobile navigation bar, multiple columns (grid), buttons, icons, labels, badges, tabbed content areas, collapsible content areas, progress bars, alert boxes, carousels (sliders) and much, much more. This is a theme for both users and theme developers with lots of features but without the bloat.
 
-This theme includes a child theme to be able to easily customize the theme. The Flat Bootstrap Child theme is for users and developers and comes with a style.css and functions.php file. Just copy the tauchterminal-child directory into your /themes directory and make your changes there.
+This theme includes a child theme to be able to easily customize the theme. The Tauch Terminal Bootstrap Child theme is for users and developers and comes with a style.css and functions.php file. Just copy the tauchterminal-child directory into your /themes directory and make your changes there.
 
-For more information on the Flat Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
+For more information on the Tauch Terminal Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
 
 
 == LICENSE ==
 
-Flat Bootstrap WordPress theme, Copyright (C) 2014 XtremelySocial
-Flat Bootstrap WordPress theme is licensed under the GPL.
+Tauch Terminal Bootstrap WordPress theme, Copyright (C) 2014 XtremelySocial
+Tauch Terminal Bootstrap WordPress theme is licensed under the GPL.
 
 Userscores WordPress Starter Theme - ​http://underscores.me/
 License: Distributed under the terms of the GPL License v2
@@ -275,7 +275,7 @@ Note that these settings only change the sizes of *new* images that you upload. 
 
 = How to Customize this Theme =
 
-We have provided a "child theme" for you to be able to easily customize the theme, but still be able to upgrade the Flat Bootstrap theme as new versions are released. Within this theme there is a directory called tauchterminal-child. COPY this directory up one level to your main /themes directory and it will appear as a theme in admin Appearance -> Themes. You can then activate this child theme and make any changes to it that you would like.
+We have provided a "child theme" for you to be able to easily customize the theme, but still be able to upgrade the Tauch Terminal Bootstrap theme as new versions are released. Within this theme there is a directory called tauchterminal-child. COPY this directory up one level to your main /themes directory and it will appear as a theme in admin Appearance -> Themes. You can then activate this child theme and make any changes to it that you would like.
 
 For more information, see the readme.md file in the tauchterminal-child directory and the Child Theme page on WordPress.org [http://codex.wordpress.org/Child_Themes].
 

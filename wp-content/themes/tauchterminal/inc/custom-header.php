@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme: Flat Bootstrap
+ * Theme: Tauch Terminal Bootstrap
  *
  * Implements the WordPress Custom Header feature
  * http://codex.wordpress.org/Custom_Headers
