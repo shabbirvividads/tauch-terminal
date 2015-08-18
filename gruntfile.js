@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             target: {
                 options: {
                     cwd: 'wp-content/themes/<%= pkg.name %>',
-                    domainPath: '/languages/',                 // Where to save the POT file.
+                    domainPath: '../../languages/themes',      // Where to save the POT file.
                     mainFile: '/css/<%= pkg.name %>.css',      // Main project file.
                     potFilename: '<%= pkg.name %>.pot',        // Name of the POT file.
                     type: 'wp-theme',                          // Type of project (wp-plugin or wp-theme).
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 
         po2mo: {
             files: {
-                src: 'wp-content/languages/*.po',
+                src: 'wp-content/languages/themes/*.po',
                 expand: true,
             },
         },
