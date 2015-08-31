@@ -1,4 +1,4 @@
-=== Tauch Terminal Bootstrap by XtremelySocial ===
+=== Tauch Terminal Bootstrap by Nessie ===
 
 Contributors: timnicholson
 Tags: one-column, right-sidebar, left-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, featured-images, featured-image-header, full-width-template, flexible-header, theme-options, sticky-post, threaded-comments, light, translation-ready, rtl-language-support, custom-background
@@ -9,11 +9,11 @@ Stable tag: 1.5
 License: GPLv3
 License URI: http://www.opensource.org/licenses/GPL-3.0
 
-Tauch Terminal Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme
+Tauch Terminal Bootstrap by Nessie is a modern, fully responsive, "flat" style theme
 
 == DESCRIPTION ==
 
-Tauch Terminal Bootstrap by XtremelySocial is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones.
+Tauch Terminal Bootstrap by Nessie is a modern, fully responsive, "flat" style theme with a nice color palette, big full-width images, and full-width colored sections. It automatically adapts for desktops, tablets, and phones.
 
 It is based on the standard WordPress starter theme (_S) and the Twitter Bootstrap CSS framework. The theme was inspired by the HTML/CSS themes from Blacktie.co and color schemes from Designmodo.com’s flat UI.
 
@@ -21,12 +21,9 @@ Features include a mobile navigation bar, multiple columns (grid), buttons, icon
 
 This theme includes a child theme to be able to easily customize the theme. The Tauch Terminal Bootstrap Child theme is for users and developers and comes with a style.css and functions.php file. Just copy the tauchterminal-child directory into your /themes directory and make your changes there.
 
-For more information on the Tauch Terminal Bootstrap theme go to [http://xtremelysocial.com/wordpress/flat/].
-
-
 == LICENSE ==
 
-Tauch Terminal Bootstrap WordPress theme, Copyright (C) 2014 XtremelySocial
+Tauch Terminal Bootstrap WordPress theme, Copyright (C) 2014 Nessie
 Tauch Terminal Bootstrap WordPress theme is licensed under the GPL.
 
 Userscores WordPress Starter Theme - ​http://underscores.me/
@@ -75,11 +72,6 @@ The theme is translation ready and has already been translated to Spanish and Fr
 3. Activate the theme through the 'Appearance' menu in WordPress
 4. Read the "How to use the theme" and "Frequently Asked Questions" sections below and check out our website for information and examples on how best to use the theme.
 5. If you want to customize the theme, check out the readme.txt file in the tauchterminal-child folder.
-
-
-== SCREENSHOTS ==
-
-For now, WordPress doesn't allow themes to have more than one screenshot, but you can go to [http://xtremelysocial.com/wordpress/flat/] to see a bunch of them.
 
 
 == HOW TO USE THE THEME ==
@@ -197,8 +189,6 @@ What these quicktags are doing is simply inserting some HTML to utilize the incl
 This theme is based on Bootstrap. It is an open-source CSS framework from Twitter that is mobile-first, fully responsive, and cross-browser tested. It lets you add columns, tabs, navbars, carousels (sliders), icons, lists, panels, tooltips, and much, much more to your content.
 
 One thing you don't want from Bootstap, though, is their default settings. Your website will scream "Bootstrap". So we've tweaked all the settings for you already to give you a nice color palette, great looking fonts, and a "flat" look.
-
-You can check out our "Shortcodes" page on our website to see many of the Bootstrap features in action. Just go to [http://xtremelysocial.com/wordpress/shortcodes/]
 
 For the full documentation, please see the Bootstrap website at  [http://getbootstrap.com/components/ and http://getbootstrap.com/css/]. Be sure to check out the components section and javascript sections there as well. All of that works perfectly in this theme.
 

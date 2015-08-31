@@ -2,7 +2,7 @@
 /**
  * Theme: Tauch Terminal Bootstrap
  *
- * This file handles the recommended plugins to go along with XtremelySocial Bootstrap.
+ * This file handles the recommended plugins to go along with Tauch Terminal Bootstrap.
  * None of them are truly required, but will significantly enhance the functionality and
  * useability of this theme.
  *

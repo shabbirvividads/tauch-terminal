@@ -2,7 +2,7 @@
 /**
  * Theme: Tauch Terminal Bootstrap
  *
- * The template for displaying search forms in xtremelysocial
+ * The template for displaying search forms
  *
  * @package tauchterminal
  */
