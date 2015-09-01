@@ -62,8 +62,7 @@ if (! defined('ABSPATH')) {
                     wc_get_template('single-product/rating.php');
                     wc_get_template('single-product-diving/price.php');
                     wc_get_template('single-product/short-description.php');
-                    global $product;
-                    do_action('woocommerce_' . $product->product_type . '_add_to_cart' );
+                    wc_get_template('single-product-rooms/add-to-cart/simple.php');
                     wc_get_template('single-product/meta.php');
                     wc_get_template('single-product/share.php');
                 ?>
