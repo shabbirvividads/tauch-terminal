@@ -45,26 +45,26 @@ class WC_Frontend_Scripts {
 	 * @return array
 	 */
 	public static function get_styles() {
-		// return apply_filters( 'woocommerce_enqueue_styles', array(
-		// 	'woocommerce-layout' => array(
-		// 		'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce-layout.css',
-		// 		'deps'    => '',
-		// 		'version' => WC_VERSION,
-		// 		'media'   => 'all'
-		// 	),
-		// 	'woocommerce-smallscreen' => array(
-		// 		'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce-smallscreen.css',
-		// 		'deps'    => 'woocommerce-layout',
-		// 		'version' => WC_VERSION,
-		// 		'media'   => 'only screen and (max-width: ' . apply_filters( 'woocommerce_style_smallscreen_breakpoint', $breakpoint = '768px' ) . ')'
-		// 	),
-		// 	'woocommerce-general' => array(
-		// 		'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce.css',
-		// 		'deps'    => '',
-		// 		'version' => WC_VERSION,
-		// 		'media'   => 'all'
-		// 	),
-		// ) );
+		return apply_filters( 'woocommerce_enqueue_styles', array(
+			'woocommerce-layout' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce-layout.css',
+				'deps'    => '',
+				'version' => WC_VERSION,
+				'media'   => 'all'
+			),
+			'woocommerce-smallscreen' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce-smallscreen.css',
+				'deps'    => 'woocommerce-layout',
+				'version' => WC_VERSION,
+				'media'   => 'only screen and (max-width: ' . apply_filters( 'woocommerce_style_smallscreen_breakpoint', $breakpoint = '768px' ) . ')'
+			),
+			'woocommerce-general' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WC()->plugin_url() ) . '/assets/css/woocommerce.css',
+				'deps'    => '',
+				'version' => WC_VERSION,
+				'media'   => 'all'
+			),
+		) );
 	}
 
 	/**

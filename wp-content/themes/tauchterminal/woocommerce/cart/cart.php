@@ -15,19 +15,20 @@ wc_print_notices();
 
 do_action('woocommerce_before_cart'); ?>
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
+        <h2><?php echo __('Booking overview', 'tauch-terminal') ?></h2>
         <form action="<?php echo esc_url(WC()->cart->get_cart_url()); ?>" method="post">
 
         <?php do_action('woocommerce_before_cart_table'); ?>
 
-        <table class=" table shop_table cart" cellspacing="0">
+        <table class="table cart" cellspacing="0">
             <thead>
                 <tr>
                     <th class="product-thumbnail">&nbsp;</th>
                     <th class="product-name"><?php _e('Product', 'woocommerce'); ?></th>
                     <th class="product-price"><?php _e('Price', 'woocommerce'); ?></th>
                     <th class="product-quantity"><?php _e('Days', 'woocommerce'); ?></th>
-                    <th class="product-subtotal"><?php _e('Total', 'woocommerce'); ?></th>
+                    <th class="product-subtotal text-right"><?php _e('Total', 'woocommerce'); ?></th>
                     <th class="product-remove">&nbsp;</th>
                 </tr>
             </thead>
@@ -84,7 +85,7 @@ do_action('woocommerce_before_cart'); ?>
                                 <input type="hidden" name="cart[<?php echo $cart_item_key ?>][qty]" value="<?php echo $cart_item['quantity'] ?>" />
                             </td>
 
-                            <td class="product-subtotal">
+                            <td class="product-subtotal text-right">
                                 <?php
                                     echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key);
                                 ?>
@@ -101,6 +102,10 @@ do_action('woocommerce_before_cart'); ?>
 
                 do_action('woocommerce_cart_contents');
                 ?>
+
+            </tbody>
+            <tfoot>
+                <?php wc_get_template( 'cart/cart-totals.php' ); ?>
                 <tr>
                     <td colspan="6" class="actions">
 
@@ -120,18 +125,13 @@ do_action('woocommerce_before_cart'); ?>
                         <?php wp_nonce_field('woocommerce-cart'); ?>
                     </td>
                 </tr>
-
                 <?php do_action('woocommerce_after_cart_contents'); ?>
-            </tbody>
+            </tfoot>
         </table>
 
         <?php do_action('woocommerce_after_cart_table'); ?>
 
         </form>
-    </div>
-
-    <div class="col-md-3 cart-collaterals">
-        <?php do_action('woocommerce_cart_collaterals'); ?>
     </div>
 
     <div class="col-md-12">
