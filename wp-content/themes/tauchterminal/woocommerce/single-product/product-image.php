@@ -15,13 +15,9 @@ global $post, $woocommerce, $product;
 
 ?>
 <div class="images">
-
-    <?php
-        if (has_post_thumbnail()) {
-    ?>
+<?php if (has_post_thumbnail()): ?>
     <div class="slider-for">
         <?php
-
             $image_title     = esc_attr(get_the_title(get_post_thumbnail_id()));
             $image_caption     = get_post(get_post_thumbnail_id())->post_excerpt;
             $image_link      = wp_get_attachment_url(get_post_thumbnail_id());
@@ -119,25 +115,23 @@ global $post, $woocommerce, $product;
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 $('.slider-for').slick({
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  arrows: false,
-                  fade: true,
-                  asNavFor: '.slider-nav'
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    fade: true,
+                    asNavFor: '.slider-nav'
                 });
                 $('.slider-nav').slick({
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
-                  asNavFor: '.slider-for',
-                  dots: true,
-                  centerMode: true,
-                  focusOnSelect: true
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    asNavFor: '.slider-for',
+                    dots: true,
+                    centerMode: true,
+                    focusOnSelect: true
                 });
             });
         </script>
-    <?php
-        } else {
-            echo apply_filters('woocommerce_single_product_image_html', sprintf('<img src="%s" alt="%s" />', wc_placeholder_img_src(), __('Placeholder', 'woocommerce')), $post->ID);
-        }
-    ?>
+<?php else: ?>
+    <?php echo apply_filters('woocommerce_single_product_image_html', sprintf('<img src="%s" alt="%s" />', wc_placeholder_img_src(), __('Placeholder', 'woocommerce')), $post->ID); ?>
+<?php endif; ?>
 </div>
