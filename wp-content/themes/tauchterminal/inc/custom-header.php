@@ -17,9 +17,9 @@
  *
  * @package tauchterminal
  */
-if ( ! function_exists( 'xsbf_custom_header_setup' ) ) :
+if (! function_exists('xsbf_custom_header_setup')) :
 function xsbf_custom_header_setup() {
-    add_theme_support( 'custom-header', apply_filters( 'xsbf_custom_header_args', array(
+    add_theme_support('custom-header', apply_filters('xsbf_custom_header_args', array(
         'default-image'          => '',
         'default-text-color'     => '555555',
         'width'                  => 1600,
@@ -30,12 +30,12 @@ function xsbf_custom_header_setup() {
         'wp-head-callback'       => 'xsbf_header_style',
         'admin-head-callback'    => 'xsbf_admin_header_style',
         'admin-preview-callback' => 'xsbf_admin_header_image',
-    ) ) );
+   )));
 }
-add_action( 'after_setup_theme', 'xsbf_custom_header_setup' );
+add_action('after_setup_theme', 'xsbf_custom_header_setup');
 endif; //end ! function_exists
 
-if ( ! function_exists( 'xsbf_header_style' ) ) :
+if (! function_exists('xsbf_header_style')) :
 /**
  * Styles the header image and text displayed on the blog
  *
@@ -53,7 +53,7 @@ function xsbf_header_style() {
     $header_text_color = get_header_textcolor();
 
     // If no custom options for text are set, let's bail
-    if ( HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text() )
+    if (HEADER_TEXTCOLOR == $header_text_color AND ! display_header_text())
         return;
 
     // If we get this far, we have custom styles. Let's do this.
@@ -61,7 +61,7 @@ function xsbf_header_style() {
     <style type="text/css">
     <?php
         // Has the text been hidden?
-        if ( 'blank' == $header_text_color ) :
+        if ('blank' == $header_text_color) :
     ?>
         .site-title,
         .site-description {
@@ -74,7 +74,7 @@ function xsbf_header_style() {
         }
     <?php
         // If the user has set a custom color for the text use that
-        elseif ( HEADER_TEXTCOLOR != $header_text_color ) :
+        elseif (HEADER_TEXTCOLOR != $header_text_color) :
     ?>
         .site-title a,
         .site-description {
@@ -87,7 +87,7 @@ function xsbf_header_style() {
         }
     <?php endif; ?>
 
-    <?php if ( display_header_text() ) : ?>
+    <?php if (display_header_text()) : ?>
         .navbar-brand {
             position: absolute;
             clip: rect(1px, 1px, 1px, 1px);
@@ -109,7 +109,7 @@ endif; // xsbf_header_style
  *
  * @see xsbf_custom_header_setup().
  */
-if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
+if (! function_exists('xsbf_admin_header_style')) :
  function xsbf_admin_header_style() {
     $header_image = get_header_image();
 ?>
@@ -133,7 +133,7 @@ if ( ! function_exists( 'xsbf_admin_header_style' ) ) :
     }
 
     <?php // If text color not overriden, use default link color ?>
-    <?php if ( HEADER_TEXTCOLOR == get_header_textcolor() ) : ?>
+    <?php if (HEADER_TEXTCOLOR == get_header_textcolor()) : ?>
     #headimg h1 a {
         color: #16a085 !important;
     }
@@ -169,15 +169,15 @@ endif; // ! function_exists
  *
  * @return void
  */
-if ( ! function_exists( 'xsbf_admin_header_image' ) ) :
+if (! function_exists('xsbf_admin_header_image')) :
 function xsbf_admin_header_image() {
     ?>
     <div id="headimg" style="background: url(<?php header_image(); ?>) no-repeat scroll top; background-size: 1600px auto;">
     <div id="headimg">
         <?php $style = ' style="color:#' . get_header_textcolor() . ';"'; ?>
         <div class="home-link">
-            <h1 class="displaying-header-text"><a id="name"<?php echo $style; ?> onclick="return false;" href="#"><?php bloginfo( 'name' ); ?></a></h1>
-            <h2 id="desc" class="displaying-header-text"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></h2>
+            <h1 class="displaying-header-text"><a id="name"<?php echo $style; ?> onclick="return false;" href="#"><?php bloginfo('name'); ?></a></h1>
+            <h2 id="desc" class="displaying-header-text"<?php echo $style; ?>><?php bloginfo('description'); ?></h2>
         </div>
     </div>
 <?php

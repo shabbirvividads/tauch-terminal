@@ -70,10 +70,10 @@ $defaults = array(
  * NOTE: $theme_options is being deprecated and replaced with $xsbf_theme_options. You'll
  * need to update your child themes.
  */
-if ( isset ( $xsbf_theme_options ) AND is_array ( $xsbf_theme_options ) AND ! empty ( $xsbf_theme_options ) ) {
-    $xsbf_theme_options = wp_parse_args( $xsbf_theme_options, $defaults );
-} elseif ( isset ( $theme_options ) AND is_array ( $theme_options ) AND ! empty ( $theme_options ) ) {
-    $xsbf_theme_options = wp_parse_args( $theme_options, $defaults );
+if (isset ($xsbf_theme_options) AND is_array ($xsbf_theme_options) AND ! empty ($xsbf_theme_options)) {
+    $xsbf_theme_options = wp_parse_args($xsbf_theme_options, $defaults);
+} elseif (isset ($theme_options) AND is_array ($theme_options) AND ! empty ($theme_options)) {
+    $xsbf_theme_options = wp_parse_args($theme_options, $defaults);
 } else {
     $xsbf_theme_options = $defaults;
 }
@@ -89,123 +89,123 @@ $content_width = $xsbf_theme_options['content_width'];
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
-if ( ! function_exists( 'xsbf_setup' ) ) :
+if (! function_exists('xsbf_setup')) :
 function xsbf_setup() {
 
     global $xsbf_theme_options;
 
     // Add default posts and comments RSS feed links to head
-    add_theme_support( 'automatic-feed-links' );
+    add_theme_support('automatic-feed-links');
 
     // Enable support for Post Thumbnails on posts and pages. As of WordPress v3.9,
     // specific crop parameters handled.
-    add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 640, 360, array( 'left', 'top' ) ); // crop left top
-    //add_image_size( 'section-image', 1600, 400, array( 'center', 'center' ) ); // section image
+    add_theme_support('post-thumbnails');
+    set_post_thumbnail_size(640, 360, array('left', 'top')); // crop left top
+    //add_image_size('section-image', 1600, 400, array('center', 'center')); // section image
 
     // This theme uses wp_nav_menu() in two locations. As of WordPress v3.0.
-    register_nav_menus( array(
-        'primary'     => __( 'Header Menu', 'tauchterminal' ),
-        'footer'     => __( 'Footer Menu', 'tauchterminal' ),
-    ) );
+    register_nav_menus(array(
+        'primary'     => __('Header Menu', 'tauchterminal'),
+        'footer'     => __('Footer Menu', 'tauchterminal'),
+   ));
 
     // This feature outputs HTML5 markup for the comment forms, search forms and
     // comment lists. As of WordPress v3.6.
-    add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
+    add_theme_support('html5', array('comment-list', 'comment-form', 'search-form'));
 
     // Add editor CSS to style the WordPress visual post / page editor. Ours mainly
     // pulls in all of our front-end CSS.
-    add_editor_style( '/css/editor-style.css' );
+    add_editor_style('/css/editor-style.css');
 
     // Setup the WordPress core custom background feature. As of WordPress v3.4. This
     // theme is full-width up to 1600px, so background will only show when user's
     // screen is wider than that.
-    add_theme_support( 'custom-background', apply_filters( 'xsbf_custom_background_args', array(
+    add_theme_support('custom-background', apply_filters('xsbf_custom_background_args', array(
             'default-color' => $xsbf_theme_options['background_color'],
             'default-image' => '',
-        ) ) );
+       )));
 
     // Enable support for Post Formats. Note we haven't included any special styling.
     // Look at TwentyEleven theme for this.  As of WordPress v3.1.
-    if( ! empty ( $xsbf_theme_options['post_formats']) ) {
-        add_theme_support( 'post-formats', $xsbf_theme_options['post_formats'] );
+    if(! empty ($xsbf_theme_options['post_formats'])) {
+        add_theme_support('post-formats', $xsbf_theme_options['post_formats']);
      }
 
     // Enable support for excerpts on Pages. This is mainly for the Page with Subpages
     // page template, but also nice for search results.
-    add_post_type_support( 'page', 'excerpt' );
+    add_post_type_support('page', 'excerpt');
 
     // Make theme available for translation. Translations can be filed in the /languages/
     // directory. If you want to translate this theme, please contact me!
     add_filter('locale', 'set_my_locale');
-    function set_my_locale( $lang ) {
+    function set_my_locale($lang) {
         $lang = (isset($_GET['language'])) ? $_GET['language'] : $lang;
         return $lang;
     }
     load_theme_textdomain('tauchterminal');
 
 } // end function
-add_action( 'after_setup_theme', 'xsbf_setup' );
+add_action('after_setup_theme', 'xsbf_setup');
 endif; // end ! function_exists
 
 /**
  * Register widgetized areas
  */
-if ( ! function_exists('xsbf_widgets_init') ) :
+if (! function_exists('xsbf_widgets_init')) :
 function xsbf_widgets_init() {
 
     // Put sidebar first as this is standard in almost all WordPress themes
-    register_sidebar( array(
-        'name'          => __( 'Sidebar', 'tauchterminal' ),
+    register_sidebar(array(
+        'name'          => __('Sidebar', 'tauchterminal'),
         'id'            => 'sidebar-1',
-        'description'     => __( 'Main sidebar (right or left)', 'tauchterminal' ),
+        'description'     => __('Main sidebar (right or left)', 'tauchterminal'),
         'before_widget' => '<aside id="%1$s" class="widget clearfix %2$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
-    ) );
+   ));
 
     // Put footer next as most themes put them here. Default # columns is 3.
-    register_sidebar( array(
-        'name'             => __( 'Footer', 'tauchterminal' ),
+    register_sidebar(array(
+        'name'             => __('Footer', 'tauchterminal'),
         'id'             => 'sidebar-2',
-        'description'     => __( 'Optional site footer widgets. Add 1-4 widgets here to display in columns.', 'tauchterminal' ),
+        'description'     => __('Optional site footer widgets. Add 1-4 widgets here to display in columns.', 'tauchterminal'),
         'before_widget' => '<aside id="%1$s" class="widget col-sm-4 clearfix %2$s">',
         'after_widget'     => "</aside>",
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
-    ) );
+   ));
 
     // Page Top (After Header) Widget Area. Single column.
-    register_sidebar( array(
-        'name'             => __( 'Page Top', 'tauchterminal' ),
+    register_sidebar(array(
+        'name'             => __('Page Top', 'tauchterminal'),
         'id'             => 'sidebar-3',
-        'description'     => __( 'Optional section after the header. This is a single column area that spans the full width of the page.', 'tauchterminal' ),
+        'description'     => __('Optional section after the header. This is a single column area that spans the full width of the page.', 'tauchterminal'),
         'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix"><div class="container">',
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
         'after_widget'     => '</div><!-- container --></aside>',
-    ) );
+   ));
 
     // Page Bottom (Before Footer) Widget Area. Single Column.
-    register_sidebar( array(
-        'name'             => __( 'Page Bottom', 'tauchterminal' ),
+    register_sidebar(array(
+        'name'             => __('Page Bottom', 'tauchterminal'),
         'id'             => 'sidebar-4',
-        'description'     => __( 'Optional section before the footer. This is a single column area that spans the full width of the page.', 'tauchterminal' ),
+        'description'     => __('Optional section before the footer. This is a single column area that spans the full width of the page.', 'tauchterminal'),
         'before_widget' => '<aside id="%1$s" class="widget %2$s clearfix"><div class="container">',
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
         'after_widget'     => '</div><!-- container --></aside>',
-    ) );
+   ));
 
 } //end function
-add_action( 'widgets_init', 'xsbf_widgets_init' );
+add_action('widgets_init', 'xsbf_widgets_init');
 endif; // end ! function_exists
 
 /**
  * Load CSS Styles and Javascript Files
  */
-if ( ! function_exists('xsbf_scripts') ) :
+if (! function_exists('xsbf_scripts')) :
 function xsbf_scripts() {
 
     global $xsbf_theme_options;
@@ -213,45 +213,45 @@ function xsbf_scripts() {
     // load minifide if not in debug
     if (WP_DEBUG) {
         // Our base theme CSS that adds colored sections and padding.
-        wp_register_style('tauchterminal', get_template_directory_uri() . '/css/tauchterminal.css', array(), '20150708', 'all' );
-        wp_enqueue_style( 'tauchterminal');
+        wp_register_style('tauchterminal', get_template_directory_uri() . '/css/tauchterminal.css', array(), '20150708', 'all');
+        wp_enqueue_style('tauchterminal');
         /* LOAD JAVASCRIPT */
         // Our theme's javascript for smooth scrolling and optional for touch carousels
-        wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.js', array('jquery'), '20140913', true );
+        wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.js', array('jquery'), '20140913', true);
     } else {
         // Our base theme CSS that adds colored sections and padding.
-        wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.min.css', array(), '20150708', 'all' );
-        wp_enqueue_style( 'tauchterminal');
+        wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.min.css', array(), '20150708', 'all');
+        wp_enqueue_style('tauchterminal');
         /* LOAD JAVASCRIPT */
         // Our theme's javascript for smooth scrolling and optional for touch carousels
-        wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.min.js', array('jquery'), '20140913', true );
+        wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.min.js', array('jquery'), '20140913', true);
     }
 
     // Optional script from _S theme to allow keyboard nvigation through image pages
-    if ( $xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image() ) {
-        wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array('jquery'), '20120202', true );
+    if ($xsbf_theme_options['image_keyboard_nav'] AND is_singular() AND wp_attachment_is_image()) {
+        wp_enqueue_script('keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array('jquery'), '20120202', true);
     }
 
     // For single pages or posts, add javascript to reply inline
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
     }
 
     // For IE8 or older, load HTML5 compatibility files
-    preg_match ( '|MSIE\s([0..9]*)|', $_SERVER['HTTP_USER_AGENT'], $browser );
-    if ( $browser AND $browser[1] < 9 ) {
-        wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/html5/html5shiv.js', null, '3.7.0', true );
-        wp_enqueue_script( 'respond', get_template_directory_uri() . '/html5/respond.min.js', null, '1.4.2', true );
+    preg_match ('|MSIE\s([0..9]*)|', $_SERVER['HTTP_USER_AGENT'], $browser);
+    if ($browser AND $browser[1] < 9) {
+        wp_enqueue_script('html5shiv', get_template_directory_uri() . '/html5/html5shiv.js', null, '3.7.0', true);
+        wp_enqueue_script('respond', get_template_directory_uri() . '/html5/respond.min.js', null, '1.4.2', true);
     }
 
 } // end function
-add_action( 'wp_enqueue_scripts', 'xsbf_scripts' );
+add_action('wp_enqueue_scripts', 'xsbf_scripts');
 endif; // end ! function_exists
 
 /**
  * LOAD OUR REQUIRED AND OPTIONAL INCLUDE FILES FOR VARIOUS THEME FEATURES
  */
-if ( ! function_exists('xsbf_load_includes') ) :
+if (! function_exists('xsbf_load_includes')) :
 function xsbf_load_includes() {
 
     /**
@@ -292,5 +292,5 @@ xsbf_load_includes();
 endif; // end ! function_exists
 
 // WooCommerce
-remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 add_action('woocommerce_cart_collaterals_upsell', 'woocommerce_cross_sell_display');

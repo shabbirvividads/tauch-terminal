@@ -13,8 +13,8 @@ get_header(); ?>
 <header class="content-header">
     <div class="container">
         <section class="error-404 not-found">
-            <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'tauchterminal' ); ?></h1>
-            <h3 class="page-description"><?php _e( 'Or as techies would say, its a "404 Error"', 'tauchterminal' ); ?></h3>
+            <h1 class="page-title"><?php _e('Oops! That page can&rsquo;t be found.', 'tauchterminal'); ?></h1>
+            <h3 class="page-description"><?php _e('Or as techies would say, its a "404 Error"', 'tauchterminal'); ?></h3>
         </section><!-- .error-404 -->
     </div><!-- .container -->
 </header>
@@ -26,9 +26,9 @@ get_header(); ?>
     <div id="primary" class="content-area col-md-8">
         <main id="main" class="site-main" role="main">
 
-            <p><?php _e( 'It looks like nothing was found at this location. Maybe try a search or one of the links below?', 'tauchterminal' ); ?></p>
+            <p><?php _e('It looks like nothing was found at this location. Maybe try a search or one of the links below?', 'tauchterminal'); ?></p>
 
-            <?php get_template_part( 'content', 'siteindex' ); ?>
+            <?php get_template_part('content', 'siteindex'); ?>
 
         </main><!-- #main -->
     </div><!-- #primary -->

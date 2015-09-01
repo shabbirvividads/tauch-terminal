@@ -25,15 +25,15 @@ $posts_per_row = 2;
 /* DON'T CHANGE ANYTHING BELOW HERE */
 get_header(); ?>
 
-<?php get_template_part( 'content', 'header' ); ?>
+<?php get_template_part('content', 'header'); ?>
 
 <div id="primary" class="content-area-wide">
     <main id="main" class="site-main" role="main">
 
         <?php /* DISPLAY THE PAGE CONTENT FIRST */ ?>
-        <?php while ( have_posts() ) : the_post(); ?>
+        <?php while (have_posts()) : the_post(); ?>
 
-            <?php //get_template_part( 'content', 'page-fullwidth' ); ?>
+            <?php //get_template_part('content', 'page-fullwidth'); ?>
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -41,12 +41,12 @@ get_header(); ?>
 
                     <?php the_content(); ?>
 
-                    <?php get_template_part( 'content', 'page-nav' ); ?>
+                    <?php get_template_part('content', 'page-nav'); ?>
 
         <?php /* DISPLAY THE SUB-PAGES OF THIS PAGE */
         // There is no pagination yet, so $posts_per_page needs to be the max number of
         // child pages you'd ever have. TO-DO: ADD PAGINATION
-        $paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
+        $paged = (get_query_var('page')) ? get_query_var('page') : 1;
         $args = array(
             'post_type'         => 'page',
             'nopaging'            => true,
@@ -55,10 +55,10 @@ get_header(); ?>
             'order'                => 'asc',
             'paged'             => $paged,
             'post_parent'         => get_the_ID()
-        );
-        $list_of_posts = new WP_Query( $args );
+       );
+        $list_of_posts = new WP_Query($args);
         ?>
-        <?php if ( $list_of_posts->have_posts() ) : ?>
+        <?php if ($list_of_posts->have_posts()) : ?>
             <div id="page-subpages" class="page-subpages">
             <div class="container"><div class="row">
 
@@ -68,16 +68,16 @@ get_header(); ?>
 
             <?php /* The loop */ ?>
             <?php $count = 0; ?>
-            <?php while ( $list_of_posts->have_posts() AND $count < $posts_per_page ) : $list_of_posts->the_post(); ?>
-                <?php if ( $count > 0 AND $count % $posts_per_row == 0 ) echo '</div><div class="row">'; ?>
+            <?php while ($list_of_posts->have_posts() AND $count < $posts_per_page) : $list_of_posts->the_post(); ?>
+                <?php if ($count > 0 AND $count % $posts_per_row == 0) echo '</div><div class="row">'; ?>
                 <div class="col-lg-<?php echo $num_cols ?>">
                 <?php // Display content of posts ?>
-                <?php get_template_part( 'content', 'page-posts' ); ?>
+                <?php get_template_part('content', 'page-posts'); ?>
                 </div>
                 <?php $count++; ?>
             <?php endwhile; ?>
 
-            <?php //get_template_part( 'content', 'index-nav' ); ?>
+            <?php //get_template_part('content', 'index-nav'); ?>
 
             </div><!-- row --></div><!-- container -->
             </div><!-- page-subpages -->
@@ -88,7 +88,7 @@ get_header(); ?>
         /* Restore original Post Data */
         wp_reset_postdata();
         ?>
-                    <?php edit_post_link( __( '<span class="glyphicon glyphicon-edit"></span> Edit', 'tauchterminal' ), '<div class="container"><footer class="entry-meta"><div class="edit-link">', '</div></div></footer>' ); ?>
+                    <?php edit_post_link(__('<span class="glyphicon glyphicon-edit"></span> Edit', 'tauchterminal'), '<div class="container"><footer class="entry-meta"><div class="edit-link">', '</div></div></footer>'); ?>
 
                 </div><!-- .entry-content -->
 
@@ -96,7 +96,7 @@ get_header(); ?>
 
         <?php
         // If comments are open or we have at least one comment, load up the comment template
-        if ( comments_open() || '0' != get_comments_number() ) :
+        if (comments_open() || '0' != get_comments_number()) :
         ?>
             <div class="comments-wrap">
             <div class="container">
