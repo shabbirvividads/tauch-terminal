@@ -1,11 +1,12 @@
 <div>
+    <h2><?php echo __('Reviews', 'tauch-terminal') ?></h2>
     <div class="row">
-        <div class="col-sm-8 col-md-9">
+        <div class="col-sm-8 col-md-7">
             <div class="ratings">
             <?php foreach ($data_review as $review): ?>
                 <?php $percent = (float)$review->overallRating; ?>
                 <?php $percent = (float)($percent / 5 * 100); ?>
-                <div class="rating row">
+                <div class="rating clearfix">
                     <div class="col-sm-4 col-md-3">
                         <div class="c100 p<?php echo floor($percent) ?><?php if(($percent) > 70): ?> green<?php elseif(($percent) > 40): ?> orange<?php else: ?> red<?php endif ?>">
                             <span><?php echo number_format((float)$percent, 1, '.', '') ?>%</span>
@@ -17,19 +18,19 @@
                     </div>
                     <div class="col-sm-8 col-md-9">
                         <h3>
-                            <?php if (!empty((array) $review->author)): ?><?php printf('From: %s', $review->author) ?><?php else: ?><?php echo __('From: Anonymous') ?><?php endif; ?>
+                            <?php if ($review->author != ''): ?><?php printf('From: %s', $review->author) ?><?php else: ?><?php echo __('From: Anonymous') ?><?php endif; ?>
                             <span class="pull-right"><?php echo mysql2date('j M Y', $review->date) ?></span>
                         </h3>
                         <p><?php echo $review->overallComment ?></p>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 col-md-9 col-md-offset-3">
                         <div class="panel-group" role="tablist">
                             <div class="panel panel-nostyle">
                                 <div class="panel-heading" role="tab" id="id-heading-<?php echo $review->id ?>">
                                     <h4 class="panel-title">
-                                        <a class="" role="button" data-toggle="collapse" href="#id-group-<?php echo $review->id ?>" aria-expanded="true" aria-controls="id-group-<?php echo $review->id ?>">
+                                        <a class="collapsed" role="button" data-toggle="collapse" href="#id-group-<?php echo $review->id ?>" aria-expanded="true" aria-controls="id-group-<?php echo $review->id ?>">
                                             <?php echo __('Rating Details') ?>
-                                            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+                                            <span class="glyphicon glyphicon-menu-up pull-right"></span>
                                         </a>
                                     </h4>
                                 </div>
@@ -81,9 +82,9 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-sm-4 col-md-3 rating-overview">
-            <div class="jumbotron">
-                <h3><?php echo __('average Rating') ?></h3>
+        <div class="col-sm-4 col-md-4 col-md-offset-1 rating-overview">
+            <div class="jumbotron text-center">
+                <h3><?php echo __('Average Rating') ?></h3>
                 <div class="clearfix">
                     <div class="c100 p<?php echo floor($globalStatistics->averageRatingPercentage) ?><?php if($globalStatistics->averageRatingPercentage > 70): ?> green<?php elseif($globalStatistics->averageRatingPercentage > 40): ?> orange<?php else: ?> red<?php endif ?>">
                         <span><?php echo $globalStatistics->averageRatingPercentage ?>%</span>
@@ -93,7 +94,18 @@
                         </div>
                     </div>
                 </div>
-                <p><?php printf('out of %s reviews and %s different protals', $globalStatistics->reviewCount, $globalStatistics->portalCount) ?></p>
+                <p><?php printf('out of %s reviews and<br/>%s different protals', $globalStatistics->reviewCount, $globalStatistics->portalCount) ?></p>
+            </div>
+            <div class="jumbotron text-center">
+                <h3><?php echo __('Portal Statistics') ?></h3>
+                <table class="table table-hover">
+                <?php foreach ($portalStatistics->portal as $portal): ?>
+                    <tr>
+                        <th><?php echo $portal->name ?></th>
+                        <td><?php echo $portal->averageRatingPercentage ?>%</td>
+                    </tr>
+                <?php endforeach; ?>
+                </table>
             </div>
         </div>
     </div>

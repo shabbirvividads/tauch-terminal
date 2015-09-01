@@ -14,6 +14,7 @@ class TauchTerminal_Tulamben {
 
     public static function ca_handler() {
         $globalStatistics = '';
+        $portalStatistics = '';
         $ca_api_external = TauchTerminal_DB::getTTOption('ca_api_external');
         $ca_api_reviews = TauchTerminal_DB::getTTOption('ca_api_reviews');
         $errors = array();
@@ -31,6 +32,7 @@ class TauchTerminal_Tulamben {
                 }
             } else {
                 $globalStatistics = $data->globalStatistics;
+                $portalStatistics = $data->portalStatistics;
             }
         }
 
@@ -51,6 +53,6 @@ class TauchTerminal_Tulamben {
         $page = ($wp_query->query_vars['page']) ? $wp_query->query_vars['page'] : 1;
         $pagination = new LimitPagination($page, $data_review->count(), 20);
 
-        TauchTerminal::view('tulamben/rating', array('data_review' => $pagination->getLimitIterator($data_review), 'globalStatistics' => $globalStatistics, 'pagination' => $pagination));
+        TauchTerminal::view('tulamben/rating', array('data_review' => $pagination->getLimitIterator($data_review), 'globalStatistics' => $globalStatistics, 'portalStatistics' => $portalStatistics, 'pagination' => $pagination));
     }
 }

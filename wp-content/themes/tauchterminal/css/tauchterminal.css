@@ -8129,7 +8129,7 @@ a:focus {
   color: #e08833;
 }
 .ratings h3 {
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 0;
 }
 .ratings h3 .badge {
@@ -8160,6 +8160,26 @@ a:focus {
 }
 .ratings .panel-heading a {
   font-size: 14px;
+  color: #333333;
+}
+.ratings .panel-heading a:hover,
+.ratings .panel-heading a:focus {
+  color: #333333;
+}
+.ratings .glyphicon.glyphicon-menu-up:before {
+  -webkit-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  display: inline-block;
+  -webkit-transition-property: -webkit-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
+.ratings .collapsed .glyphicon.glyphicon-menu-up:before {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .rating-overview .jumbotron {
   padding: 15px;

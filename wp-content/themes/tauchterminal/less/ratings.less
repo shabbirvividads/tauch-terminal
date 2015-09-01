@@ -1,6 +1,6 @@
 .ratings {
     h3 {
-        font-size: 14px;
+        font-size: 16px;
 
         margin-top: 0;
         .badge {
@@ -33,6 +33,28 @@
     }
     .panel-heading a {
         font-size: 14px;
+        color: @text-color;
+        &:hover,
+        &:focus {
+            color: @text-color;
+        }
+    }
+    .glyphicon.glyphicon-menu-up:before {
+        -webkit-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        -o-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+         display: inline-block;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        transition-property: transform;
+    }
+    .collapsed .glyphicon.glyphicon-menu-up:before {
+        -webkit-transform:rotate(180deg);
+        -moz-transform:rotate(180deg);
+        -o-transform:rotate(180deg);
+        .rotate(180deg);
     }
 }
 .rating-overview {
