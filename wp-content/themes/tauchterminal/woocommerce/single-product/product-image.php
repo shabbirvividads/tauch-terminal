@@ -79,12 +79,13 @@ global $post, $woocommerce, $product;
             }
     	?>
         </div>
-        <div class="slider-nav">
-    	   <?php
-            echo '<div>';
-            echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', sprintf( '%s', $mainimage_small ), $post->ID );
-            echo '</div>';
-           if ( $attachment_ids ) {
+        <?php if ($attachment_ids): ?>
+            <div class="slider-nav">
+                <div>
+    	           <?php echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', sprintf( '%s', $mainimage_small ), $post->ID ); ?>
+                </div>
+
+            <?php
                 $loop       = 0;
                 $columns    = apply_filters( 'woocommerce_product_thumbnails_columns', 3 );
 
@@ -112,9 +113,9 @@ global $post, $woocommerce, $product;
 
                     $loop++;
                 }
-            }
-        ?>
-        </div>
+            ?>
+            </div>
+        <?php endif; ?>
         <script type="text/javascript">
             jQuery( document ).ready(function($) {
                 $('.slider-for').slick({

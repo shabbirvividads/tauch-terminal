@@ -8229,6 +8229,14 @@ a:focus {
   max-width: 100%;
   height: auto;
 }
+.woocommerce-breadcrumb {
+  margin-bottom: 15px;
+}
+.woocommerce-message {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
 .home.logged-in.admin-bar #lang_sel_click {
   top: 40px;
 }

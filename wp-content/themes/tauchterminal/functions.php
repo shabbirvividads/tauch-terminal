@@ -290,3 +290,7 @@ function xsbf_load_includes() {
 } // end function
 xsbf_load_includes();
 endif; // end ! function_exists
+
+// WooCommerce
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+add_action('woocommerce_cart_collaterals_upsell', 'woocommerce_cross_sell_display');

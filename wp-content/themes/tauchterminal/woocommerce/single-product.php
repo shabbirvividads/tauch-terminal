@@ -24,12 +24,18 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
         <?php while ( have_posts() ) : the_post(); ?>
-            <?php if($post->post_name == 'diving'): ?>
-    			<?php wc_get_template_part( 'taxonomy', 'product-diving' ); ?>
-            <?php else: ?>
-                <?php wc_get_template_part( 'content', 'single-product' ); ?>
-            <?php endif; ?>
-
+            <?php $category = ($product->get_sku()) ? explode(".", $product->get_sku())[0] : 'default' ?>
+            <?php switch ($category) {
+                case 'diving':
+                    wc_get_template_part( 'taxonomy', 'product-diving' );
+                    break;
+                case 'room':
+                    wc_get_template_part( 'taxonomy', 'product-rooms' );
+                    break;
+                default:
+                    wc_get_template_part( 'content', 'single-product' );
+                    break;
+            } ?>
 		<?php endwhile; // end of the loop. ?>
 
 	<?php
