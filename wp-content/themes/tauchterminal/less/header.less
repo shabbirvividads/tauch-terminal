@@ -17,9 +17,12 @@
 
             border: 1px solid transparent;
         }
+        > li.current-menu-parent > a,
         .current-page-ancestor > a,
         .current-product-parent > a,
-        .current_page_item > a, > li > a:hover, > li > a:focus,
+        .current_page_item > a,
+        > li > a:hover,
+        > li > a:focus,
         .dropdown-menu > li > a:hover,
         .dropdown-menu > li > a:focus,
         > .active > a,
@@ -30,6 +33,23 @@
 
             border-top-color: @white;
             background-color: transparent;
+        }
+        ul a:hover,
+        ul a:focus {
+            border-top-color: transparent !important;
+        }
+        .open ul.dropdown-menu li a {
+            background-color: transparent !important;
+            padding-left: 20px;
+            &:hover,
+            &:focus {
+                border-left-color: @white;
+                background-color: transparent !important;
+            }
+        }
+        .open ul.dropdown-menu li.active a {
+            border-left-color: @white;
+            background-color: transparent !important;
         }
         .open .dropdown-menu > li > a {
             padding-left: 30px;
