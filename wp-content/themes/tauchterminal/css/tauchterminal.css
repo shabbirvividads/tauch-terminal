@@ -7038,6 +7038,7 @@ a:focus {
   text-shadow: #00b74a -1px -1px 1px, rgba(0, 0, 0, 0.5) 1px 1px 1px;
   border: 1px solid transparent;
 }
+.main-navigation .navbar .navbar-nav > li.current-menu-parent > a,
 .main-navigation .navbar .navbar-nav .current-page-ancestor > a,
 .main-navigation .navbar .navbar-nav .current-product-parent > a,
 .main-navigation .navbar .navbar-nav .current_page_item > a,
@@ -7052,6 +7053,23 @@ a:focus {
   text-shadow: #00b74a -1px -1px 1px, rgba(0, 0, 0, 0.7) 1px 1px 1px;
   border-top-color: #ffffff;
   background-color: transparent;
+}
+.main-navigation .navbar .navbar-nav ul a:hover,
+.main-navigation .navbar .navbar-nav ul a:focus {
+  border-top-color: transparent !important;
+}
+.main-navigation .navbar .navbar-nav .open ul.dropdown-menu li a {
+  background-color: transparent !important;
+  padding-left: 20px;
+}
+.main-navigation .navbar .navbar-nav .open ul.dropdown-menu li a:hover,
+.main-navigation .navbar .navbar-nav .open ul.dropdown-menu li a:focus {
+  border-left-color: #ffffff;
+  background-color: transparent !important;
+}
+.main-navigation .navbar .navbar-nav .open ul.dropdown-menu li.active a {
+  border-left-color: #ffffff;
+  background-color: transparent !important;
 }
 .main-navigation .navbar .navbar-nav .open .dropdown-menu > li > a {
   padding-left: 30px;
@@ -8257,14 +8275,18 @@ a:focus {
   margin: 15px 0;
   border-radius: 5px;
 }
-.woocommerce .cart-collaterals,
-.woocommerce-page .cart-collaterals {
-  width: 25%;
-}
 .woocommerce .cart-collaterals .cart_totals,
 .woocommerce-page .cart-collaterals .cart_totals {
   width: 100%;
   float: none;
+}
+.woocommerce .cart-collaterals .cart_totals table,
+.woocommerce-page .cart-collaterals .cart_totals table {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.woocommerce .cart-collaterals .cart_totals table th,
+.woocommerce-page .cart-collaterals .cart_totals table th {
+  padding: 6px 12px;
 }
 .woocommerce-cart .cart-collaterals .cart_totals table {
   width: 100%;

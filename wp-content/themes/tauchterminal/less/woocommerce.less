@@ -73,15 +73,16 @@
     border-radius: 5px;
 }
 
-.woocommerce .cart-collaterals,
-.woocommerce-page .cart-collaterals {
-    width: 25%;
-}
-
 .woocommerce .cart-collaterals .cart_totals,
 .woocommerce-page .cart-collaterals .cart_totals {
     width: 100%;
     float: none;
+    table {
+        border: 1px solid rgba(0,0,0,.1);
+        th {
+            padding: 6px 12px;
+        }
+    }
 }
 
 .woocommerce-cart .cart-collaterals .cart_totals table {
