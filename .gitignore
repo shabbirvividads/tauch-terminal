@@ -6,5 +6,6 @@ wp-content/plugins/slick-carousel
 wp-content/plugins/sitepress-multilingual-cms
 *.css.map
 *.min.*
+*.xml.cache
 dist
 wp-content/uploads/*
