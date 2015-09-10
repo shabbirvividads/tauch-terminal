@@ -33,6 +33,7 @@ add_action('plugins_loaded', 'tt_update_db_check');
 
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'pagination.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'certifications.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
 
 if (is_admin()) {

@@ -56,7 +56,7 @@
 
     <div class="container">
         <ul class="list-unstyled list-inline certifications">
-            <?php foreach (TauchTerminal::getCertifications() as $certification): ?>
+            <?php foreach (TauchTerminal_Certifications::getCertifications() as $certification): ?>
                 <li class="item col-sm-4 col-md-2">
                     <img src="<?php echo $certification[0] ?>" alt="<?php echo $certification[1] ?>">
                 </li>
