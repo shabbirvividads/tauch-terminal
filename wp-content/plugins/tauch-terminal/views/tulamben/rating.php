@@ -8,7 +8,7 @@
                 <?php $percent = (float)($percent / 5 * 100); ?>
                 <div class="rating clearfix">
                     <div class="col-sm-4 col-md-3">
-                        <div class="c100 p<?php echo floor($percent) ?><?php if(($percent) > 70): ?> green<?php elseif(($percent) > 40): ?> orange<?php else: ?> red<?php endif ?>">
+                        <div class="c100 p<?php echo floor($percent) ?><?php if(($percent) > 75): ?> green<?php elseif(($percent) > 40): ?> orange<?php else: ?> red<?php endif ?>">
                             <span><?php echo number_format((float)$percent, 1, '.', '') ?>%</span>
                             <div class="slice">
                                 <div class="bar"></div>
@@ -86,7 +86,7 @@
             <div class="jumbotron text-center">
                 <h3><?php echo __('Average Rating') ?></h3>
                 <div class="clearfix">
-                    <div class="c100 p<?php echo floor($globalStatistics->averageRatingPercentage) ?><?php if($globalStatistics->averageRatingPercentage > 70): ?> green<?php elseif($globalStatistics->averageRatingPercentage > 40): ?> orange<?php else: ?> red<?php endif ?>">
+                    <div class="c100 p<?php echo floor($globalStatistics->averageRatingPercentage) ?><?php if($globalStatistics->averageRatingPercentage > 75): ?> green<?php elseif($globalStatistics->averageRatingPercentage > 40): ?> orange<?php else: ?> red<?php endif ?>">
                         <span><?php echo $globalStatistics->averageRatingPercentage ?>%</span>
                         <div class="slice">
                             <div class="bar"></div>

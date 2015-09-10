@@ -19,6 +19,7 @@ class TauchTerminal_DB {
         self::upgrade_version('1.0.1');
         self::upgrade_version('1.0.2');
         self::upgrade_version('1.0.3');
+        self::upgrade_version('1.0.4');
     }
 
     public static function getSettings() {
