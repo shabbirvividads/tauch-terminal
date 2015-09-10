@@ -12,47 +12,91 @@ class TauchTerminal_Tulamben {
         TauchTerminal::view('tulamben/settings', array('settings' => $settings));
     }
 
+    private static function call_hotelbooking($url) {
+        try {
+            $client = new SoapClient($url, array("trace" => false, "exceptions" => true));
+            try {
+                return $client->ChangeDensityUnit(array(
+                    'DensityValue' => '123.30',
+                    'fromDensityUnit' => 'copper',
+                    'toDensityUnit' => 'gold'
+                ));
+            } catch (SoapFault $sp) {
+                //your logic rearding soap fault
+                return $sp;
+            }
+        }catch(Exception $e) {
+            // your loging regarding this case
+            return $e;
+        }
+        return false;
+    }
+
+    public static function hotelbooking_handler() {
+        $soap = TauchTerminal_DB::getTTOption('soap_booking');
+
+        $result = self::call_hotelbooking($soap);
+        var_dump($result);
+    }
+
     public static function ca_handler() {
+        $cacheName = 'ca_api_external.xml.cache';
+        $cacheNameReview = 'ca_api_reviews.xml.cache';
+        $ageInSeconds = 86400; // one day
+
         $globalStatistics = '';
         $portalStatistics = '';
-        $ca_api_external = TauchTerminal_DB::getTTOption('ca_api_external');
-        $ca_api_reviews = TauchTerminal_DB::getTTOption('ca_api_reviews');
         $errors = array();
         libxml_use_internal_errors(true);
 
-        if (($response_xml_data = file_get_contents($ca_api_external))===false ||
-            ($response_xml_data_review = file_get_contents($ca_api_reviews))===false) {
-            TauchTerminal::view('tulamben/rating_default', array('error' => "Error fetching XML"));
-        } else {
-            $data = simplexml_load_string($response_xml_data);
-            if (!$data) {
-                $errors[0] = "Error loading XML";
-                foreach(libxml_get_errors() as $error) {
-                    $errors[] = $error->message;
-                }
-            } else {
-                $globalStatistics = $data->globalStatistics;
-                $portalStatistics = $data->portalStatistics;
+        // generate the cache version if it doesn't exist or it's too old!
+        clearstatcache();
+        if (!file_exists($cacheName) || filemtime($cacheName) + $ageInSeconds < time()) {
+            $ca_api_external = TauchTerminal_DB::getTTOption('ca_api_external');
+            if (($response_xml_data = file_get_contents($ca_api_external))!==false) {
+                file_put_contents($cacheName, $response_xml_data);
             }
         }
 
-        $data_review = simplexml_load_string($response_xml_data_review);
-        if (!$data_review) {
-            $errors[0] = "Error loading XML";
+        if (!file_exists($cacheNameReview) || filemtime($cacheNameReview) + $ageInSeconds < time()) {
+            $ca_api_reviews = TauchTerminal_DB::getTTOption('ca_api_reviews');
+            if (($response_xml_data = file_get_contents($ca_api_reviews))!==false) {
+                file_put_contents($cacheNameReview, $response_xml_data);
+            }
+        }
+
+        $data = simplexml_load_file($cacheName);
+        if (!$data) {
+            $errors[] = "Error loading XML " . $cacheName;
             foreach(libxml_get_errors() as $error) {
                 $errors[] = $error->message;
             }
+            libxml_clear_errors();
+        } else {
+            $globalStatistics = $data->globalStatistics;
+            $portalStatistics = $data->portalStatistics;
         }
-        $data_review = $data_review->reviews->review;
+
+        $data_review = simplexml_load_file($cacheNameReview);
+        if (!$data_review) {
+            $errors[] = "Error loading XML " . $cacheNameReview;
+            foreach(libxml_get_errors() as $error) {
+                $errors[] = $error->message;
+            }
+            libxml_clear_errors();
+        } else {
+            $data_review = $data_review->reviews->review;
+        }
+
         if (!empty($errors)) {
             TauchTerminal::view('tulamben/rating_default', array('error' => $errors));
+        } else {
+            // pagination
+            global $wp_query;
+            $page = ($wp_query->query_vars['page']) ? $wp_query->query_vars['page'] : 1;
+            $pagination = new LimitPagination($page, $data_review->count(), 20);
+
+            TauchTerminal::view('tulamben/rating', array('data_review' => $pagination->getLimitIterator($data_review), 'globalStatistics' => $globalStatistics, 'portalStatistics' => $portalStatistics, 'pagination' => $pagination));
         }
-
-        // pagination
-        global $wp_query;
-        $page = ($wp_query->query_vars['page']) ? $wp_query->query_vars['page'] : 1;
-        $pagination = new LimitPagination($page, $data_review->count(), 20);
-
-        TauchTerminal::view('tulamben/rating', array('data_review' => $pagination->getLimitIterator($data_review), 'globalStatistics' => $globalStatistics, 'portalStatistics' => $portalStatistics, 'pagination' => $pagination));
     }
 }

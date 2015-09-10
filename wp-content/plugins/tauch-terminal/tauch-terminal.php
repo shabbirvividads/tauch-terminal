@@ -46,6 +46,11 @@ function customeralliance_handler() {
 }
 add_shortcode('tauchterminal-customeralliance', 'customeralliance_handler');
 
+function booking_handler() {
+    TauchTerminal_Tulamben::hotelbooking_handler();
+}
+add_shortcode('tauchterminal-testconnection', 'booking_handler');
+
 add_filter('query_vars', 'parameter_queryvars' );
 function parameter_queryvars($qvars) {
     $qvars[] = ' myvar';
