@@ -8230,6 +8230,16 @@ a:focus {
   width: 100%;
   height: auto;
 }
+.woocommerce form .form-row .select2-container {
+  padding-top: 3px;
+}
+.woocommerce form .form-row-first,
+.woocommerce form .form-row-last,
+.woocommerce-page form .form-row-first,
+.woocommerce-page form .form-row-last {
+  width: 100%;
+  float: none;
+}
 .products .product-item {
   position: relative;
   margin-bottom: 30px;
