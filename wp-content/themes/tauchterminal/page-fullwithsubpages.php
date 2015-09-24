@@ -55,7 +55,7 @@ get_header(); ?>
             'order'                => 'asc',
             'paged'             => $paged,
             'post_parent'         => get_the_ID()
-       );
+        );
         $list_of_posts = new WP_Query($args);
         ?>
         <?php if ($list_of_posts->have_posts()) : ?>

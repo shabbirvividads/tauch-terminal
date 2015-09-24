@@ -107,7 +107,7 @@ function xsbf_setup() {
     register_nav_menus(array(
         'primary'     => __('Header Menu', 'tauchterminal'),
         'footer'     => __('Footer Menu', 'tauchterminal'),
-   ));
+    ));
 
     // This feature outputs HTML5 markup for the comment forms, search forms and
     // comment lists. As of WordPress v3.6.
@@ -123,13 +123,13 @@ function xsbf_setup() {
     add_theme_support('custom-background', apply_filters('xsbf_custom_background_args', array(
             'default-color' => $xsbf_theme_options['background_color'],
             'default-image' => '',
-       )));
+        )));
 
     // Enable support for Post Formats. Note we haven't included any special styling.
     // Look at TwentyEleven theme for this.  As of WordPress v3.1.
     if(! empty ($xsbf_theme_options['post_formats'])) {
         add_theme_support('post-formats', $xsbf_theme_options['post_formats']);
-     }
+    }
 
     // Enable support for excerpts on Pages. This is mainly for the Page with Subpages
     // page template, but also nice for search results.
@@ -163,7 +163,7 @@ function xsbf_widgets_init() {
         'after_widget'  => '</aside>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
-   ));
+    ));
 
     // Put footer next as most themes put them here. Default # columns is 3.
     register_sidebar(array(
@@ -174,7 +174,7 @@ function xsbf_widgets_init() {
         'after_widget'     => "</aside>",
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
-   ));
+    ));
 
     // Page Top (After Header) Widget Area. Single column.
     register_sidebar(array(
@@ -185,7 +185,7 @@ function xsbf_widgets_init() {
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
         'after_widget'     => '</div><!-- container --></aside>',
-   ));
+    ));
 
     // Page Bottom (Before Footer) Widget Area. Single Column.
     register_sidebar(array(
@@ -196,7 +196,7 @@ function xsbf_widgets_init() {
         'before_title'     => '<h2 class="widget-title">',
         'after_title'     => '</h2>',
         'after_widget'     => '</div><!-- container --></aside>',
-   ));
+    ));
 
 } //end function
 add_action('widgets_init', 'xsbf_widgets_init');
@@ -295,8 +295,8 @@ endif; // end ! function_exists
 // WooCommerce
 ######################################################################################################################
 // unhook theme wrapper
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
 // add custom theme wrapper hook
 add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
@@ -316,9 +316,9 @@ function my_theme_wrapper_end() {
 }
 
 // declare theme support
-add_action( 'after_setup_theme', 'woocommerce_support' );
+add_action('after_setup_theme', 'woocommerce_support');
 function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+    add_theme_support('woocommerce');
 }
 
 // don't merge products in cart

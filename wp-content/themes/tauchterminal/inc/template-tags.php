@@ -120,7 +120,7 @@ function xsbf_comment($comment, $args, $depth) {
                     'max_depth' => $args['max_depth'],
                     'before'    => '<div class="reply">',
                     'after'     => '</div>',
-               )));
+                )));
             ?>
         </article><!-- .comment-body -->
 
@@ -153,7 +153,7 @@ function xsbf_the_attached_image() {
         'post_mime_type' => 'image',
         'order'          => 'ASC',
         'orderby'        => 'menu_order ID'
-   ));
+    ));
 
     // If there is more than 1 attachment in a gallery...
     if (count($attachment_ids) > 1) {
@@ -176,7 +176,7 @@ function xsbf_the_attached_image() {
     printf('<a href="%1$s" rel="attachment">%2$s</a>',
         esc_url($next_attachment_url),
         wp_get_attachment_image($post->ID, $attachment_size)
-   );
+    );
 }
 endif;
 
@@ -189,7 +189,7 @@ function xsbf_categorized_blog() {
         // Create an array of all the categories that are attached to posts
         $all_the_cool_cats = get_categories(array(
             'hide_empty' => 1,
-       ));
+        ));
 
         // Count the number of categories that are attached to the posts
         $all_the_cool_cats = count($all_the_cool_cats);

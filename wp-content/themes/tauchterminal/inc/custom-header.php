@@ -30,7 +30,7 @@ function xsbf_custom_header_setup() {
         'wp-head-callback'       => 'xsbf_header_style',
         'admin-head-callback'    => 'xsbf_admin_header_style',
         'admin-preview-callback' => 'xsbf_admin_header_image',
-   )));
+    )));
 }
 add_action('after_setup_theme', 'xsbf_custom_header_setup');
 endif; //end ! function_exists

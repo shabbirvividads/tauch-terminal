@@ -47,58 +47,57 @@ function xsbf_bootstrap_register_required_plugins() {
             'name'         => 'Jetpack',
             'slug'         => 'jetpack',
             'required'     => false,
-       ),
+        ),
 
         // Simple CSS for Widgets (to make full-width colored widgets easy)
         array(
             'name'         => 'Simple CSS for Widgets',
             'slug'         => 'simple-css-for-widgets',
             'required'     => false,
-       ),
+        ),
 
         // Widget Classes (to make full-width colored widgets easy)
         /*array(
             'name'         => 'Widget Classes',
             'slug'         => 'widget-classes',
             'required'     => false,
-       ),*/
+        ),*/
 
         // Regenerate Thumbnails (needed to set images to our custom size)
         array(
             'name'         => 'Regenerate Thumbnails',
             'slug'         => 'regenerate-thumbnails',
             'required'     => false,
-       ),
+        ),
 
         // Easy Bootstrap Shortcodes Plugin
         /*array(
             'name'         => 'Easy Bootstrap Shortcodes',
             'slug'         => 'easy-bootstrap-shortcodes',
             'required'     => false,
-       ),*/
+        ),*/
 
         // Bootstrap Shortcodes Plugin
         /*array(
             'name'         => 'Bootstrap Shortcodes',
             'slug'         => 'bootstrap-shortcodes',
             'required'     => false,
-       ),*/
+        ),*/
 
         // Bootstrap 3 Shortcodes Plugin
         array(
             'name'         => 'Bootstrap 3 Shortcodes',
             'slug'         => 'bootstrap-3-shortcodes',
             'required'     => false,
-       ),
+        ),
 
         // Agnosia Bootstrap Carousel Plugin
         /*array(
             'name'         => 'Agnosia Bootstrap Carousel by AuSoft',
             'slug'         => 'agnosia-bootstrap-carousel',
             'required'     => false,
-       ),*/
-
-   );
+        ),*/
+    );
 
     /**
      * Array of configuration settings. Amend each line as needed.
@@ -135,9 +134,9 @@ function xsbf_bootstrap_register_required_plugins() {
             'plugin_activated'                => __('Plugin activated successfully.', 'tgmpa'),
             'complete'                        => __('All plugins installed and activated successfully. %s', 'tgmpa'), // %s = dashboard link.
             'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-       )
+        )
 */
-   );
+    );
 
     tgmpa($plugins, $config);
 

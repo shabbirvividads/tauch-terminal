@@ -62,7 +62,7 @@ if (! defined('ABSPATH')) {
                     wc_get_template('single-product/rating.php');
                     wc_get_template('single-product-diving/price.php');
                     wc_get_template('single-product/short-description.php');
-                    // do_action('woocommerce_' . $product->product_type . '_add_to_cart' );
+                    // do_action('woocommerce_' . $product->product_type . '_add_to_cart');
                     global $product;
                     // Enqueue variation scripts
                     wp_enqueue_script('wc-add-to-cart-variation');
@@ -70,7 +70,7 @@ if (! defined('ABSPATH')) {
                             'available_variations'  => $product->get_available_variations(),
                             'attributes'            => $product->get_variation_attributes(),
                             'selected_attributes'   => $product->get_variation_default_attributes()
-                       ));
+                        ));
                     wc_get_template('single-product/meta.php');
                     wc_get_template('single-product/share.php');
                 ?>

@@ -53,7 +53,7 @@
     wp_list_categories(array(
         'show_count' => 1,
         'title_li'   => '',
-   ));
+    ));
     ?>
     </ul>
 </div><!-- .widget -->
@@ -75,10 +75,10 @@ if ($tag_cloud) {
 <?php // If this blog has portfolio categories (types), display them ?>
 <?php
 $portfolio_types = wp_list_categories(array(
-        'show_count' => true,
-        'title_li'   => '', //_x ('Portfolio Categories', 'tauchterminal'),
-        'taxonomy'    => 'jetpack-portfolio-type',
-        'echo'        => false
+    'show_count' => true,
+    'title_li'   => '', //_x ('Portfolio Categories', 'tauchterminal'),
+    'taxonomy'    => 'jetpack-portfolio-type',
+    'echo'        => false
 ));
 if ($portfolio_types) :
 ?>

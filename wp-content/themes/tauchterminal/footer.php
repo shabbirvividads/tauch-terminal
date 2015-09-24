@@ -101,8 +101,8 @@
             'fallback_cb'            => '',
             'echo'                    => false, // we'll output the menu later
             'depth'                    => 1,
-           )
-       );
+            )
+        );
 
     // If not, default one
     } elseif ($xsbf_theme_options['sample_footer_menu']) {
@@ -130,7 +130,7 @@
         date ('Y'),
         '<a href="' . esc_url(home_url('/')) . '" rel="home">' . get_bloginfo('name') . '</a>',
         '<a href="' . $theme->get('ThemeURI') . '" rel="profile" target="_blank">' . $theme->get('Author') . '</a>'
-   );
+    );
     $site_credits = apply_filters('xsbf_credits', $site_credits);
      ?>
 

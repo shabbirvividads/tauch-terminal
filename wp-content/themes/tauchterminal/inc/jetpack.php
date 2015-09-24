@@ -22,7 +22,7 @@ function xsbf_jetpack_setup() {
     // included any special styling, just handle displaying the pages.
     if(! empty ($xsbf_theme_options['testimonials'])) {
         add_theme_support('jetpack-testimonial');
-     }
+    }
 
     // Enable infinite scroll (if user turns it on)
      // See: http://jetpack.me/support/infinite-scroll/
@@ -32,9 +32,9 @@ function xsbf_jetpack_setup() {
         'footer_widgets' => array(
             'sidebar-2', // Footer
             'sidebar-4', // Page Bottom
-       ),
+        ),
         'footer'         => 'page',
-   ));
+    ));
 
     // Enable user to upload a custom site logo. The function can take a size argument.
     // The default is thumbnail, with other valid values being medium, large, full, and

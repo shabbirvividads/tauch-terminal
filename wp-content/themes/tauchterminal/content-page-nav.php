@@ -32,10 +32,10 @@ if ($post->ID != $post->post_parent AND +
      ! is_page_template('page-fullwithsubpages.php')) {
 
     $args = array(
-        'parent'           => $post->post_parent,
-        'hierarchical'  => null,
+        'parent'          => $post->post_parent,
+        'hierarchical'    => null,
         'sort_column'     => 'menu_order',
-   );
+    );
     $pagelist = get_pages($args);
     $pages = array();
     foreach ($pagelist as $page) {

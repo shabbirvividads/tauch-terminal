@@ -24,9 +24,8 @@ function xsbf_is_fullwidth() {
         is_page_template('page-fullwidth.php') OR +
         is_page_template('page-fullwithposts.php') OR +
         is_page_template('page-fullwithsubpages.php')
-       )
-       ) {
-            return true;
+    )) {
+        return true;
 
     /* for posts, check the single template */
     } elseif (is_single()) {
@@ -114,7 +113,7 @@ function xsbf_img_caption ($null, $attr, $content) {
         'align'    => 'alignnone',
         'width'    => '',
         'caption' => ''
-   ), $attr));
+    ), $attr));
 
     // If image is not full-width, then don't mess with it.
     //if (1 > (int) $width OR empty ($caption) OR $content_width > $width)
@@ -209,7 +208,7 @@ function xsbf_add_custom_box() {
             $screen,
             'normal',
             'high'
-       );
+        );
     }
 }
 endif; // end ! function_exists

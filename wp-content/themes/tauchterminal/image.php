@@ -30,7 +30,7 @@ get_header(); ?>
                                 $metadata['height'],
                                 esc_url(get_permalink($post->post_parent)),
                                 get_the_title($post->post_parent)
-                           );
+                            );
                         ?>
                         <?php //get_template_part('content', 'edit-link'); ?>
                     </div><!-- .entry-meta -->

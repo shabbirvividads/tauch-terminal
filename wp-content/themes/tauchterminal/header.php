@@ -106,8 +106,8 @@
                 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                 'echo'              => false,
                 'depth'             => 2
-           )
-       );
+            )
+        );
         echo apply_filters('xsbf_navbar', $navbar);
         ?>
 
