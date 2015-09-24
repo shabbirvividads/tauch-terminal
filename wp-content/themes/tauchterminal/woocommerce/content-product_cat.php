@@ -4,9 +4,9 @@
  *
  * Override this template by copying it to yourtheme/woocommerce/content-product_cat.php
  *
- * @author         WooThemes
+ * @author      WooThemes
  * @package     WooCommerce/Templates
- * @version     1.6.4
+ * @version     2.4.0
  */
 
 if (! defined('ABSPATH')) {
