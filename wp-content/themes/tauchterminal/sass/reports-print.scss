@@ -2,7 +2,8 @@
  *	reports-print.scss
  *	A print stylesheet for reports. Ensures reports look good when printed.
  */
-
+@media print
+{
 * {
 	background: transparent !important;
 	color: black !important;
@@ -70,4 +71,5 @@ h2 .nav-tab {
 	padding: .25em .5em !important;
 	box-shadow: none !important;
 	border-bottom: 1px solid gray !important;
+}
 }

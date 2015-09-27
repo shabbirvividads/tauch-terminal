@@ -87,7 +87,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'wp-content/themes/<%= pkg.name %>/sass/',
-                    src: ['*.scss'],
+                    src: ['*.scss', '!auth.scss', '!wc-setup.scss'],
                     dest: 'wp-content/themes/<%= pkg.name %>/dist/css',
                     ext: '.woocommerce.css'
                 }]
@@ -206,7 +206,11 @@ module.exports = function(grunt) {
         watch: {
             less: {
                 files: 'wp-content/themes/<%= pkg.name %>/less/**/*.less',
-                tasks: ['less','csscomb', 'concat:css', 'autoprefixer']
+                tasks: ['less', 'concat:css', 'autoprefixer']
+            },
+            sass: {
+                files: 'wp-content/themes/<%= pkg.name %>/sass/**/*.scss',
+                tasks: ['sass', 'concat:css', 'autoprefixer']
             },
             src: {
                 files: '<%= jshint.core.src %>',
