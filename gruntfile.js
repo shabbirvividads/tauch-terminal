@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 options: {
                     cwd: 'wp-content/themes/<%= pkg.name %>',
                     domainPath: '../../languages/themes',      // Where to save the POT file.
-                    mainFile: '/css/<%= pkg.name %>.css',      // Main project file.
+                    mainFile: 'dist/css/<%= pkg.name %>.css',      // Main project file.
                     potFilename: '<%= pkg.name %>.pot',        // Name of the POT file.
                     type: 'wp-theme',                          // Type of project (wp-plugin or wp-theme).
                     exclude: [],                               // List of files or directories to ignore.
@@ -70,24 +70,95 @@ module.exports = function(grunt) {
                     sourceMap: true,
                     outputSourceFiles: true,
                     sourceMapURL: '<%= pkg.name %>.css.map',
-                    sourceMapFilename: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css.map'
+                    sourceMapFilename: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css.map'
                 },
                 src: 'wp-content/themes/<%= pkg.name %>/less/<%= pkg.name %>.less',
-                dest: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css'
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css'
+            }
+        },
+
+        // Compile all .scss files for woocommerce
+        sass: {
+            compile: {
+                options: {
+                    sourcemap: 'none',
+                    loadPath: require('node-bourbon').includePaths
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'wp-content/plugins/woocommerce/assets/css/',
+                    src: ['*.scss'],
+                    dest: 'wp-content/themes/<%= pkg.name %>/dist/css',
+                    ext: '.woocommerce.css'
+                }]
+            }
+        },
+
+        csslint: {
+            options: {
+                csslintrc: 'wp-content/themes/<%= pkg.name %>/less/.csslintrc'
+            },
+            dist: [
+                'wp-content/themes/<%= pkg.name %>/dist/css/*.css'
+            ]
+        },
+
+        csscomb: {
+            options: {
+                config: 'wp-content/themes/<%= pkg.name %>/less/csscomb.json'
+            },
+            dist: {
+                expand: true,
+                cwd: 'wp-content/themes/<%= pkg.name %>/dist/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/'
+            }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: configBridge.config.autoprefixerBrowsers
+            },
+            core: {
+                options: {
+                    map: true
+                },
+                src: ['wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.merged.css']
+            }
+        },
+
+        cssmin: {
+            options: {
+                // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+                //        and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
+                compatibility: 'ie8',
+                keepSpecialComments: '*',
+                advanced: false
+            },
+            minifyCore: {
+                src: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.merged.css',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.min.css'
             }
         },
 
         concat: {
-            options: {
-                banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
-                stripBanners: false
-            },
+            // options: {
+            //     banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+            //     stripBanners: false
+            // },
             bootstrap: {
                 src: [
                   'node_modules/bootstrap/dist/js/bootstrap.min.js',
                   'wp-content/themes/<%= pkg.name %>/js/<%= pkg.name %>.js'
                 ],
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/js/<%= pkg.name %>.js'
+            },
+            css: {
+                src: [
+                  'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css',
+                  'wp-content/themes/<%= pkg.name %>/dist/css/*.woocommerce.css'
+                ],
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.merged.css'
             }
         },
 
@@ -102,67 +173,6 @@ module.exports = function(grunt) {
             core: {
                 src: '<%= concat.bootstrap.dest %>',
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/js/<%= pkg.name %>.min.js'
-            }
-        },
-
-        autoprefixer: {
-            options: {
-                browsers: configBridge.config.autoprefixerBrowsers
-            },
-            core: {
-                options: {
-                    map: true
-                },
-                src: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css'
-            }
-        },
-
-        csslint: {
-            options: {
-                csslintrc: 'less/.csslintrc'
-            },
-            dist: [
-                'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css',
-                'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>-theme.css'
-            ]
-        },
-
-        cssmin: {
-            options: {
-                // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
-                //        and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
-                compatibility: 'ie8',
-                keepSpecialComments: '*',
-                advanced: false
-            },
-            minifyCore: {
-                src: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>.css',
-                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.min.css'
-            },
-            minifyTheme: {
-                src: 'wp-content/themes/<%= pkg.name %>/css/<%= pkg.name %>-theme.css',
-                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>-theme.min.css'
-            }
-        },
-
-        copy: {
-            fonts: {
-                expand: true,
-                cwd: 'node_modules/bootstrap/fonts',
-                src: '**',
-                dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
-            }
-        },
-
-        csscomb: {
-            options: {
-                config: 'wp-content/themes/<%= pkg.name %>/less/csscomb.json'
-            },
-            dist: {
-                expand: true,
-                cwd: 'wp-content/themes/<%= pkg.name %>/dist/css/',
-                src: ['*.css', '!*.min.css'],
-                dest: 'wp-content/themes/<%= pkg.name %>/dist/css/'
             }
         },
 
@@ -184,26 +194,38 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+            fonts: {
+                expand: true,
+                cwd: 'node_modules/bootstrap/fonts',
+                src: '**',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
+            }
+        },
+
         watch: {
             less: {
                 files: 'wp-content/themes/<%= pkg.name %>/less/**/*.less',
-                tasks: ['less','dist-css']
+                tasks: ['less','csscomb', 'concat:css', 'autoprefixer']
             },
             src: {
                 files: '<%= jshint.core.src %>',
-                tasks: ['jshint:core', 'concat']
+                tasks: ['jshint', 'jscs', 'concat']
             },
         }
 
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['less', 'csscomb', 'autoprefixer', 'jshint', 'jscs']);
+    grunt.registerTask('default', ['less', 'csscomb', 'concat:css', 'autoprefixer', 'jshint', 'jscs']);
 
-    grunt.registerTask('test-js', ['jshint', 'jscs']);
-    grunt.registerTask('dist-js', ['concat', 'uglify:core']);
-
-    grunt.registerTask('dist-css', ['less', 'csscomb', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('dist-css', function(which) {
+        var task = 'csscomb';
+        if (which) task += ':' + which;
+        // grunt.task.run(['less', 'sass', task, 'concat:css', 'autoprefixer', 'cssmin']);
+        grunt.task.run(['less', 'sass', task, 'concat:css', 'autoprefixer', 'cssmin']);
+    });
+    grunt.registerTask('dist-js', ['jshint', 'jscs', 'concat', 'uglify:core']);
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js', 'copy']);

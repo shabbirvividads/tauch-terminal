@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/woocommerce"]
+	path = wp-content/plugins/woocommerce
+	url = git@github.com:woothemes/woocommerce.git

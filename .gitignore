@@ -9,3 +9,4 @@ wp-content/plugins/sitepress-multilingual-cms
 *.xml.cache
 dist
 wp-content/uploads/*
+.sass-cache/

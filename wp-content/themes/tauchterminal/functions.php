@@ -213,14 +213,14 @@ function xsbf_scripts() {
     // load minifide if not in debug
     if (WP_DEBUG) {
         // Our base theme CSS that adds colored sections and padding.
-        wp_register_style('tauchterminal', get_template_directory_uri() . '/css/tauchterminal.css', array(), '20150708', 'all');
+        wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.merged.css', array(), '20150927', 'all');
         wp_enqueue_style('tauchterminal');
         /* LOAD JAVASCRIPT */
         // Our theme's javascript for smooth scrolling and optional for touch carousels
         wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.js', array('jquery'), '20140913', true);
     } else {
         // Our base theme CSS that adds colored sections and padding.
-        wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.min.css', array(), '20150708', 'all');
+        wp_register_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.min.css', array(), '20150927', 'all');
         wp_enqueue_style('tauchterminal');
         /* LOAD JAVASCRIPT */
         // Our theme's javascript for smooth scrolling and optional for touch carousels
@@ -294,6 +294,15 @@ endif; // end ! function_exists
 ######################################################################################################################
 // WooCommerce
 ######################################################################################################################
+ // Remove default woocommerce style
+add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
+function jk_dequeue_styles( $enqueue_styles ) {
+    unset( $enqueue_styles['woocommerce-general'] );    // Remove the gloss
+    unset( $enqueue_styles['woocommerce-layout'] );     // Remove the layout
+    unset( $enqueue_styles['woocommerce-smallscreen'] );    // Remove the smallscreen optimisation
+    return $enqueue_styles;
+}
+
 // unhook theme wrapper
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
