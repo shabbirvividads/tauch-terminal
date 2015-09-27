@@ -86,7 +86,7 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'wp-content/plugins/woocommerce/assets/css/',
+                    cwd: 'wp-content/themes/<%= pkg.name %>/sass/',
                     src: ['*.scss'],
                     dest: 'wp-content/themes/<%= pkg.name %>/dist/css',
                     ext: '.woocommerce.css'
