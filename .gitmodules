@@ -3,4 +3,4 @@
 	url = git@github.com:woothemes/woocommerce.git
 [submodule "wp-content/plugins/staff-directory"]
 	path = wp-content/plugins/staff-directory
-	url = git@github.com:adamtootle/staff-directory.git
+	url = git@github.com:n3ssi3/staff-directory.git
