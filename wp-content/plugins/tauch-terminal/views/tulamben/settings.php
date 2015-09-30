@@ -21,7 +21,7 @@
                         <th></th>
                         <td>
                             <input type="hidden" name="action" value="save" />
-                            <button type="submit"><?php echo __('Save') ?></button>
+                            <button type="submit" class="button-primary"><?php echo __('Save') ?></button>
                         </td>
                     </tr>
                 </tbody>

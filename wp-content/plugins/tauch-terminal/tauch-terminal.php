@@ -39,7 +39,22 @@ require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin.php');
+
     add_action('init', array('TauchTerminal_Admin', 'init' ));
+
+    add_action('admin_enqueue_scripts', 'enqueue_admin_custom_scripts');
+}
+
+function enqueue_admin_custom_scripts() {
+    wp_enqueue_script('media-upload'); //Provides all the functions needed to upload, validate and give format to files.
+    wp_enqueue_script('thickbox'); //Responsible for managing the modal window.
+    wp_enqueue_style('thickbox'); //Provides the styles needed for this window.
+    wp_enqueue_script('script', plugins_url('js/upload.js', __FILE__), array('jquery'), '', true); //It will initialize the parameters needed to show the window properly.
+
+    // load theme css to also have bootstrap in Admin
+    // Our base theme CSS that adds colored sections and padding.
+    wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.min.js', array('jquery'), '20140913', true);
+    wp_enqueue_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.css', array(), '20150927', 'all');
 }
 
 function customeralliance_handler() {

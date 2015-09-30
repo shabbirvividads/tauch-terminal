@@ -6,18 +6,18 @@
             <tbody>
                 <tr>
                    <td scope="col" class="manage-column column-title sortable desc">
-                        <a href="">
+                        <label>
                             <span><?php echo __('Title') ?></span>
                             <span class="sorting-indicator"></span>
-                        </a>
+                        </label>
                     </td>
                     <td><input type="text" name="name" value="<?php echo isset($certification) ? $certification->name : '' ?>" /></td>
                 </tr>
                 <tr>
                     <td scope="col" class="manage-column column-bg">
-                        <a href="">
+                        <label>
                             <span><?php echo __('Logo') ?></span>
-                        </a>
+                        </label>
                     </td>
                     <td class="preview">
                         <p><img src="<?php echo isset($certification) ? $certification->url : '' ?>" class="preview bg" width="200" /></p>
@@ -29,7 +29,7 @@
                     <td>
                         <input type="hidden" name="id" value="<?php echo isset($certification) ? $certification->id : '' ?>" />
                         <input type="hidden" name="action" value="<?php echo $action ?>" />
-                        <button type="submit"><?php echo __('Save') ?></button>
+                        <button type="submit" class="button-primary"><?php echo __('Save') ?></button>
                     </td>
                 </tr>
             </tbody>

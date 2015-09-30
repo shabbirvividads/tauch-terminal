@@ -21,7 +21,8 @@ class TauchTerminal_Sites {
                 TauchTerminal::view('sites/edit', array('action' => 'save-new'));
                 break;
             case 'save-new':
-                TauchTerminal_Sites::addSites($data);
+                $id = TauchTerminal_Sites::addSites($data);
+                $sites = self::getSites(array($id));
                 TauchTerminal::view('sites/edit', array('site' => $sites[0], 'action' => 'save-edit'));
                 break;
             case 'edit':
@@ -29,7 +30,8 @@ class TauchTerminal_Sites {
                 TauchTerminal::view('sites/edit', array('site' => $sites[0], 'action' => 'save-edit'));
                 break;
             case 'save-edit':
-                TauchTerminal_Sites::updateSites($data);
+                $id = TauchTerminal_Sites::updateSites($data);
+                $sites = self::getSites(array($id));
                 TauchTerminal::view('sites/edit', array('site' => $sites[0], 'action' => 'save-edit'));
                 break;
             case 'trash':
@@ -85,7 +87,7 @@ class TauchTerminal_Sites {
                 'tt_bg' => $data['tt_bg']
             )
         );
-        return true;
+        return $wpdb->insert_id;
     }
 
     public static function updateSites($data) {
@@ -105,7 +107,7 @@ class TauchTerminal_Sites {
             ),
             array('id' => $data['id'])
         );
-        return true;
+        return $data['id'];
     }
 
     public static function deleteSites($data) {

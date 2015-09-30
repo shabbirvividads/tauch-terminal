@@ -22,15 +22,15 @@
                         <input id="cb-select-all-1" type="checkbox">
                     </th>
                     <th scope="col" class="manage-column column-title sortable desc">
-                        <a href="">
+                        <label>
                             <span><?php echo __('Title') ?></span>
                             <span class="sorting-indicator"></span>
-                        </a>
+                        </label>
                     </th>
                     <th scope="col" class="manage-column column-desc">
-                        <a href="">
+                        <label>
                             <span><?php echo __('Description') ?></span>
-                        </a>
+                        </label>
                     </th>
                 </tr>
             </thead>
