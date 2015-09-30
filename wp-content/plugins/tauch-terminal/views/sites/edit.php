@@ -79,8 +79,6 @@
                         <?php endif; ?>
                     </td>
                 </tr>
-                <form class="form-inline">
-
                 <tr>
                     <td scope="col"></td>
                     <td class="form-group">
