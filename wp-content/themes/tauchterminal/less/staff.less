@@ -1,0 +1,23 @@
+.single-staff {
+    position: relative;
+
+    margin-bottom: @double-padding;
+    img {
+        width: 100%;
+        height: auto;
+    }
+    .description {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        padding: @default-padding @double-padding;
+
+        background-color: rgba(255, 255, 255, .8);
+        h3 {
+            margin: 0;
+            line-height: floor((@font-size-h3 * @line-height-base));
+        }
+    }
+}
