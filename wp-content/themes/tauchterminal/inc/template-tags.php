@@ -79,40 +79,48 @@ function xsbf_comment($comment, $args, $depth) {
 
     if ('pingback' == $comment->comment_type || 'trackback' == $comment->comment_type) : ?>
 
-    <li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-        <div class="comment-body">
+    <li id="comment-<?php comment_ID(); ?>" <?php comment_class('row'); ?>>
+        <div class="comment-body col-xs-12">
             <?php _e('Pingback:', 'tauchterminal'); ?> <?php comment_author_link(); ?>
             <?php edit_comment_link(__('<span class="glyphicon glyphicon-edit"></span> Edit', 'tauchterminal'), '<span class="edit-link">', '</span>'); ?>
         </div>
 
     <?php else : ?>
 
-    <li id="comment-<?php comment_ID(); ?>" <?php comment_class(empty($args['has_children']) ? '' : 'parent'); ?>>
-        <article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-            <footer class="comment-meta">
+    <li id="comment-<?php comment_ID(); ?>" <?php comment_class(array('row', empty($args['has_children']) ? '' : 'parent')); ?>>
+        <article id="div-comment-<?php comment_ID(); ?>" class="comment-body clearfix">
+            <?php if ('0' == $comment->comment_approved) : ?>
+                <div class="comment-meta col-xs-12"><p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'tauchterminal'); ?></p></div>
+            <?php endif; ?>
+            <div class="comment-meta col-xs-3 col-sm-2">
                 <div class="comment-author vcard">
                     <?php if (0 != $args['avatar_size']) echo get_avatar($comment, $args['avatar_size']); ?>
-                    <?php printf(__('%s <span class="says">says:</span>', 'tauchterminal'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link())); ?>
                 </div><!-- .comment-author -->
+            </div><!-- .comment-meta -->
 
+            <div class="col-xs-9 col-sm-10">
                 <div class="comment-metadata">
-                    <a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
+
+                    <p class="comment-author-title">
+                        <a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
+                            <?php echo  get_comment_author($comment->comment_ID)  ?>
+                        </a><br/>
+                        <span class="glyphicon glyphicon-calendar"></span>
                         <time datetime="<?php comment_time('c'); ?>">
-                            <?php printf(_x('%1$s at %2$s', '1: date, 2: time', 'tauchterminal'), get_comment_date(), get_comment_time()); ?>
+                            <?php printf(_x('%1$s', '1: date', 'tauchterminal'), get_comment_date()); ?>
                         </time>
-                    </a>
+                    </p>
                     <?php edit_comment_link(__('Edit', 'tauchterminal'), '<span class="edit-link"><span class="glyphicon glyphicon-edit"></span> ', '</span>'); ?>
                 </div><!-- .comment-metadata -->
+            </div>
 
-                <?php if ('0' == $comment->comment_approved) : ?>
-                <p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'tauchterminal'); ?></p>
-                <?php endif; ?>
-            </footer><!-- .comment-meta -->
+            <div class="col-xs-9 col-sm-10">
+                <div class="comment-content">
+                    <?php comment_text(); ?>
+                </div><!-- .comment-content -->
+            </div>
 
-            <div class="comment-content">
-                <?php comment_text(); ?>
-            </div><!-- .comment-content -->
-
+            <div class="col-xs-9 col-sm-10 col-xs-offset-3 col-sm-offset-2">
             <?php
                 comment_reply_link(array_merge($args, array(
                     'add_below' => 'div-comment',
@@ -122,6 +130,7 @@ function xsbf_comment($comment, $args, $depth) {
                     'after'     => '</div>',
                 )));
             ?>
+            </div>
         </article><!-- .comment-body -->
 
     <?php

@@ -291,6 +291,7 @@ function xsbf_load_includes() {
 xsbf_load_includes();
 endif; // end ! function_exists
 
+
 ######################################################################################################################
 // WooCommerce
 ######################################################################################################################
@@ -342,3 +343,4 @@ function namespace_force_individual_cart_items($cart_item_data, $product_id)
 
     return $cart_item_data;
 }
+

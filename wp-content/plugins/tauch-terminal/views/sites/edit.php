@@ -1,4 +1,3 @@
-<?php var_dump($site) ?>
 <div class="edit-tauchterminal wrap">
     <h2><?php esc_html_e('Tauch Terminal Sites' , 'tauch-terminal');?></h2>
 

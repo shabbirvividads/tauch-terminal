@@ -42,7 +42,7 @@ if (post_password_required())
         </nav><!-- #comment-nav-above -->
         <?php endif; // check for comment navigation ?>
 
-        <ul class="comment-list">
+        <ul class="comment-list list-unstyled">
             <?php
                 /* Loop through and list the comments. Tell wp_list_comments()
                  * to use xsbf_comment() to format the comments.
@@ -74,7 +74,8 @@ if (post_password_required())
     ?>
         <p class="no-comments"><?php _e('Comments are closed.', 'tauchterminal'); ?></p>
     <?php endif; ?>
-
-    <?php comment_form(array ('comment_notes_after' => '')); ?>
+    <?php // comment_form(array('comment_notes_after' => '')); ?>
+    <?php require_once get_template_directory() . '/comments-form.php'; ?>
+    <?php tauchterminal_form(array('comment_notes_after' => '')); ?>
 
 </div><!-- #comments -->
