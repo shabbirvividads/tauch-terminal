@@ -344,3 +344,40 @@ function namespace_force_individual_cart_items($cart_item_data, $product_id)
     return $cart_item_data;
 }
 
+// Category Description wrap in Bootstrap
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description');
+add_action( 'woocommerce_archive_description', 'woocommerce_category_archive_description');
+function woocommerce_category_archive_description() {
+    if ( is_tax( array( 'product_cat', 'product_tag' ) ) && get_query_var( 'paged' ) == 0 ) {
+        $description = wc_format_content( term_description() );
+        $image = false;
+        if (is_tax() || is_tag() || is_category()) {
+            $term = get_queried_object();
+            $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+            if ( $thumbnail_id ) {
+                $image = wp_get_attachment_image($thumbnail_id, 250);
+            } else {
+                $image = wc_placeholder_img_src();
+            }
+        }
+        if ( $description ) {
+            $string = '<div class="row margin-bottom">';
+            if ($image) {
+                $string .= '<div class="col-sm-4 col-sm-push-8">' . $image . '</div>';
+            }
+            $string .= '<div class="term-description col-sm-8';
+            if ($image) {
+                $string .= ' col-sm-pull-4';
+            }
+            $string .= '">' . $description . '</div></div>';
+            echo $string;
+        }
+    }
+}
+// Category Description allow HTML
+foreach ( array( 'pre_term_description' ) as $filter ) {
+    remove_filter( $filter, 'wp_filter_kses' );
+}
+foreach ( array( 'term_description' ) as $filter ) {
+    remove_filter( $filter, 'wp_kses_data' );
+}
