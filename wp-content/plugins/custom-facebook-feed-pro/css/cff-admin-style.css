@@ -1,3 +1,6 @@
+#cff-admin{
+	overflow: hidden;
+}
 #cff-admin th.bump-left,
 #cff-admin a.bump-left{
     padding-left: 10px;
@@ -5,6 +8,7 @@
 #cff-admin .cff-tooltip{
 	display: none;
 	padding: 10px 0;
+	font-weight: normal;
 }
 #cff-admin .cff-tooltip ul{
 	margin-top: 0;	
@@ -47,6 +51,24 @@
 #wpbody-content #cff-admin .metabox-holder {
 	padding-top: 0;
 }
+#cff-admin .cff-notice{
+	margin-top: 5px;
+	background: #f9ecda;
+	padding: 5px 10px;
+	border: 1px solid #e89a2e;
+	color: #cf6100;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#cff-admin .cff-notice a{
+	color: #d85600;
+}
+#cff-admin .cff-notice a:hover,
+#cff-admin .cff-notice a:focus{
+	color: #a34100;
+}
 #cff-admin .cff-profile-error{
 	display: none;
 
@@ -60,7 +82,7 @@
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
-#cff-admin .cff-profile-error p{
+#cff-admin .cff-notice p{
 	margin: 0;
 	padding: 5px 0;
 }
@@ -71,13 +93,8 @@
 	margin-top: 5px;
 }
 #cff-admin .hndle{
-	/*background: #333;
-	color: #fff;*/
 	font-size: 16px;
 }
-
-
-
 #cff-admin #cff-header-icon-example{
 	font-size: 28px;
 	top: 6px;
@@ -161,19 +178,11 @@
     font-size: 13px;
 }
 
-
-#cff-admin .admin-notice a{
-    display: block;
-    color: #e24f0e;
-    text-decoration: none;
+/* Events only */
+#cff-admin .cff-events-only-options .cff-row,
+#cff-admin .cff-albums-only-options .cff-row{
+	padding: 10px 0;
 }
-#cff-admin .admin-notice a:hover{
-    color: #333;
-}
-#cff-admin .admin-notice b{
-    font-size: 14px;
-}
-
 
 
 /* Post Layouts */
@@ -213,16 +222,85 @@
     border: 1px solid #ddd;
 }
 
-/* Disabled */
-#cff-admin .cff-disabled{
-	zoom: 1;
-	filter: alpha(opacity=60);
-	opacity: 0.6;
+
+
+/*Extensions page*/
+#form-ext{
+	overflow: hidden;
 }
-#cff-admin .cff-layout:hover,
-#cff-admin .cff-layout:focus{
-    background: #f6f6f6;
-    cursor: default;
+#cff-admin .cff-extension{
+    display: block;
+    float: left;
+    width: 250px;
+    height: 185px;
+    padding: 20px;
+    margin: 15px 15px 0 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #eee;
+    text-decoration: none;
+}
+#cff-admin .cff-extension h3,
+#cff-admin .cff-extension p{
+    padding: 5px 0;
+    margin: 0;
+}
+#cff-admin .cff-extension h3{
+	padding-top: 0;
+}
+#cff-admin .cff-extension .cff-desc{
+	height: 75px;
+}
+#cff-admin .cff-extension img{
+	max-width: 100%;
+	margin: 10px 0;
+}
+#cff-admin .cff-extension .cff-activate{
+	/*float: right;*/
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 5px 8px;
+	margin: 0;
+	float: left;
+	/*clear: both;*/
+}
+#cff-admin .cff-extension label{
+	margin: 0 5px;
+	position: relative;
+	top: -2px;
+}
+#cff-admin .cff-extension input{
+	position: relative;
+	top: 1px;
+}
+#cff-admin .cff-extension .cff-active .cff-activate{
+	background: #f7faf1;
+	border: 1px solid #7ad03a;
+}
+#cff-admin .cff-extension .cff-requires{
+	font-size: 12px;
+	font-style: italic;
+	padding: 20px 0 10px 0;
+}
+#cff-admin .cff-extension .cff-doc{
+	float: right;
+	padding: 13px 0;
+}
+
+
+#cff-admin footer{
+	float: left;
+	clear: both;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* Hide clear cache notice */
+.cff-clear-cache-notice{
+	display: none;
 }
 
 /* Access Token field */
@@ -233,4 +311,48 @@
 /* Add Facebook dashicon to CFF admin menu */
 #toplevel_page_cff-top .toplevel_page_cff-top .wp-menu-image:before{
 	content: "\f305";
+}
+
+.cff-license-expired{
+	/*float: left;*/
+	clear: both;
+	width: 96%;
+	margin: 10px 0 20px 0;
+	background: #F7E6E6;
+	padding: 15px 1.5%;
+	border: 1px solid #BA7B7B;
+	color: #592626;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.cff-license-expired p{
+	/*float: left;*/
+	padding: 0;
+	margin: 0 5px 0 0;
+}
+#cff-why-renew-show,
+#cff-why-renew-hide{
+	/*float: left;*/
+}
+#cff-why-renew{
+	/*float: left;*/
+	clear: both;
+	width: 100%;
+}
+#cff-why-renew h4{
+	/*float: left;*/
+	clear: both;
+	margin: 15px 0 0 0;
+}
+#cff-why-renew p{
+	margin: 0;
+	clear: both;
+}
+
+.cff-license-countdown{
+	background: #fff4c6;
+	border: 1px solid #905207;
+	color: #905207;
 }
