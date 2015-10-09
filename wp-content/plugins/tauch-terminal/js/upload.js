@@ -3,7 +3,7 @@ $j(document).ready(function() {
 
 /* user clicks button on custom field, runs below code that opens new window */
 $j('.upload_image').click(function() {
-    var input = $j(this).siblings('.image_path');
+    var input = $j(this).parent().find('.image_path'); // maybe not a direct sibling
     $j(input).attr('id', 'image_upload_active');
 
 

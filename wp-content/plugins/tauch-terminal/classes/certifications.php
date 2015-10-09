@@ -21,15 +21,17 @@ class TauchTerminal_Certifications {
                 TauchTerminal::view('certifications/edit', array('action' => 'save-new'));
                 break;
             case 'save-new':
-                self::addCertifications($data);
-                TauchTerminal::view('certifications/edit', array('certification' => end($certifications), 'action' => 'save-edit'));
+                $id = self::addCertifications($data);
+                $certifications = self::getCertifications(array($id));
+                TauchTerminal::view('certifications/edit', array('certification' => $certifications[0], 'action' => 'save-edit'));
                 break;
             case 'edit':
                 $certifications = self::getCertifications($data["post"]);
                 TauchTerminal::view('certifications/edit', array('certification' => $certifications[0], 'action' => 'save-edit'));
                 break;
             case 'save-edit':
-                self::updateCertifications($data);
+                $id = self::updateCertifications($data);
+                $certifications = self::getCertifications(array($id));
                 TauchTerminal::view('certifications/edit', array('certification' => $certifications[0], 'action' => 'save-edit'));
                 break;
             case 'trash':
@@ -66,7 +68,7 @@ class TauchTerminal_Certifications {
                 'url' => $data['url']
             )
         );
-        return true;
+        return $wpdb->insert_id;
     }
 
     public static function updateCertifications($data) {
@@ -79,7 +81,7 @@ class TauchTerminal_Certifications {
             ),
             array('id' => $data['id'])
         );
-        return true;
+        return $data['id'];
     }
 
     public static function deleteCertifications($data) {
