@@ -200,6 +200,12 @@ module.exports = function(grunt) {
                 cwd: 'node_modules/bootstrap/fonts',
                 src: '**',
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
+            },
+            fontsWooCommerce: {
+                expand: true,
+                cwd: 'wp-content/plugins/woocommerce/assets/fonts',
+                src: '**',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
             }
         },
 
