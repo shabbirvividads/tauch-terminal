@@ -18,7 +18,7 @@
 
 /**  MySQL Einstellungen - diese Angaben bekommst du von deinem Webhoster. */
 /**  Ersetze database_name_here mit dem Namen der Datenbank, die du verwenden möchtest. */
-define('DB_NAME', 'wordpress');
+define('DB_NAME', 'ttt-bali');
 
 /** Ersetze username_here mit deinem MySQL-Datenbank-Benutzernamen */
 define('DB_USER', 'wp');

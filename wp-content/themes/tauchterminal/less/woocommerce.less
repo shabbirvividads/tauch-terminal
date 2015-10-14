@@ -46,11 +46,12 @@
         h3 {
             margin: 0;
             line-height: floor((@font-size-h3 * @line-height-base));
-        }
-        .amount {
-            font-size: @font-size-base;
-            line-height: floor((@font-size-h3 * @line-height-base));
-            float: right;
+            > .amount,
+            > .price {
+                font-size: @font-size-base;
+                line-height: floor((@font-size-h3 * @line-height-base));
+                float: right;
+            }
         }
     }
 }

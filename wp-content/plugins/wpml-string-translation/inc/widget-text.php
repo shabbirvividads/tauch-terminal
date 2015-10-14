@@ -122,7 +122,7 @@ class WP_Widget_Text_Icl extends WP_Widget
     function WP_Widget_Text_Icl() {
         $widget_ops = array('classname' => 'widget_text_icl', 'description' => __('Multilingual arbitrary text or HTML', 'sitepress'));
         $control_ops = array('width' => 400, 'height' => 350);
-        $this->WP_Widget('text_icl', __('Multilingual Text', 'sitepress'), $widget_ops, $control_ops);
+        parent::__construct('text_icl', __('Multilingual Text', 'sitepress'), $widget_ops, $control_ops);
     }
 
     function widget($args, $instance) {

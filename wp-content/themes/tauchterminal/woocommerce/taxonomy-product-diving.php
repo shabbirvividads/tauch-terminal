@@ -13,6 +13,8 @@ if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+global $product;
+
 ?>
 
 <?php
@@ -62,17 +64,20 @@ if (! defined('ABSPATH')) {
                     wc_get_template('single-product/rating.php');
                     wc_get_template('single-product-diving/price.php');
                     wc_get_template('single-product/short-description.php');
-                    // do_action('woocommerce_' . $product->product_type . '_add_to_cart');
-                    global $product;
-                    // Enqueue variation scripts
-                    wp_enqueue_script('wc-add-to-cart-variation');
-                    wc_get_template('single-product-diving/add-to-cart/variable.php', array(
-                            'available_variations'  => $product->get_available_variations(),
-                            'attributes'            => $product->get_variation_attributes(),
-                            'selected_attributes'   => $product->get_variation_default_attributes()
-                        ));
-                    wc_get_template('single-product/meta.php');
-                    wc_get_template('single-product/share.php');
+
+                    if ($product->has_child()) {
+                        // Enqueue variation scripts
+                        wp_enqueue_script('wc-add-to-cart-variation');
+                        wc_get_template('single-product-diving/add-to-cart/variable.php', array(
+                                'available_variations'  => $product->get_available_variations(),
+                                'attributes'            => $product->get_variation_attributes(),
+                                'selected_attributes'   => $product->get_variation_default_attributes()
+                            ));
+                        wc_get_template('single-product/meta.php');
+                        wc_get_template('single-product/share.php');
+                    } else {
+                        do_action('woocommerce_' . $product->product_type . '_add_to_cart');
+                    }
                 ?>
 
             </div><!-- .summary -->
