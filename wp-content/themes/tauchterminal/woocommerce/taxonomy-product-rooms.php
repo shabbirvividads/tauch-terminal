@@ -68,7 +68,7 @@ global $product, $post;
                         <form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo $post->ID; ?>" data-product_variations="<?php echo esc_attr(json_encode($available_variations)) ?>">
                             <?php do_action('woocommerce_before_add_to_cart_form'); ?>
                             <?php if (! empty($available_variations)) : ?>
-                            <table class="variations" cellspacing="0">
+                            <table cellspacing="0">
             <tbody>
                         <?php
                         // var_dump($product->get_attributes());
