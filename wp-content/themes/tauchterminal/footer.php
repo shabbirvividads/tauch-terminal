@@ -54,19 +54,26 @@
         </div>
     </div>
 
+    <?php $certifications = TauchTerminal_Certifications::getCertifications() ?>
+    <?php if($certifications): ?>
     <div class="container">
         <ul class="list-unstyled list-inline certifications">
-            <?php $certifications = TauchTerminal_Certifications::getCertifications() ?>
-            <?php $certCount = count($certifications) ?>
-            <?php $certCount = ($certCount > 10) ? 10 : $certCount ?>
-            <?php $certCount = ($certCount < 5) ? 5 : $certCount ?>
             <?php foreach (TauchTerminal_Certifications::getCertifications() as $certification): ?>
-                <li class="item col-xs-<?php echo floor(24/$certCount) ?> col-sm-<?php echo floor(18/$certCount) ?> col-md-<?php echo floor(12/$certCount) ?>">
+                <li class="item col-xs-3 col-sm-3 col-md-2">
                     <img src="<?php echo $certification->url ?>" alt="<?php echo $certification->name ?>">
                 </li>
             <?php endforeach ?>
+                <li><div id="TA_excellent283" class="TA_excellent">
+<ul id="jc1oDphkM" class="TA_links 2XUordZf">
+<li id="7y5gmrvcvY" class="IC7HKiRe">
+<a target="_blank" href="http://www.tripadvisor.com.au/"><img src="http://static.tacdn.com/img2/widget/tripadvisor_logo_115x18.gif" alt="TripAdvisor" class="widEXCIMG" id="CDSWIDEXCLOGO"/></a>
+</li>
+</ul>
+</div>
+<script src="http://www.jscache.com/wejs?wtype=excellent&amp;uniq=283&amp;locationId=595703&amp;lang=en_AU&amp;display_version=2"></script></li>
         </ul>
     </div>
+    <?php endif; ?>
 
     <div class="container">
         <nav class="navbar navbar-default">
