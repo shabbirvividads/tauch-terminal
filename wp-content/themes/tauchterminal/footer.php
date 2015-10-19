@@ -63,14 +63,16 @@
                     <img src="<?php echo $certification->url ?>" alt="<?php echo $certification->name ?>">
                 </li>
             <?php endforeach ?>
-                <li><div id="TA_excellent283" class="TA_excellent">
-<ul id="jc1oDphkM" class="TA_links 2XUordZf">
-<li id="7y5gmrvcvY" class="IC7HKiRe">
-<a target="_blank" href="http://www.tripadvisor.com.au/"><img src="http://static.tacdn.com/img2/widget/tripadvisor_logo_115x18.gif" alt="TripAdvisor" class="widEXCIMG" id="CDSWIDEXCLOGO"/></a>
-</li>
-</ul>
-</div>
-<script src="http://www.jscache.com/wejs?wtype=excellent&amp;uniq=283&amp;locationId=595703&amp;lang=en_AU&amp;display_version=2"></script></li>
+                <li>
+                    <div id="TA_excellent283" class="TA_excellent">
+                        <ul id="jc1oDphkM" class="TA_links 2XUordZf">
+                            <li id="7y5gmrvcvY" class="IC7HKiRe">
+                                <a target="_blank" href="http://www.tripadvisor.com.au/"><img src="http://static.tacdn.com/img2/widget/tripadvisor_logo_115x18.gif" alt="TripAdvisor" class="widEXCIMG" id="CDSWIDEXCLOGO"/></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="http://www.jscache.com/wejs?wtype=excellent&amp;uniq=283&amp;locationId=595703&amp;lang=en_AU&amp;display_version=2"></script>
+                </li>
         </ul>
     </div>
     <?php endif; ?>
