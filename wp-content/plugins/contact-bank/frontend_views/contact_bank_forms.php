@@ -73,201 +73,8 @@ $forms_email_settings = $wpdb->get_row
 $rand_value = RAND(10,10000);
 ?>
 
-<style type="text/css">
-
-	.main_container_form
-	{
-		display: inline-block !important;
-		width: 100% !important;
-	}
-	.cb_form_wrapper
-	{
-		overflow: inherit;
-		margin: 10px 0;
-		max-width: 98%
-	}
-	.label_control
-	{
-		font-family: <?php echo $layout_settings_array[$form_id]["label_setting_font_family"]; ?> !important;
-		color: <?php echo $layout_settings_array[$form_id]["label_setting_font_color"]; ?> !important;
-		<?php
-			if($layout_settings_array[$form_id]["label_setting_font_style"] == "italic")
-			{
-				?>
-				font-style: <?php echo $layout_settings_array[$form_id]["label_setting_font_style"]; ?> !important;
-				<?php
-			}
-			else
-			{
-				?>
-				font-weight: <?php echo $layout_settings_array[$form_id]["label_setting_font_style"]; ?> !important;
-				<?php
-			}
-			if($layout_settings_array[$form_id]["label_setting_label_position"] == "top")
-			{
-				?>
-				float: none !important;
-				text-align: <?php echo $layout_settings_array[$form_id]["label_setting_font_align_left"] == "0" ? "left" : "right"; ?> !important;
-				<?php
-			}
-			else if($layout_settings_array[$form_id]["label_setting_label_position"] == "right")
-			{
-				?>
-				text-align: right !important;
-				<?php
-			}
-			else 
-			{
-				?>
-				text-align: <?php echo $layout_settings_array[$form_id]["label_setting_font_align_left"] == "0" ? "left" : "right"; ?> !important;
-				<?php
-			}
-		?>
-		font-size: <?php echo $layout_settings_array[$form_id]["label_setting_font_size"] . "px"; ?> !important;
-		display: <?php echo $layout_settings_array[$form_id]["label_setting_hide_label"] == "0" ? "inline-block" : "none"; ?> !important;
-		direction: <?php echo $layout_settings_array[$form_id]["label_setting_text_direction"]; ?> !important;
-	}
-	.input_control
-	{
-		
-		font-family: <?php echo $layout_settings_array[$form_id]["input_field_font_family"]; ?> !important;
-		color: <?php echo $layout_settings_array[$form_id]["input_field_font_color"]; ?> !important;
-		<?php
-			if($layout_settings_array[$form_id]["input_field_font_style"] == "italic")
-			{
-		?>
-				font-style: <?php echo $layout_settings_array[$form_id]["input_field_font_style"]; ?> !important;
-		<?php
-			}
-			else
-			{
-		?>
-				font-weight: <?php echo $layout_settings_array[$form_id]["input_field_font_style"]; ?> !important;
-		<?php
-			}
-		?>
-		background-color: <?php echo $layout_settings_array[$form_id]["input_field_clr_bg_color"]; ?> !important;
-		font-size: <?php echo $layout_settings_array[$form_id]["input_field_font_size"] . "px"; ?> !important;
-		border: <?php echo $layout_settings_array[$form_id]["input_field_border_size"] . "px ".$layout_settings_array[$form_id]["input_field_border_style"].$layout_settings_array[$form_id]["input_field_border_color"]; ?>  !important;
-		border-radius: <?php echo $layout_settings_array[$form_id]["input_field_border_radius"] . "px"; ?> !important;
-		-moz-border-radius: <?php echo $layout_settings_array[$form_id]["input_field_border_radius"] . "px"; ?> !important;
-		-webkit-border-radius: <?php echo $layout_settings_array[$form_id]["input_field_border_radius"] . "px"; ?> !important;
-		-khtml-border-radius: <?php echo $layout_settings_array[$form_id]["input_field_border_radius"] . "px"; ?> !important;
-		-o-border-radius: <?php echo $layout_settings_array[$form_id]["input_field_border_radius"] . "px"; ?> !important;
-		text-align: <?php echo $layout_settings_array[$form_id]["input_field_rdl_text_align"] == "0" ? "left" : "right"; ?> !important;
-		direction: <?php echo $layout_settings_array[$form_id]["input_field_text_direction"]; ?> !important;
-		min-width:250px;
-		max-width:500px;
-	}
-	.layout_according_label_position
-	{
-		<?php
-		if($layout_settings_array[$form_id]["label_setting_label_position"] == "top")
-		{
-			?>
-			margin-left: 0px !important;
-			<?php
-		}
-		
-		?>
-	}
-	.field_description
-	{
-		display:block !important;
-		font-family: <?php echo $layout_settings_array[$form_id]["label_setting_font_family"]; ?> !important;
-		font-style: italic !important;
-		color: <?php echo $layout_settings_array[$form_id]["label_setting_font_color"]; ?> !important;
-		<?php
-		if($layout_settings_array[$form_id]["label_setting_font_style"] == "italic")
-		{
-		?>
-			font-style: <?php echo $layout_settings_array[$form_id]["label_setting_font_style"]; ?> !important;
-		<?php
-		}
-		else
-		{
-		?>
-			font-weight: <?php echo $layout_settings_array[$form_id]["label_setting_font_style"]; ?> !important;
-		<?php
-		}
-		?>
-		font-size: <?php echo $layout_settings_array[$form_id]["label_setting_field_size"] . "px"; ?> !important;
-		text-align: <?php echo $layout_settings_array[$form_id]["label_setting_field_align"]; ?> !important; 
-	}
-	.btn_submit
-	{
-		<?php
-		if($layout_settings_array[$form_id]["submit_button_font_style"] == "italic")
-		{
-		?>
-			font-style: <?php echo $layout_settings_array[$form_id]["submit_button_font_style"]; ?> !important;
-		<?php
-		}
-		else
-		{
-		?>
-			font-weight: <?php echo $layout_settings_array[$form_id]["submit_button_font_style"]; ?> !important;
-		<?php
-		}
-		?>
-		padding: 12px 25px !important;
-		background-color: #3A3C41 !important;
-		font-size: 14px !important;
-		color: #FFF !important;
-		font-weight: 700 !important;
-		border: medium none !important;
-		cursor: pointer;
-		letter-spacing: 1px !important;
-		border: medium none !important;
-		background-color: #333333 !important;
-		color: #FFF !important;
-	}
-	.btn_submit:hover
-	{
-		background-color: #999999 !important;
-	}
-	.success_message
-	{
-		
-		background-color: <?php echo $layout_settings_array[$form_id]["success_msg_bg_color"]; ?> !important;
-		border: <?php echo "2px Solid ".$layout_settings_array[$form_id]["success_msg_border_color"]; ?>  !important;
-		color: <?php echo $layout_settings_array[$form_id]["success_msg_text_color"]; ?> !important;
-		text-align: <?php echo $layout_settings_array[$form_id]["success_msg_rdl_text_align"] == "0" ? "left" : "right"; ?> !important;
-		direction: <?php echo $layout_settings_array[$form_id]["success_msg_text_direction"]; ?> !important;
-		background: url(<?php echo plugins_url("/assets/images/icons/icon-succes.png" , dirname(__FILE__));?>) no-repeat 1px 8px #EBF9E2;
-	}
-	.sucess_message_text
-	{
-		font-family: <?php echo $layout_settings_array[$form_id]["success_msg_font_family"]; ?> !important;
-		font-size: <?php echo $layout_settings_array[$form_id]["success_msg_font_size"] . "px"; ?> !important;
-	}
-	label.error_field
-	{
-		font-family: <?php echo $layout_settings_array[$form_id]["error_msg_font_family"]; ?> !important;
-		font-size: <?php echo $layout_settings_array[$form_id]["error_msg_font_size"] . "px"; ?> !important;
-		background-color: <?php echo $layout_settings_array[$form_id]["error_msg_bg_color"]; ?> !important;
-		border: <?php echo "2px Solid ".$layout_settings_array[$form_id]["error_msg_border_color"]; ?>  !important;
-		color: <?php echo $layout_settings_array[$form_id]["error_msg_text_color"]; ?> !important;
-		text-align: <?php echo $layout_settings_array[$form_id]["error_msg_rdl_text_align"] == "0" ? "left" : "right"; ?> !important;
-		direction: <?php echo $layout_settings_array[$form_id]["error_msg_text_direction"]; ?> !important;
-		<?php
-		if($layout_settings_array[$form_id]["label_setting_label_position"] == "left")
-		{
-			?>
-				margin-left: 10px;
-			<?php
-		}
-		else if($layout_settings_array[$form_id]["label_setting_label_position"] == "right")
-		{
-			?>
-				margin-right: 10px;
-			<?php
-		}
-		?>
-	}
-</style>
 <div class="cb_form_wrapper" id="cb_form_wrapper_<?php echo $form_id; ?>">
-	<form id="ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>" method="post" action="#">
+	<form id="ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>" class="form-horizontal" method="post" action="#">
 		<div id="form_success_message_frontend_<?php echo $rand_value;?>" class="custom-message success_message" style="display: none;margin-bottom: 10px;">
 			<span class="sucess_message_text" >
 				<strong><?php echo $form_settings_array[$form_id]["success_message"]; ?></strong>
@@ -279,7 +86,7 @@ $rand_value = RAND(10,10000);
 				{
 					?>
 					<h4><?php _e($form_name, contact_bank ); ?></h4>
-					<?php 
+					<?php
 				}
 				if($show_desc == "true")
 				{
@@ -291,12 +98,12 @@ $rand_value = RAND(10,10000);
 				}
 			?>
 			</div>
-			<?php 
+			<?php
 				for($flag=0;$flag<count($form_fields);$flag++)
 				{
 				?>
-					<div class="layout-control-group">
-						<label class="label_control layout-control-label">
+					<div class="form-group layout-control-group">
+						<label class="col-sm-4 control-label label_control layout-control-label">
 						<?php
 							_e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_label_value"], contact_bank ) . " :";
 							if($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_control_required"] == "1")
@@ -307,13 +114,14 @@ $rand_value = RAND(10,10000);
 							}
 						?>
 						</label>
+                        <div class="col-sm-8">
 						<?php
 						switch($form_fields[$flag]->field_id)
 						{
 							case 1:
 							?>
 								<div class="layout-controls layout_according_label_position">
-									<input class="hovertip input_control" type="text"  id="ux_txt_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" name="ux_txt_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>" data-alpha="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_alpha_filter"];?>" data-alpha_num="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_ux_checkbox_alpha_num_filter"];?>" data-digit="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_digit_filter"];?>" data-strip="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_strip_tag_filter"];?>" data-trim="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_trim_filter"];?>" onfocus="prevent_paste(this.id);" />
+									<input class="form-control hovertip input_control" type="text"  id="ux_txt_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" name="ux_txt_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>" data-alpha="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_alpha_filter"];?>" data-alpha_num="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_ux_checkbox_alpha_num_filter"];?>" data-digit="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_digit_filter"];?>" data-strip="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_strip_tag_filter"];?>" data-trim="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_trim_filter"];?>" onfocus="prevent_paste(this.id);" />
 									<span class="field_description" id="txt_description_"><?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_description"]; ?></span>
 								</div>
 							<?php
@@ -321,7 +129,7 @@ $rand_value = RAND(10,10000);
 							case 2:
 								?>
 								<div class="layout-controls layout_according_label_position">
-									<textarea class="hovertip input_control" id="ux_textarea_control_<?php echo $form_fields[$flag]->column_dynamicId."_". $rand_value; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>" name="ux_textarea_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" onfocus="prevent_paste(this.id);" data-alpha="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_alpha_filter"];?>" data-alpha_num="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_ux_checkbox_alpha_num_filter"];?>" data-digit="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_digit_filter"];?>" data-strip="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_strip_tag_filter"];?>" data-trim="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_trim_filter"];?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>"></textarea>
+									<textarea class="form-control hovertip input_control" rows="10" id="ux_textarea_control_<?php echo $form_fields[$flag]->column_dynamicId."_". $rand_value; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>" name="ux_textarea_control_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" onfocus="prevent_paste(this.id);" data-alpha="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_alpha_filter"];?>" data-alpha_num="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_ux_checkbox_alpha_num_filter"];?>" data-digit="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_digit_filter"];?>" data-strip="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_strip_tag_filter"];?>" data-trim="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_checkbox_trim_filter"];?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>"></textarea>
 									<span class="field_description" id="txt_description_"><?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_description"]; ?></span>
 								</div>
 								<?php
@@ -329,7 +137,7 @@ $rand_value = RAND(10,10000);
 							case 3:
 									?>
 									<div class="layout-controls layout_according_label_position">
-										<input class="hovertip input_control" type="text"  id="ux_txt_email_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" name="ux_txt_email_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>"onfocus="prevent_paste(this.id);"/>
+										<input class="form-control hovertip input_control" type="text"  id="ux_txt_email_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" name="ux_txt_email_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>" placeholder="<?php _e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_default_txt_val"], contact_bank );?>"onfocus="prevent_paste(this.id);"/>
 										<span class="field_description" id="txt_description_"><?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_description"]; ?></span>
 									</div>
 									<?php
@@ -339,7 +147,7 @@ $rand_value = RAND(10,10000);
 									$ddl_ids = unserialize($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_dropdown_option_id"]);
 									?>
 									<div class="layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
-										<select class="input_control" type="select" id="ux_select_default_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>"  name="ux_select_default_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>">
+										<select class="form-control input_control" type="select" id="ux_select_default_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>"  name="ux_select_default_<?php echo $form_fields[$flag]->column_dynamicId ."_". $rand_value; ?>">
 											<option value="<?php echo count($ddl_values) == 0 ? " " : ""; ?>"><?php _e("Select Option", contact_bank); ?></option>
 											<?php
 											foreach($ddl_ids as $key => $value )
@@ -359,7 +167,7 @@ $rand_value = RAND(10,10000);
 								if(count($chk_ids) > 0)
 								{
 									?>
-									<div class="layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
+									<div class="checkbox layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
 										<?php
 										foreach($chk_ids as $key => $value )
 										{
@@ -374,10 +182,10 @@ $rand_value = RAND(10,10000);
 									</div>
 									<?php
 								}
-								else 
+								else
 								{
 									?>
-									<div class="layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
+									<div class="checkbox layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
 										<input type="checkbox" id="ux_chk_control_" />
 									</div>
 									<?php
@@ -442,7 +250,7 @@ $rand_value = RAND(10,10000);
 									</div>
 									<?php
 								}
-								else 
+								else
 								{
 									?>
 									<div class="layout-controls layout_according_label_position hovertip" data-original-title="<?php echo $control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_tooltip_txt"]; ?>">
@@ -452,13 +260,15 @@ $rand_value = RAND(10,10000);
 								}
 							break;
 						}
-					?>
+					?></div>
 					</div>
 				<?php
 				}
 			?>
-		<div class="layout-control-group">
-			<button type="submit"  class="btn_submit"><?php _e(trim($layout_settings_array[$form_id]["submit_button_text"]),contact_bank);?></button>
+		<div class="form-group layout-control-group">
+            <div class="col-sm-offset-4 col-sm-8">
+    			<button type="submit"  class="btn btn-primary"><?php _e(trim($layout_settings_array[$form_id]["submit_button_text"]),contact_bank);?></button>
+            </div>
 		</div>
 	</form>
 </div>
@@ -477,7 +287,7 @@ function prevent_paste(control_id)
 }
 jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").validate
 ({
-	rules: 
+	rules:
 	{
 		<?php
 			$dynamic = "";
@@ -485,7 +295,7 @@ jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").valid
 			{
 				if($control_settings_array[$form_fields[$flag4]->column_dynamicId]["cb_control_required"] == 1)
 				{
-					switch($form_fields[$flag4]-> field_id) 
+					switch($form_fields[$flag4]-> field_id)
 					{
 						case 1:
 							$dynamic .= "ux_txt_control_".$form_fields[$flag4]->column_dynamicId ."_". $rand_value. ":{ required :true }";
@@ -505,14 +315,14 @@ jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").valid
 						case 6:
 							$dynamic .= "'".$form_fields[$flag4]->column_dynamicId ."_". $rand_value. "_rdl'". ":{ required :true }";
 						break;
-						
+
 					}
 					if( count($form_fields)> 1 && $flag4 < count($form_fields) - 1 )
 					{
 						$dynamic .= ",";
 					}
 				}
-				
+
 			}
 			echo $dynamic;
 		?>
@@ -520,7 +330,7 @@ jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").valid
 	errorPlacement: function(error, element)
 	{
 		<?php
-		
+
 		if($layout_settings_array[$form_id]["label_setting_label_position"] == "top")
 		{
 			?>
@@ -538,7 +348,7 @@ jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").valid
 		else
 		{
 			?>
-			if (element.attr("type") === "radio" || element.attr("type") === "checkbox") 
+			if (element.attr("type") === "radio" || element.attr("type") === "checkbox")
 			{
 				error.insertAfter(element.parent().children("label:last-child"));
 			}
@@ -564,7 +374,7 @@ jQuery("#ux_frm_front_end_form_<?php echo $form_id ."_". $rand_value; ?>").valid
 		{
 			jQuery("#form_success_message_frontend_<?php echo $rand_value;?>").css("display","block");
 			var submit_id = data;
-			jQuery.post(ajaxurl, "form_id="+form_id+"&submit_id="+submit_id+"&param=email_management&action=email_management_contact_form_library", function(data) 
+			jQuery.post(ajaxurl, "form_id="+form_id+"&submit_id="+submit_id+"&param=email_management&action=email_management_contact_form_library", function(data)
 			{
 				setTimeout(function()
 				{
