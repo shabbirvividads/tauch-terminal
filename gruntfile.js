@@ -206,6 +206,12 @@ module.exports = function(grunt) {
                 cwd: 'wp-content/plugins/woocommerce/assets/fonts',
                 src: '**',
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
+            },
+            fontsAwesome: {
+                expand: true,
+                cwd: 'wp-content/themes/<%= pkg.name %>/fonts',
+                src: '**',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
             }
         },
 
