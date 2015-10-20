@@ -25,6 +25,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<h1 class="sr-only"><?php bloginfo('name')?></h1>
 <div id="page" class="hfeed site">
 
     <?php do_action('before'); ?>

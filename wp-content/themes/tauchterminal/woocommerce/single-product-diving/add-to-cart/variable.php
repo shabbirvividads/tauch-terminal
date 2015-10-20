@@ -22,8 +22,8 @@ global $product, $post;
             <tbody>
                 <?php $loop = 0; foreach ($attributes as $name => $options) : $loop++; ?>
                     <tr>
-                        <td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label($name); ?></label></td>
-                        <td class="value"><select id="<?php echo esc_attr(sanitize_title($name)); ?>" name="attribute_<?php echo sanitize_title($name); ?>" data-attribute_name="attribute_<?php echo sanitize_title($name); ?>">
+                        <td><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label($name); ?></label></td>
+                        <td class="value"><select id="<?php echo esc_attr(sanitize_title($name)); ?>" class="form-control" name="attribute_<?php echo sanitize_title($name); ?>" data-attribute_name="attribute_<?php echo sanitize_title($name); ?>">
                             <option value=""><?php echo __('Choose an option', 'woocommerce') ?>&hellip;</option>
                             <?php
                                 if (is_array($options)) {
@@ -69,7 +69,7 @@ global $product, $post;
 
         <?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
-        <div class="single_variation_wrap" style="display:none;">
+        <div class="single_variation_wrap pull-right" style="display:none;">
             <?php do_action('woocommerce_before_single_variation'); ?>
 
             <div class="single_variation"></div>

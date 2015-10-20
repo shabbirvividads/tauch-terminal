@@ -103,7 +103,7 @@ $rand_value = RAND(10,10000);
 				{
 				?>
 					<div class="form-group layout-control-group">
-						<label class="col-sm-4 control-label label_control layout-control-label">
+						<label class="col-sm-3 control-label label_control layout-control-label">
 						<?php
 							_e($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_label_value"], contact_bank ) . " :";
 							if($control_settings_array[$form_fields[$flag]->column_dynamicId]["cb_control_required"] == "1")
@@ -114,7 +114,7 @@ $rand_value = RAND(10,10000);
 							}
 						?>
 						</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-9">
 						<?php
 						switch($form_fields[$flag]->field_id)
 						{

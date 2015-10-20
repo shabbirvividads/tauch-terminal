@@ -57,6 +57,7 @@
     <?php $certifications = TauchTerminal_Certifications::getCertifications() ?>
     <?php if($certifications): ?>
     <div class="container">
+        <h2 class="sr-only"><?php echo __('Our Certifications', 'tauchterminal') ?></h2>
         <ul class="list-unstyled list-inline certifications">
             <?php foreach (TauchTerminal_Certifications::getCertifications() as $certification): ?>
                 <li class="item col-xs-3 col-sm-3 col-md-2">
@@ -79,14 +80,18 @@
 
     <div class="container">
         <nav class="navbar navbar-default">
+            <h2 class="sr-only"><?php echo __('Our other companies', 'tauchterminal') ?></h2>
             <div class="container-fluid">
                 <div>
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" style="width: 100%">
                         <?php foreach ($sites as $site): ?>
                             <li>
                                 <a href="<?php echo $site->tt_url ?>"><?php echo $site->tt_name ?></a>
                             </li>
                         <?php endforeach ?>
+                        <li class="pull-right"><a href="<?php bloginfo('atom_url'); ?>" title="<?php _e('Syndicate this site using Atom'); ?>"><i class="fa fa-rss-square"></i><span class="sr-only"><?php _e('Atom'); ?></span></a></li>
+                        <li class="pull-right"><a href="<?php bloginfo('rss2_url'); ?>" title="<?php _e('Syndicate this site using RSS'); ?>"><i class="fa fa-rss"></i><span class="sr-only"><?php _e('<abbr title="Really Simple Syndication">RSS</abbr>'); ?></span></a></li>
+                        <li class="pull-right"><a href="https://www.facebook.com/tauchterminal?fref=ts&amp;ref=br_tf" target="_blank"><i class="fa fa-facebook"></i><span class="sr-only"><?php _e('Facebook', 'tauchterminal'); ?></span></a></li>
                     </ul>
                 </div>
             </div>

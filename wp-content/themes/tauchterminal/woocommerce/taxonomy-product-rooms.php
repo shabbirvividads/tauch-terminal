@@ -65,53 +65,49 @@ global $product, $post;
                     wc_get_template('single-product/short-description.php');
                     if ($product->has_child()) { ?>
                         <?php $available_variations = $product->get_available_variations() ?>
-                        <form class="variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo $post->ID; ?>" data-product_variations="<?php echo esc_attr(json_encode($available_variations)) ?>">
+                        <form class="form-horizontal variations_form cart" method="post" enctype='multipart/form-data' data-product_id="<?php echo $post->ID; ?>" data-product_variations="<?php echo esc_attr(json_encode($available_variations)) ?>">
                             <?php do_action('woocommerce_before_add_to_cart_form'); ?>
                             <?php if (! empty($available_variations)) : ?>
-                            <table cellspacing="0">
-            <tbody>
-                        <?php
-                        // var_dump($product->get_attributes());
-                        wc_get_template('single-product-rooms/add-to-cart/attributes.php', array(
-                            'attributes' => $product->get_attributes()));
+                                <?php
+                                // var_dump($product->get_attributes());
+                                wc_get_template('single-product-rooms/add-to-cart/attributes.php', array(
+                                    'attributes' => $product->get_attributes()));
 
-                        // Enqueue variation scripts
-                        wp_enqueue_script('wc-add-to-cart-variation');
-                        wc_get_template('single-product-rooms/add-to-cart/variable.php', array(
-                                'available_variations'  => $available_variations,
-                                'attributes'            => $product->get_variation_attributes(),
-                                'selected_attributes'   => $product->get_variation_default_attributes()
-                            ));
-                        ?>
-            </tbody>
-        </table>
+                                // Enqueue variation scripts
+                                wp_enqueue_script('wc-add-to-cart-variation');
+                                wc_get_template('single-product-rooms/add-to-cart/variable.php', array(
+                                        'available_variations'  => $available_variations,
+                                        'attributes'            => $product->get_variation_attributes(),
+                                        'selected_attributes'   => $product->get_variation_default_attributes()
+                                    ));
+                                ?>
 
-        <?php do_action('woocommerce_before_add_to_cart_button'); ?>
+                                <?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
-        <div class="single_variation_wrap" style="display:none;">
-            <?php do_action('woocommerce_before_single_variation'); ?>
+                                <div class="single_variation_wrap pull-right" style="display:none;">
+                                    <?php do_action('woocommerce_before_single_variation'); ?>
 
-            <div class="single_variation"></div>
+                                    <div class="single_variation"></div>
 
-            <div class="variations_button">
-                <input type="hidden" name="quantity" value="1" />
-                <button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
-            </div>
+                                    <div class="variations_button">
+                                        <input type="hidden" name="quantity" value="1" />
+                                        <button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+                                    </div>
 
-            <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
-            <input type="hidden" name="product_id" value="<?php echo esc_attr($post->ID); ?>" />
-            <input type="hidden" name="variation_id" class="variation_id" value="" />
+                                    <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
+                                    <input type="hidden" name="product_id" value="<?php echo esc_attr($post->ID); ?>" />
+                                    <input type="hidden" name="variation_id" class="variation_id" value="" />
 
-            <?php do_action('woocommerce_after_single_variation'); ?>
-        </div>
+                                    <?php do_action('woocommerce_after_single_variation'); ?>
+                                </div>
 
-        <?php do_action('woocommerce_after_add_to_cart_button'); ?>
+                                <?php do_action('woocommerce_after_add_to_cart_button'); ?>
 
-    <?php else : ?>
+                            <?php else : ?>
 
-        <p class="stock out-of-stock"><?php _e('This product is currently out of stock and unavailable.', 'woocommerce'); ?></p>
+                                <p class="stock out-of-stock"><?php _e('This product is currently out of stock and unavailable.', 'woocommerce'); ?></p>
 
-    <?php endif; ?>
+                            <?php endif; ?>
 
 
                         </form>
