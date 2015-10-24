@@ -12,11 +12,11 @@ class TauchTerminal_Tulamben {
         TauchTerminal::view('tulamben/settings', array('settings' => $settings));
     }
 
-    public static function hotelbooking_handler() {
-        $soap = new HotelsystemSoapClass();
-        $result = $soap->AvailableRooms('2016-05-04', 7);
-        var_dump($result);
-    }
+    // public static function hotelbooking_handler() {
+    //     $soap = new HotelsystemSoapClass();
+    //     $result = $soap->AvailableRooms('2016-05-04', 7);
+    //     var_dump($result);
+    // }
 
     public static function ca_handler() {
         $cacheName = 'ca_api_external.xml.cache';
