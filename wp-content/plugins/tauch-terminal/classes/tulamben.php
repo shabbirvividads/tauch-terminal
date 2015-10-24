@@ -2,7 +2,7 @@
 
 class TauchTerminal_Tulamben {
 
-    public static function display_ratings() {
+    public static function display_settings() {
         if (isset($_POST['action'])) {
             TauchTerminal_DB::saveSettings($_POST);
         }
