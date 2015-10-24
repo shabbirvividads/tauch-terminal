@@ -149,6 +149,7 @@ module.exports = function(grunt) {
             bootstrap: {
                 src: [
                   'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                  'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
                   'wp-content/themes/<%= pkg.name %>/js/<%= pkg.name %>.js'
                 ],
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/js/<%= pkg.name %>.js'
@@ -156,7 +157,8 @@ module.exports = function(grunt) {
             css: {
                 src: [
                   'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.css',
-                  'wp-content/themes/<%= pkg.name %>/dist/css/*.woocommerce.css'
+                  'wp-content/themes/<%= pkg.name %>/dist/css/*.woocommerce.css',
+                  'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css',
                 ],
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/css/<%= pkg.name %>.merged.css'
             }
