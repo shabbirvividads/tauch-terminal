@@ -35,6 +35,7 @@ require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'pagination.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'certifications.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'hotel-soap.php');
 
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');

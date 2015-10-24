@@ -12,30 +12,9 @@ class TauchTerminal_Tulamben {
         TauchTerminal::view('tulamben/settings', array('settings' => $settings));
     }
 
-    private static function call_hotelbooking($url) {
-        try {
-            $client = new SoapClient($url, array("trace" => false, "exceptions" => true));
-            try {
-                return $client->ChangeDensityUnit(array(
-                    'DensityValue' => '123.30',
-                    'fromDensityUnit' => 'copper',
-                    'toDensityUnit' => 'gold'
-                ));
-            } catch (SoapFault $sp) {
-                //your logic rearding soap fault
-                return $sp;
-            }
-        }catch(Exception $e) {
-            // your loging regarding this case
-            return $e;
-        }
-        return false;
-    }
-
     public static function hotelbooking_handler() {
-        $soap = TauchTerminal_DB::getTTOption('soap_booking');
-
-        $result = self::call_hotelbooking($soap);
+        $soap = new HotelsystemSoapClass();
+        $result = $soap->AvailableRooms();
         var_dump($result);
     }
 
