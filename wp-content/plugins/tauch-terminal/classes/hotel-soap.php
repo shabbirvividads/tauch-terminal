@@ -32,11 +32,28 @@ class HotelsystemSoapClass
 
     }
 
-    // Wrapper so we can build auth header first
-    public function AvailableRooms($params = null){
-
+    /**
+     * @param string $RoomId
+     * @param dateTime $TheDate
+     * @access public
+     * @return boolean
+     */
+    public function IsRoomAvailable($RoomId, $TheDate)
+    {
         $this->build_auth_header();
-        return $this->soap->AvailableRooms($params);
+        return $this->soap->IsRoomAvailable($RoomId, $TheDate);
+    }
+
+    /**
+     * @param dateTime $TheDate
+     * @param short $LengthOfStay
+     * @access public
+     * @return ArrayOfRooms
+     */
+    public function AvailableRooms($TheDate, $LengthOfStay)
+    {
+        $this->build_auth_header();
+        return $this->soap->AvailableRooms($TheDate, $LengthOfStay);
     }
 
 }

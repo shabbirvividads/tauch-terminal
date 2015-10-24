@@ -14,7 +14,7 @@ class TauchTerminal_Tulamben {
 
     public static function hotelbooking_handler() {
         $soap = new HotelsystemSoapClass();
-        $result = $soap->AvailableRooms();
+        $result = $soap->AvailableRooms('2016-05-04', 7);
         var_dump($result);
     }
 
