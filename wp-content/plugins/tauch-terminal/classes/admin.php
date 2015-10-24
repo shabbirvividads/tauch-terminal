@@ -26,7 +26,7 @@ class TauchTerminal_Admin {
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Dashboard', 'manage_options', 'tauch-terminal' );
         if (get_current_blog_id() == 1) {
             add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Websites', 'manage_options', 'tauch-terminal-sites', array('TauchTerminal_Sites', 'display_sites') );
-            add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Tulamben', 'manage_options', 'tauch-terminal-settings', array('TauchTerminal_Tulamben', 'display_settings') );
+            add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Tulamben', 'manage_options', 'tauch-terminal-tulamben-settings', array('TauchTerminal_Tulamben', 'display_settings') );
         }
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Certifications', 'manage_options', 'tauch-terminal-certifications', array('TauchTerminal_Certifications', 'display_certifications') );
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Settings', 'manage_options', 'tauch-terminal-settings', array('TauchTerminal_Sites', 'default_website') );

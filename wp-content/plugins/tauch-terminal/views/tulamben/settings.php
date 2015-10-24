@@ -37,6 +37,10 @@
                         <td><input class="form-control" type="text" name="settings['ca_api_reviews']" value="<?php echo (TauchTerminal_DB::getTTOption('ca_api_reviews')) ? TauchTerminal_DB::getTTOption('ca_api_reviews') : '' ?>" /></td>
                     </tr>
                     <tr>
+                        <th scope="row"><?php echo __('Rooms (JSON)') ?></th>
+                        <td><textarea class="form-control" name="settings['rooms']" rows="10" ><?php echo (TauchTerminal_DB::getTTOption('rooms')) ? TauchTerminal_DB::getTTOption('rooms') : '' ?></textarea></td>
+                    </tr>
+                    <tr>
                         <th></th>
                         <td>
                             <input type="hidden" name="action" value="save" />
