@@ -12,8 +12,12 @@
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+if (!is_plugin_active('tauch-terminal/tauch-terminal.php')) {
+    exit; // need TTT plugin to be activated
+}
 
 global $product, $post;
+
 ?>
 
 <?php
@@ -71,22 +75,13 @@ global $product, $post;
                             <label for="datepicker" class="col-sm-3 control-label"><?php echo __('Date', 'tauchterminal') ?></label>
                             <div class="col-sm-9">
                                 <div class="input-daterange input-group" id="datepicker">
-                                    <input type="text" class="form-control" name="start" />
+                                    <input type="text" class="form-control star-date" name="start" />
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" class="form-control" name="end" />
+                                    <input type="text" class="form-control end-date" name="end" />
                                 </div>
+                                <p class="help-block"><?php echo __('By default the range is set to 6 nights.', 'tauchterminal') ?></p>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            jQuery(document).ready(function($) {
-                                $('.variations_form .input-daterange').datepicker({
-                                    weekStart: 1,
-                                    startDate: "today",
-                                    autoclose: true,
-                                    todayHighlight: true
-                                });
-                            });
-                        </script>
                         <?php
                         // var_dump($product->get_attributes());
                         wc_get_template('single-product-rooms/add-to-cart/attributes.php', array(
@@ -101,10 +96,13 @@ global $product, $post;
                                 'selected_attributes'   => $product->get_variation_default_attributes()
                             ));
                         ?>
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <a href="#" class="btn btn-primary check-room-availability hidden"><?php echo __('Check Room Availability', 'tauchterminal') ?></a>
+                        </div>
 
                         <?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
-                        <div class="single_variation_wrap pull-right" style="display:none;">
+                        <div class="single_variation_wrap pull-right hidden" style="display:none;">
                             <?php do_action('woocommerce_before_single_variation'); ?>
 
                             <div class="single_variation"></div>
@@ -153,3 +151,42 @@ global $product, $post;
 </div><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action('woocommerce_after_single_product'); ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.variations_form .input-daterange').datepicker({
+            weekStart: 1,
+            startDate: "today",
+            todayHighlight: true,
+            autoclose: true
+        }).on('changeDate', function(e) {
+            // set default range to 6 nights
+            if ($('.star-date').val() == $('.end-date').val()) {
+                var date = new Date($('.end-date').val());
+                date.setDate(date.getDate() + 6);
+                $('.end-date').datepicker('setDate', date);
+
+            }
+            $('.single_variation_wrap').addClass('hidden');
+            $('.check-room-availability').removeClass('hidden');
+        });
+
+        $('.check-room-availability').on('click', function(e) {
+            e.preventDefault();
+            var start = new Date($('.star-date').val());
+            var end = new Date($('.end-date').val());
+            var nights = Math.ceil((end - start) / (1000 * 3600 * 24));
+
+            $.post('http://tulamben.lo/wp-admin/admin-ajax.php',
+                {
+                    action: 'tttajax',
+                    tttaction: 'hotelsystem-availableRooms',
+                    input:'foo',
+                    other_data:'bar'
+                },
+                function(){}
+            );
+
+        })
+    });
+</script>

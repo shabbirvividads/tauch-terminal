@@ -36,6 +36,7 @@ require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'sites.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'certifications.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'tulamben.php');
 require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'hotel-soap.php');
+require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'ajax.php');
 
 if (is_admin()) {
     require_once(TAUCHTERMINAL__PLUGIN_CLASSES . 'admin-meta-boxes.php');
@@ -73,3 +74,8 @@ function parameter_queryvars($qvars) {
     $qvars[] = ' myvar';
     return $qvars;
 }
+
+
+
+add_action('wp_ajax_tttajax', array('TauchTerminal_Ajax', 'prepareAjax'));
+add_action('wp_ajax_nopriv_tttajax', array('TauchTerminal_Ajax', 'prepareAjax'));
