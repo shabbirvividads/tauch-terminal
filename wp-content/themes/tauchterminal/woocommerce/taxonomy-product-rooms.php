@@ -177,7 +177,7 @@ global $product, $post;
             var end = new Date($('.end-date').val());
             var nights = Math.ceil((end - start) / (1000 * 3600 * 24));
 
-            $.post('http://tulamben.lo/wp-admin/admin-ajax.php',
+            $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php',
                 {
                     action: 'tttajax',
                     tttaction: 'hotelsystem-availableRooms',
