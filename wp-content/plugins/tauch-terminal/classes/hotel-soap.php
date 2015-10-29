@@ -35,7 +35,15 @@ class HotelsystemSoapClass
      */
     public function IsRoomAvailable($RoomId, $TheDate) {
         $this->build_auth_header();
-        return $this->soap->__soapCall('IsRoomAvailable', array($RoomId, $TheDate));
+        try {
+            $response = $this->soap->__soapCall('IsRoomAvailable', array($RoomId, $TheDate));
+            if (is_array($response)) {
+                return $response;
+            }
+        } catch (SoapFault $e) {
+            write_TTT_log($e->faultstring);
+            return $e->faultstring;
+        }
     }
 
     /**
