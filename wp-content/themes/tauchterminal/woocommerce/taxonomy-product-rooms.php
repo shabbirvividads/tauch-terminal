@@ -175,16 +175,17 @@ global $product, $post;
             e.preventDefault();
             var start = new Date($('.star-date').val());
             var end = new Date($('.end-date').val());
-            var nights = Math.ceil((end - start) / (1000 * 3600 * 24));
 
             $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php',
                 {
                     action: 'tttajax',
                     tttaction: 'hotelsystem-availableRooms',
-                    input:'foo',
-                    other_data:'bar'
+                    data: {
+                        'start': start,
+                        'end': end
+                    }
                 },
-                function(){}
+                function(){} // on success
             );
 
         })

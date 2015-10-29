@@ -45,8 +45,21 @@ class HotelsystemSoapClass
      * @return ArrayOfRooms
      */
     public function AvailableRooms($TheDate, $LengthOfStay) {
+        if (!is_string($TheDate) || !(is_int($TheDate) || is_string($TheDate))) {
+            return false;
+        }
+
         $this->build_auth_header();
-        return $this->soap->__soapCall('AvailableRooms', array($TheDate, $LengthOfStay));
+        try {
+            $response = $this->soap->__soapCall('AvailableRooms', array($TheDate, $LengthOfStay));
+            if (is_array($response)) {
+                return $response;
+            }
+        } catch (SoapFault $e) {
+            write_TTT_log($e->faultstring);
+            return $e->faultstring;
+        }
+        return false;
     }
 
 }

@@ -4,7 +4,7 @@ class TauchTerminal_Ajax {
 
     public static function prepareAjax() {
         $action = $_POST['tttaction'];
-        $data = $_POST;
+        $data = $_POST['data'];
 
         switch ($action) {
             case 'hotelsystem-availableRooms':
@@ -19,14 +19,20 @@ class TauchTerminal_Ajax {
                 # code...
                 break;
         }
-        // $other_data = $_POST['other_data'];
-        // die('called');
-        //  wp_send_json('{"works":"foobar"}');
     }
 
     private static function availableRooms($data) {
         $hotel = new HotelsystemSoapClass();
-        $response = $hotel->AvailableRooms('2016-04-19', 9);
+
+        $date1 = new DateTime($data['start']);
+        $date2 = new DateTime($data['end']);
+        $interval = $date1->diff($date2);
+        $response = $hotel->AvailableRooms($date1->format('Y-m-d'), $interval->format('%a'));
+
+        if (!is_array($response)) {
+            // $json = json_decode($response);
+            wp_send_json(['error' => 'API Problems, please contact us by email']);
+        }
         wp_send_json($response);
     }
 }

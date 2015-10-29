@@ -75,7 +75,15 @@ function parameter_queryvars($qvars) {
     return $qvars;
 }
 
-
-
 add_action('wp_ajax_tttajax', array('TauchTerminal_Ajax', 'prepareAjax'));
 add_action('wp_ajax_nopriv_tttajax', array('TauchTerminal_Ajax', 'prepareAjax'));
+
+if (!function_exists('write_TTT_log')) {
+    function write_TTT_log($log) {
+        if ( is_array( $log ) || is_object( $log ) ) {
+            error_log( print_r( $log, true ) );
+        } else {
+            error_log( $log );
+        }
+    }
+}
