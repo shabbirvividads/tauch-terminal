@@ -153,7 +153,64 @@ global $product, $post;
 <?php do_action('woocommerce_after_single_product'); ?>
 
 <script type="text/javascript">
+    var roomjson = JSON.parse('<?php echo TauchTerminal_DB::getTTOption("rooms") ?>');
     jQuery(document).ready(function($) {
+        var rooms = {};
+        var count_similarities = function(arrayA, arrayB) {
+            var matches = [];
+            for (i=0;i<arrayA.length;i++) {
+                if (arrayB.indexOf(arrayA[i]) != -1)
+                    matches.push(arrayA[i]);
+            }
+            return matches;
+        }
+        var checkSpecialRequests = function() {
+            var sku = $('span.sku').text();
+            var isFamily = $('input[name="isFamily"]').val();
+            var isBungalow = $('input[name="isBungalow"]').val();
+            var king = $('select[name="attribute_bed"]').val();
+            var wheelchair = $('select[name="attribute_special-requests"]').val();
+
+            if (isFamily) {
+                var familyrooms = roomjson.rooms.filter(function(eq) {
+                    return eq.family === true;
+                });
+                rooms = familyrooms;
+                return true;
+            } else if (isBungalow) {
+                var bungalowrooms = roomjson.rooms.filter(function(eq) {
+                    return eq.bungalow === true;
+                });
+                rooms = bungalowrooms;
+                return true;
+            }
+
+            if (king != 0) {
+                rooms = roomjson.rooms.filter(function(eq) {
+                    return eq.kingbed == king;
+                });
+            }
+
+            if (wheelchair != 0) {
+                var wheelchair = roomjson.rooms.filter(function(eq) {
+                    return eq.upstairs == false;
+                });
+                if (king != 0) {
+                    rooms = wheelchair;
+                } else {
+                    rooms = count_similarities(rooms, wheelchair);
+                }
+            }
+
+            if ($.isEmptyObject(rooms)) {
+                rooms = roomjson.rooms;
+            }
+
+            return rooms;
+        };
+
+        checkSpecialRequests();
+
         $('.variations_form .input-daterange').datepicker({
             weekStart: 1,
             startDate: "today",
@@ -161,7 +218,7 @@ global $product, $post;
             autoclose: true
         }).on('changeDate', function(e) {
             // set default range to 6 nights
-            if ($('.star-date').val() == $('.end-date').val()) {
+            if ($('.star-date').val() === $('.end-date').val()) {
                 var date = new Date($('.end-date').val());
                 date.setDate(date.getDate() + 6);
                 $('.end-date').datepicker('setDate', date);
@@ -171,10 +228,15 @@ global $product, $post;
             $('.check-room-availability').removeClass('hidden');
         });
 
+        $('.summary select').on('change', function(e) {
+            checkSpecialRequests();
+        });
+
         $('.check-room-availability').on('click', function(e) {
             e.preventDefault();
             var start = new Date($('.star-date').val());
             var end = new Date($('.end-date').val());
+            checkSpecialRequests();
 
             $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php',
                 {
@@ -182,10 +244,13 @@ global $product, $post;
                     tttaction: 'hotelsystem-availableRooms',
                     data: {
                         'start': start,
-                        'end': end
+                        'end': end,
+                        'rooms': rooms
                     }
                 },
-                function(){} // on success
+                function(response) { // on success
+                    console.log(response);
+                }
             );
 
         })

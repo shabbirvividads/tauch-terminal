@@ -33,6 +33,12 @@ class TauchTerminal_Ajax {
             // $json = json_decode($response);
             wp_send_json(['error' => 'API Problems, please contact us by email']);
         }
-        wp_send_json($response);
+
+        $tmp = array();
+        foreach ($data['rooms'] as $room) {
+            $tmp[] = $room['number'];
+        };
+
+        wp_send_json(array_intersect($tmp, $response));
     }
 }
