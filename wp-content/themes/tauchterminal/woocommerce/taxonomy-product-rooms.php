@@ -96,27 +96,34 @@ global $product, $post;
                                 'selected_attributes'   => $product->get_variation_default_attributes()
                             ));
                         ?>
-                        <div class="col-sm-9 col-sm-offset-3">
-                            <a href="#" class="btn btn-primary check-room-availability hidden"><?php echo __('Check Room Availability', 'tauchterminal') ?></a>
-                        </div>
-
-                        <?php do_action('woocommerce_before_add_to_cart_button'); ?>
-
-                        <div class="single_variation_wrap pull-right hidden" style="display:none;">
-                            <?php do_action('woocommerce_before_single_variation'); ?>
-
-                            <div class="single_variation"></div>
-
-                            <div class="variations_button">
-                                <input type="hidden" name="quantity" value="1" />
-                                <button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <a href="#" class="btn btn-primary check-room-availability hidden"><?php echo __('Check Room Availability', 'tauchterminal') ?></a>
                             </div>
 
-                            <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
-                            <input type="hidden" name="product_id" value="<?php echo esc_attr($post->ID); ?>" />
-                            <input type="hidden" name="variation_id" class="variation_id" value="" />
+                            <?php do_action('woocommerce_before_add_to_cart_button'); ?>
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <div class="alert alert-room-availability hidden" role="alert">
 
-                            <?php do_action('woocommerce_after_single_variation'); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-sm-offset-3 single_variation_wrap text-right hidden" style="display:none;">
+                                <?php do_action('woocommerce_before_single_variation'); ?>
+
+                                <div class="single_variation"></div>
+
+                                <div class="variations_button pull-right">
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
+                                </div>
+
+                                <input type="hidden" name="add-to-cart" value="<?php echo $product->id; ?>" />
+                                <input type="hidden" name="product_id" value="<?php echo esc_attr($post->ID); ?>" />
+                                <input type="hidden" name="variation_id" class="variation_id" value="" />
+
+                                <?php do_action('woocommerce_after_single_variation'); ?>
+                            </div>
                         </div>
 
                         <?php do_action('woocommerce_after_add_to_cart_button'); ?>
@@ -230,6 +237,8 @@ global $product, $post;
 
         $('.summary select').on('change', function(e) {
             checkSpecialRequests();
+            $('.single_variation_wrap').addClass('hidden');
+            $('.check-room-availability').removeClass('hidden');
         });
 
         $('.check-room-availability').on('click', function(e) {
@@ -249,7 +258,17 @@ global $product, $post;
                     }
                 },
                 function(response) { // on success
-                    console.log(response);
+                    $('.check-room-availability').addClass('hidden');
+
+                    if (!$.isEmptyObject(response)) {
+                        var count = Object.keys(response).length;
+                        if (count <= 5) {
+                            $('.alert-room-availability').removeClass('hidden').addClass('alert-warning').html("<strong><?php echo __('Only " + count + " left!', 'tauchterminal') ?></strong> <?php echo __('Book now, there are not many rooms left.', 'tauchterminal') ?>");
+                        }
+                        $('.single_variation_wrap').removeClass('hidden');
+                    } else {
+                        $('.alert-room-availability').removeClass('hidden').addClass('alert-danger').html("<strong><?php echo __('Oh snap!', 'tauchterminal') ?></strong> <?php echo __('There are no rooms left for your chosen date and configuration.', 'tauchterminal') ?>");
+                    }
                 }
             );
 
