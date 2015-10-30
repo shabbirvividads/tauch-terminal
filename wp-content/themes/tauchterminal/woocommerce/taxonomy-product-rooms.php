@@ -48,7 +48,7 @@ global $product, $post;
         </div>
 
         <div class="col-md-6">
-            <div class="summary entry-summary">
+            <div class="summary entry-summary relative">
             <?php
                 /**
                  * woocommerce_single_product_summary hook
@@ -245,6 +245,7 @@ global $product, $post;
             e.preventDefault();
             var start = new Date($('.star-date').val());
             var end = new Date($('.end-date').val());
+            $('.summary').prepend('<div class="ajaxloader"></div>');
             checkSpecialRequests();
 
             $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php',
@@ -269,6 +270,7 @@ global $product, $post;
                     } else {
                         $('.alert-room-availability').removeClass('hidden').addClass('alert-danger').html("<strong><?php echo __('Oh snap!', 'tauchterminal') ?></strong> <?php echo __('There are no rooms left for your chosen date and configuration.', 'tauchterminal') ?>");
                     }
+                    $('.summary .ajaxloader').remove();
                 }
             );
 

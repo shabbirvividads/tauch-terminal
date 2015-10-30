@@ -214,6 +214,12 @@ module.exports = function(grunt) {
                 cwd: 'wp-content/themes/<%= pkg.name %>/fonts',
                 src: '**',
                 dest: 'wp-content/themes/<%= pkg.name %>/dist/fonts'
+            },
+            img: {
+                expand: true,
+                cwd: 'wp-content/themes/<%= pkg.name %>/img',
+                src: '**',
+                dest: 'wp-content/themes/<%= pkg.name %>/dist/img'
             }
         },
 
