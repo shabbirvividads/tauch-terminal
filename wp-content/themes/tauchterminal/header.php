@@ -46,7 +46,9 @@
 
             <?php include_once(ABSPATH . 'wp-admin/includes/plugin.php'); ?>
             <?php if ($post->post_name == 'contact'): ?>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.2660569210007!2d115.5908273143318!3d-8.276296685487742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd1ff3fb94581ad%3A0x5c34fc071650a23d!2sTauch+Terminal+Resort+Tulamben!5e0!3m2!1sen!2sus!4v1446369121956" width="100%" height="500" frameborder="0" style="border:0; display: inherit;" allowfullscreen></iframe>
+                <div class="carousel-header">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.2660569210007!2d115.5908273143318!3d-8.276296685487742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd1ff3fb94581ad%3A0x5c34fc071650a23d!2sTauch+Terminal+Resort+Tulamben!5e0!3m2!1sen!2sus!4v1446369121956" width="100%" height="100%" frameborder="0" style="border:0; display: inherit;" allowfullscreen></iframe>
+                </div>
             <?php elseif (is_plugin_active('slick-carousel/slick-carousel.php')): ?>
                 <div class="carousel-header">
                     <?php $langcode = (defined('ICL_LANGUAGE_CODE')) ? ICL_LANGUAGE_CODE : 'de'; ?>
