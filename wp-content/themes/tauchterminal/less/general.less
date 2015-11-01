@@ -1,3 +1,12 @@
+body, p,
+h1, h2, h3, h4,
+a, button, .btn,
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
+    -webkit-font-smoothing: antialiased;
+}
 h2 {
     color: @ttgreen;
 }
@@ -32,6 +41,18 @@ a {
             text-decoration: none;
         }
     }
+}
+
+.btn,
+button {
+    letter-spacing: .1em;
+}
+
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
+    font-weight: 100;
 }
 
 li.comment {

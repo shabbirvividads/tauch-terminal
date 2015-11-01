@@ -9,7 +9,7 @@ $orange:        	#ff9640;
 $blue:          	#0e53a7;
 
 $primary:           #00b74a;                                    // Primary colour for buttons (alt)
-$primarytext:       desaturate(lighten($primary, 50%), 18%);    // Text on primary colour bg
+$primarytext:       #fff;    // Text on primary colour bg
 
 $secondary:         desaturate(lighten($primary, 55%), 21%);    // Secondary buttons
 $secondarytext:     desaturate(darken($secondary, 60%), 21%);   // Text on secondary colour bg
