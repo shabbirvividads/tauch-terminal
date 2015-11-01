@@ -266,7 +266,7 @@ $rand_value = RAND(10,10000);
 				}
 			?>
 		<div class="form-group layout-control-group">
-            <div class="col-sm-offset-4 col-sm-8">
+            <div class="col-sm-offset-3 col-sm-9">
     			<button type="submit"  class="btn btn-primary"><?php _e(trim($layout_settings_array[$form_id]["submit_button_text"]),contact_bank);?></button>
             </div>
 		</div>
