@@ -51,14 +51,6 @@ function woocommerce_support() {
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 add_action('woocommerce_cart_collaterals_upsell', 'woocommerce_cross_sell_display');
 
-add_filter('woocommerce_add_cart_item_data','namespace_force_individual_cart_items',10,2);
-function namespace_force_individual_cart_items($cart_item_data, $product_id)
-{
-    $unique_cart_item_key = md5(microtime().rand()."Hi Mom!");
-    $cart_item_data['unique_key'] = $unique_cart_item_key;
-
-    return $cart_item_data;
-}
 
 ###########################################################
 // Category View
@@ -473,3 +465,7 @@ function woocommerce_form_field( $key, $args, $value = null ) {
         echo $field;
     }
 }
+
+// define the woocommerce_add_to_cart callback
+// add_action ('woocommerce_add_to_cart', 'addCustomDataToProduct', 0);
+add_filter('woocommerce_add_cart_item_data', array('TauchTerminal_Tulamben', 'addCustomDataToProduct'), 10, 3);

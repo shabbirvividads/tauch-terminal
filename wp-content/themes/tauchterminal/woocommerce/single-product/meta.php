@@ -24,10 +24,8 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
 		<span class="sku_wrapper hidden"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>
-        <?php $isFamily = (strpos($sku,'family') !== false) ? true : false ?>
-        <?php $isBungalow = (strpos($sku,'bungalow') !== false) ? true : false ?>
-        <input type="hidden" name="isFamily" value="<?php echo $isFamily ?>">
-        <input type="hidden" name="isBungalow" value="<?php echo $isBungalow ?>">
+        <input type="hidden" name="isFamily" value="<?php echo (TauchTerminal_Tulamben::getProductTypeBySKU($sku) == 'family') ?>">
+        <input type="hidden" name="isBungalow" value="<?php echo (TauchTerminal_Tulamben::getProductTypeBySKU($sku) == 'bungalow') ?>">
 
 	<?php endif; ?>
 

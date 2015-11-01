@@ -23,12 +23,12 @@ do_action('woocommerce_before_cart'); ?>
     <table class="table cart" cellspacing="0">
         <thead>
             <tr>
-                <th class="product-remove">&nbsp;</th>
-                <th class="product-thumbnail">&nbsp;</th>
+                <th class="product-thumbnail-ttt">&nbsp;</th>
                 <th class="product-name"><?php _e('Product', 'woocommerce'); ?></th>
                 <th class="product-price"><?php _e('Price', 'woocommerce'); ?></th>
                 <th class="product-quantity"><?php _e('Quantity', 'woocommerce'); ?></th>
                 <th class="product-subtotal"><?php _e('Total', 'woocommerce'); ?></th>
+                <th class="product-remove">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -42,14 +42,7 @@ do_action('woocommerce_before_cart'); ?>
                 if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
                     ?>
                     <tr class="<?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
-
-                        <td class="product-remove">
-                            <?php
-                                echo apply_filters('woocommerce_cart_item_remove_link', sprintf('<a href="%s" class="remove" title="%s">&times;</a>', esc_url(WC()->cart->get_remove_url($cart_item_key)), __('Remove this item', 'woocommerce')), $cart_item_key);
-                            ?>
-                        </td>
-
-                        <td class="product-thumbnail">
+                        <td class="product-thumbnail-ttt">
                             <?php
                                 $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
 
@@ -70,6 +63,27 @@ do_action('woocommerce_before_cart'); ?>
                                 }
 
                                 // Meta data
+                                if ($cart_item['start_date'] && $cart_item['end_date']):
+                                ?>
+                                <dl class="variation">
+                                    <dt class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo wp_kses_post(__('Travel dates')); ?>:</dt>
+                                    <dd class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo TauchTerminal_Tulamben::formatDateFromTo($cart_item['start_date'], $cart_item['end_date']) ?></dd>
+                                </dl>
+                                <?
+                                endif;
+
+                                foreach ($cart_item['ttt_meta'] as $name => $value) {
+                                    if ($value):
+                                    ?>
+                                    <dl class="variation">
+                                        <dt class="variation-<?php echo sanitize_html_class($name); ?>"><?php echo wp_kses_post($name); ?>:</dt>
+                                        <dd class="variation-<?php echo sanitize_html_class($name); ?>"><?php echo $value ?></dd>
+                                    </dl>
+                                    <?
+                                    endif;
+                                }
+
+
                                 echo WC()->cart->get_item_data($cart_item);
 
                                 // Backorder notification
@@ -107,6 +121,13 @@ do_action('woocommerce_before_cart'); ?>
                                 echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key);
                             ?>
                         </td>
+
+                        <td class="product-remove">
+                            <?php
+                                echo apply_filters('woocommerce_cart_item_remove_link', sprintf('<a href="%s" class="remove" title="%s">&times;</a>', esc_url(WC()->cart->get_remove_url($cart_item_key)), __('Remove this item', 'woocommerce')), $cart_item_key);
+                            ?>
+                        </td>
+
                     </tr>
                     <?php
                 }
