@@ -1,16 +1,33 @@
-#lang_sel {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    z-index: 100;
-    visibility: hidden;
-}
-
+#lang_sel,
 #lang_sel_click {
     position: absolute;
     top: 20px;
     right: 10px;
     z-index: 100;
+
+    ul ul {
+        border: 0;
+    }
+
+    a.lang_sel_sel:after {
+        content: "\e259";
+
+        position: relative;
+        top: 1px;
+        right: -10px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    // a.lang_sel_sel:hover:after {
+    //     // content: "\e260";
+    //     transition: 0.9s;
+    //     transform: rotateX(180deg);
+    // }
 
     a,
     a.lang_sel_sel,
@@ -26,7 +43,6 @@
         background: none;
         &:hover,
         &:visited {
-            font-weight: bold;
             color: @white;
         }
         img,
@@ -41,7 +57,6 @@
     }
     :hover > a,
     ul ul :hover > a {
-        font-weight: bold;
         color: @white;
 
         border: 0;
