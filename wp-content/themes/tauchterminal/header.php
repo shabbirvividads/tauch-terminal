@@ -47,7 +47,7 @@
             <?php include_once(ABSPATH . 'wp-admin/includes/plugin.php'); ?>
             <?php if ($post->post_name == 'home'): ?>
                 <div class="carousel-header">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X4EyDNHNQoY?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1"" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/X4EyDNHNQoY?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             <?php elseif ($post->post_name == 'contact'): ?>
                 <div class="carousel-header">

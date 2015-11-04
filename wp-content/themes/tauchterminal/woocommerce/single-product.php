@@ -32,6 +32,9 @@ get_header('shop'); ?>
                 case 'room':
                     wc_get_template_part('taxonomy', 'product-rooms');
                     break;
+                case 'divesite':
+                    wc_get_template_part('taxonomy', 'product-divesite');
+                    break;
                 default:
                     wc_get_template_part('content', 'single-product');
                     break;
