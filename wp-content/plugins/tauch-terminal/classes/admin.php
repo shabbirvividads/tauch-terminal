@@ -24,12 +24,35 @@ class TauchTerminal_Admin {
     public static function admin_menu() {
         add_menu_page('TauchTerminal', 'Tauch Terminal', 'manage_options', 'tauch-terminal', array('TauchTerminal_Admin', 'display_page'), TAUCHTERMINAL__PLUGIN_URL.'img/logo.png', 22);
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Dashboard', 'manage_options', 'tauch-terminal' );
+
         if (get_current_blog_id() == 1) {
-            add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Websites', 'manage_options', 'tauch-terminal-sites', array('TauchTerminal_Sites', 'display_sites') );
-            add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Tulamben', 'manage_options', 'tauch-terminal-tulamben-settings', array('TauchTerminal_Tulamben', 'display_settings') );
+            $sites = add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Websites', 'manage_options', 'tauch-terminal-sites', array('TauchTerminal_Sites', 'display_sites') );
+            add_action('admin_print_scripts-' . $sites, array('TauchTerminal_Admin', 'enqueue_admin_custom_scripts'));
+
+            $tttsettings = add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Tulamben', 'manage_options', 'tauch-terminal-tulamben-settings', array('TauchTerminal_Tulamben', 'display_settings') );
+            add_action('admin_print_scripts-' . $tttsettings, array('TauchTerminal_Admin', 'enqueue_admin_custom_scripts'));
         }
-        add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Certifications', 'manage_options', 'tauch-terminal-certifications', array('TauchTerminal_Certifications', 'display_certifications') );
+
+        $certifications = add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Certifications', 'manage_options', 'tauch-terminal-certifications', array('TauchTerminal_Certifications', 'display_certifications') );
         add_submenu_page('tauch-terminal', 'Tauch Terminal', 'Settings', 'manage_options', 'tauch-terminal-settings', array('TauchTerminal_Sites', 'default_website') );
+
+        add_action('admin_print_scripts-' . $certifications, array('TauchTerminal_Admin', 'enqueue_admin_custom_scripts'));
+
+    }
+
+    public static  function enqueue_admin_custom_scripts() {
+        wp_enqueue_script('media-upload'); //Provides all the functions needed to upload, validate and give format to files.
+        wp_enqueue_script('thickbox'); //Responsible for managing the modal window.
+        wp_enqueue_style('thickbox'); //Provides the styles needed for this window.
+        wp_enqueue_script('script', plugins_url('../js/upload.js', __FILE__), array('jquery'), '', true); //It will initialize the parameters needed to show the window properly.
+
+        // load theme css to also have bootstrap in Admin
+        // Our base theme CSS that adds colored sections and padding.
+        $my_theme = wp_get_theme('tauchterminal');
+        if ($my_theme->exists() && wp_get_theme() == $my_theme) {
+            wp_enqueue_script('tauchterminal', get_template_directory_uri() . '/dist/js/tauchterminal.min.js', array('jquery'), '20140913', true);
+            wp_enqueue_style('tauchterminal', get_template_directory_uri() . '/dist/css/tauchterminal.css', array(), '20150927', 'all');
+        }
     }
 
     public static function admin_head() {
@@ -47,4 +70,5 @@ class TauchTerminal_Admin {
         );
         TauchTerminal::view('start', array('sites' => $sites, 'currentsite' => $current));
     }
+
 }
