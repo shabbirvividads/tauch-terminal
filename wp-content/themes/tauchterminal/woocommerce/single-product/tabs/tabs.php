@@ -21,9 +21,9 @@ $tabs = apply_filters('woocommerce_product_tabs', array());
 
 if (! empty($tabs)) : ?>
 
+    <?php if (!count($tabs)): ?>
     <div class="container">
         <!-- Nav tabs -->
-        <?php if (!count($tabs)): ?>
         <ul class="tabs nav nav-tabs" role="tablist">
             <?php $isFirst = true; ?>
             <?php foreach ($tabs as $key => $tab) : ?>
@@ -33,12 +33,12 @@ if (! empty($tabs)) : ?>
                 <?php $isFirst = false; ?>
             <?php endforeach; ?>
         </ul>
-        <?php endif; ?>
+    <?php endif; ?>
 
         <!-- Tab panes -->
-        <?php if (!count($tabs)): ?>
+    <?php if (!count($tabs)): ?>
         <div class="tab-content">
-        <?php endif; ?>
+    <?php endif; ?>
             <?php $isFirst = true; ?>
             <?php foreach ($tabs as $key => $tab) : ?>
                 <div role="tabpanel" class="tab-pane<?php if ($isFirst): ?> active<?php endif; ?>" id="tab-<?php echo esc_attr($key); ?>">
@@ -46,9 +46,9 @@ if (! empty($tabs)) : ?>
                 </div>
                 <?php $isFirst = false; ?>
             <?php endforeach; ?>
-        <?php if (!count($tabs)): ?>
+    <?php if (!count($tabs)): ?>
         </div>
-        <?php endif; ?>
 
     </div>
+    <?php endif; ?>
 <?php endif; ?>

@@ -469,3 +469,12 @@ function woocommerce_form_field( $key, $args, $value = null ) {
 // define the woocommerce_add_to_cart callback
 // add_action ('woocommerce_add_to_cart', 'addCustomDataToProduct', 0);
 add_filter('woocommerce_add_cart_item_data', array('TauchTerminal_Tulamben', 'addCustomDataToProduct'), 10, 3);
+
+
+add_filter( 'woocommerce_product_tabs', 'wcs_woo_remove_reviews_tab', 98 );
+function wcs_woo_remove_reviews_tab($tabs) {
+    unset($tabs['reviews']);
+    unset($tabs['additional_information']);
+
+    return $tabs;
+}
