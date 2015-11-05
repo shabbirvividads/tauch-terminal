@@ -248,31 +248,30 @@ global $product, $post;
             $('.summary').prepend('<div class="ajaxloader"></div>');
             checkSpecialRequests();
 
-            $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php',
-                {
-                    action: 'tttajax',
-                    tttaction: 'hotelsystem-availableRooms',
-                    data: {
-                        'start': start,
-                        'end': end,
-                        'rooms': rooms
-                    }
-                },
-                function(response) { // on success
-                    $('.check-room-availability').addClass('hidden');
-
-                    if (!$.isEmptyObject(response)) {
-                        var count = Object.keys(response).length;
-                        if (count <= 5) {
-                            $('.alert-room-availability').removeClass('hidden').addClass('alert-warning').html("<strong><?php echo __('Only " + count + " left!', 'tauchterminal') ?></strong> <?php echo __('Book now, there are not many rooms left.', 'tauchterminal') ?>");
-                        }
-                        $('.single_variation_wrap').removeClass('hidden');
-                    } else {
-                        $('.alert-room-availability').removeClass('hidden').addClass('alert-danger').html("<strong><?php echo __('Oh snap!', 'tauchterminal') ?></strong> <?php echo __('There are no rooms left for your chosen date and configuration.', 'tauchterminal') ?>");
-                    }
-                    $('.summary .ajaxloader').remove();
+            $.post('<?php echo get_site_url(); ?>/wp-admin/admin-ajax.php', {
+                action: 'tttajax',
+                tttaction: 'hotelsystem-availableRooms',
+                data: {
+                    'start': start,
+                    'end': end,
+                    'rooms': rooms
                 }
-            );
+            }).done(function(response) { // on success
+                if (!$.isEmptyObject(response)) {
+                    var count = Object.keys(response).length;
+                    if (count <= 5) {
+                        $('.alert-room-availability').removeClass('hidden').addClass('alert-warning').html("<strong><?php echo __('Only " + count + " left!', 'tauchterminal') ?></strong> <?php echo __('Book now, there are not many rooms left.', 'tauchterminal') ?>");
+                    }
+                    $('.single_variation_wrap').removeClass('hidden');
+                } else {
+                    $('.alert-room-availability').removeClass('hidden').addClass('alert-danger').html("<strong><?php echo __('Oh snap!', 'tauchterminal') ?></strong> <?php echo __('There are no rooms left for your chosen date and configuration.', 'tauchterminal') ?>");
+                }
+            }).fail(function() {
+                $('.alert-room-availability').removeClass('hidden').addClass('alert-danger').html("<strong><?php echo __('Oh snap!', 'tauchterminal') ?></strong> <?php echo __('We could not establish a connection to our booking system. Please contact us directly via email.', 'tauchterminal') ?>");
+            }).always(function() {
+                $('.check-room-availability').addClass('hidden');
+                $('.summary .ajaxloader').remove();
+            });
 
         })
     });
