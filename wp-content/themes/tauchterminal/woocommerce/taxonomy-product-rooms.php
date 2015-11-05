@@ -82,6 +82,29 @@ global $product, $post;
                                 <p class="help-block"><?php echo __('By default the range is set to 6 nights.', 'tauchterminal') ?></p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="quantity-person" class="col-sm-3 control-label"><?php echo __('Persons', 'tauchterminal') ?></label>
+                            <div class="col-sm-9">
+                                <?php
+                                $max_value = apply_filters('woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product);
+                                if (!$max_value && TauchTerminal_Tulamben::isRoomProduct($product->get_sku()) ) {
+                                    if (TauchTerminal_Tulamben::getProductTypeBySKU($product->get_sku()) == 'family') {
+                                        $max_value = 5;
+                                    } elseif (TauchTerminal_Tulamben::getProductTypeBySKU($product->get_sku()) == 'deluxe') {
+                                        $max_value = 3;
+                                    } else {
+                                        $max_value = 2;
+                                    }
+                                }
+                                woocommerce_quantity_input(array(
+                                    'input_name'  => 'quantity-person',
+                                    'min_value'   => apply_filters('woocommerce_quantity_input_min', 1, $product),
+                                    'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product),
+                                    'input_value' => (isset($_POST['quantity-person']) ? wc_stock_amount($_POST['quantity-person']) : 1)
+                                ));
+                                ?>
+                            </div>
+                        </div>
                         <?php
                         // var_dump($product->get_attributes());
                         wc_get_template('single-product-rooms/add-to-cart/attributes.php', array(
@@ -112,6 +135,7 @@ global $product, $post;
                                 <?php do_action('woocommerce_before_single_variation'); ?>
 
                                 <div class="single_variation"></div>
+                                <p class="help-block"><?php echo __('Prices are per Night per Person', 'tauchterminal') ?></p>
 
                                 <div class="variations_button pull-right">
                                     <input type="hidden" name="quantity" value="1" />
@@ -215,8 +239,22 @@ global $product, $post;
 
             return rooms;
         };
-
         checkSpecialRequests();
+
+        var calculateAmount = function () {
+            var amount = 1;
+            var start = new Date($('.star-date').val());
+            var end = new Date($('.end-date').val());
+
+            if (start && end) {
+                var persons = $('input[name="quantity-person"]').val();
+                var timeDiff = Math.abs(end.getTime() - start.getTime());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                amount = persons * diffDays;
+            }
+
+            $('input[name="quantity"]').val(amount);
+        }
 
         $('.variations_form .input-daterange').datepicker({
             weekStart: 1,
@@ -259,6 +297,7 @@ global $product, $post;
             }).done(function(response) { // on success
                 if (!$.isEmptyObject(response)) {
                     var count = Object.keys(response).length;
+                    calculateAmount();
                     if (count <= 5) {
                         $('.alert-room-availability').removeClass('hidden').addClass('alert-warning').html("<strong><?php echo __('Only " + count + " left!', 'tauchterminal') ?></strong> <?php echo __('Book now, there are not many rooms left.', 'tauchterminal') ?>");
                     }

@@ -32,7 +32,9 @@ class TauchTerminal_Tulamben {
     }
 
     public static function getProductTypeBySKU($sku) {
-        if (strpos($sku,'family') !== false) {
+        if (strpos($sku,'deluxe') !== false) {
+            return 'deluxe';
+        } else if (strpos($sku,'family') !== false) {
             return 'family';
         } else if (strpos($sku,'bungalow') !== false) {
             return 'bungalow';
@@ -46,7 +48,7 @@ class TauchTerminal_Tulamben {
 
     public static function isRoomProduct($sku) {
         $type = self::getProductTypeBySKU($sku);
-        return (in_array($type, ['family', 'bungalow', 'room']));
+        return (in_array($type, ['family', 'bungalow', 'room', 'deluxe']));
     }
 
     public static function ca_handler() {
@@ -127,23 +129,27 @@ class TauchTerminal_Tulamben {
         $cart_item_data['unique_key'] = $unique_cart_item_key;
 
         $product = $_pf->get_product($product_id);
+
         if (TauchTerminal_Tulamben::isRoomProduct($product->get_sku())) {
-            $cart_item_meta['start_date'] = $data['start'];
-            $cart_item_meta['end_date'] = $data['end'];
+            $cart_item_data['start_date'] = $data['start'];
+            $cart_item_data['end_date'] = $data['end'];
             $attributes = $product->get_attributes();
+            if ($data['quantity-person']) {
+                $cart_item_data['persons'] = $data['quantity-person'];
+            }
             if ($data['attribute_bed']) {
                 $labels = self::getAttributeLabel($attributes, 'attribute_bed', $data['attribute_bed']);
                 $name = $labels['name'];
-                $cart_item_meta['ttt_meta'][$name] = $labels['value'];
+                $cart_item_data['ttt_meta'][$name] = $labels['value'];
             }
             if ($data['attribute_special-requests']) {
                 $labels = self::getAttributeLabel($attributes, 'attribute_special-requests', $data['attribute_special-requests']);
                 $name = $labels['name'];
-                $cart_item_meta['ttt_meta'][$name] = $labels['value'];
+                $cart_item_data['ttt_meta'][$name] = $labels['value'];
             }
         }
 
-        return $cart_item_meta;
+        return $cart_item_data;
     }
 
 }

@@ -35,12 +35,12 @@ do_action('woocommerce_before_cart'); ?>
             <?php do_action('woocommerce_before_cart_contents'); ?>
 
             <?php
-            foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+            foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item):
                 $_product     = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
                 $product_id   = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
 
-                if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
-                    ?>
+                if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)): ?>
+
                     <tr class="<?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
                         <td class="product-thumbnail-ttt">
                             <?php
@@ -53,7 +53,6 @@ do_action('woocommerce_before_cart'); ?>
                                 }
                             ?>
                         </td>
-
                         <td class="product-name">
                             <?php
                                 if (!$_product->is_visible()) {
@@ -63,26 +62,26 @@ do_action('woocommerce_before_cart'); ?>
                                 }
 
                                 // Meta data
-                                if ($cart_item['start_date'] && $cart_item['end_date']):
-                                ?>
-                                <dl class="variation">
-                                    <dt class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo wp_kses_post(__('Travel dates')); ?>:</dt>
-                                    <dd class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo TauchTerminal_Tulamben::formatDateFromTo($cart_item['start_date'], $cart_item['end_date']) ?></dd>
-                                </dl>
-                                <?
-                                endif;
-
-                                foreach ($cart_item['ttt_meta'] as $name => $value) {
+                                if ($cart_item['start_date'] && $cart_item['end_date']) {
+                                    ?>
+                                    <dl class="variation">
+                                        <dt class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo wp_kses_post(__('Travel dates')); ?>:</dt>
+                                        <dd class="variation-<?php echo sanitize_html_class('Travel dates'); ?>"><?php echo TauchTerminal_Tulamben::formatDateFromTo($cart_item['start_date'], $cart_item['end_date']) ?></dd>
+                                    </dl>
+                                <?php
+                                }
+                                if (isset($cart_item['ttt_meta'])):
+                                foreach ($cart_item['ttt_meta'] as $name => $value):
                                     if ($value):
                                     ?>
                                     <dl class="variation">
                                         <dt class="variation-<?php echo sanitize_html_class($name); ?>"><?php echo wp_kses_post($name); ?>:</dt>
                                         <dd class="variation-<?php echo sanitize_html_class($name); ?>"><?php echo $value ?></dd>
                                     </dl>
-                                    <?
+                                    <?php
                                     endif;
-                                }
-
+                                endforeach;
+                                endif;
 
                                 echo WC()->cart->get_item_data($cart_item);
 
@@ -93,7 +92,7 @@ do_action('woocommerce_before_cart'); ?>
                             ?>
                         </td>
 
-                        <td class="product-price">
+                         <td class="product-price">
                             <?php
                                 echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key);
                             ?>
@@ -101,6 +100,7 @@ do_action('woocommerce_before_cart'); ?>
 
                         <td class="product-quantity">
                             <?php
+
                                 if ($_product->is_sold_individually()) {
                                     $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                                 } else {
@@ -112,7 +112,15 @@ do_action('woocommerce_before_cart'); ?>
                                    ), $_product, false);
                                 }
 
-                                echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key);
+                                if ($cart_item['persons']) {
+                                    if ($cart_item['persons'] > 1) {
+                                        printf(__('%s Persons'), $cart_item['persons']);
+                                    } else {
+                                        echo __('1 Person');
+                                    }
+                                } else {
+                                    echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key);
+                                }
                             ?>
                         </td>
 
@@ -129,9 +137,9 @@ do_action('woocommerce_before_cart'); ?>
                         </td>
 
                     </tr>
-                    <?php
-                }
-            }
+                <?php
+                endif;
+            endforeach;
 
             do_action('woocommerce_cart_contents');
             ?>
