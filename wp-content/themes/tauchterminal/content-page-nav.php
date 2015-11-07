@@ -44,7 +44,7 @@ if ($post->ID != $post->post_parent AND +
 
     $current = array_search(get_the_ID(), $pages);
     $prevID = $current > 0 ? $pages[$current-1] : null;
-    $nextID = $current < (count($pages) - 1) ? $pages[$current+1] : null;
+    $nextID = (($pages && $current) && ($current < (count($pages) - 1))) ? $pages[$current+1] : null;
 
     if (! empty($prevID) OR ! empty ($nextID)) {
     ?>
